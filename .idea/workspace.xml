@@ -13,12 +13,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1dd2c5d7-6a42-44b5-b2ab-babb31083437" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/zhaw/ListViewPlayers.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/ch/zhaw/R.java" afterPath="$PROJECT_DIR$/gen/ch/zhaw/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/zhaw/MyActivity.java" afterPath="$PROJECT_DIR$/src/ch/zhaw/MyActivity.java" />
     </list>
     <ignored path="jassboard.iws" />
@@ -86,75 +80,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MyActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ch/zhaw/MyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="0" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0">
+            <state line="18" column="0" selection-start="386" selection-end="386" vertical-scroll-proportion="0.1797005">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#866#874#0" expanded="true" />
-                <element signature="e#1206#1214#0" expanded="true" />
+                <element signature="e#867#875#0" expanded="true" />
+                <element signature="e#1207#1215#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="23" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="setteam.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/setteam.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="55" selection-start="425" selection-end="425" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1350912629493" expanded="true" signature="112:424" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="setplayer.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/setplayer.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="50" selection-start="780" selection-end="780" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="R.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gen/ch/zhaw/R.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="41" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#1487#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListViewPlayers.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ch/zhaw/ListViewPlayers.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="15" selection-start="1106" selection-end="1106" vertical-scroll-proportion="-0.6971714">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="28" selection-start="263" selection-end="273" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -179,8 +113,8 @@
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/ch/zhaw/ListViewPlayers.java" />
         <option value="$PROJECT_DIR$/gen/ch/zhaw/R.java" />
-        <option value="$PROJECT_DIR$/src/ch/zhaw/MyActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/setplayer.xml" />
+        <option value="$PROJECT_DIR$/src/ch/zhaw/MyActivity.java" />
       </list>
     </option>
   </component>
@@ -624,7 +558,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -644,8 +578,8 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977018" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16942811" sideWeight="0.67094016" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32905984" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16942811" sideWeight="0.67094016" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Android Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32794458" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -780,16 +714,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="55" selection-start="425" selection-end="425" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1350912629493" expanded="true" signature="112:424" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/ch/zhaw/R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="41" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#1487#0" expanded="true" />
+            <marker date="1350912629493" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -801,17 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/MyActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#866#874#0" expanded="true" />
-            <element signature="e#1206#1214#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/setplayer.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="50" selection-start="780" selection-end="780" vertical-scroll-proportion="0.0">
@@ -819,11 +733,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/ListViewPlayers.java">
+    <entry file="file://$PROJECT_DIR$/gen/ch/zhaw/R.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="15" selection-start="1106" selection-end="1106" vertical-scroll-proportion="-0.6971714">
+        <state line="40" column="18" selection-start="1487" selection-end="1487" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#1487#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/MyActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="386" selection-end="386" vertical-scroll-proportion="0.1797005">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#867#875#0" expanded="true" />
+            <element signature="e#1207#1215#0" expanded="true" />
           </folding>
         </state>
       </provider>

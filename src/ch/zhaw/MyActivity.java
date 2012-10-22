@@ -16,6 +16,7 @@ public class MyActivity extends Activity {
     }
 
 
+
     public void setTeam(View view) {
         setContentView(R.layout.setteam);
 
