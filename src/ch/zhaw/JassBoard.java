@@ -9,7 +9,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 
-public class MyActivity extends Activity {
+public class JassBoard extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
