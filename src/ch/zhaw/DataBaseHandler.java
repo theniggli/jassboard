@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: nigglrog
@@ -41,12 +43,12 @@ public class DataBaseHandler extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT)";
         db.execSQL(CREATE_PLAYER_TABLE);
 
-        String CREATE_TEAM_TABLE ="CREATE TABLE " + TABLE_TEAMS + "("
+        String CREATE_TEAM_TABLE = "CREATE TABLE " + TABLE_TEAMS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT)";
         db.execSQL(CREATE_TEAM_TABLE);
 
         String CREATE_TEAMPLAYER_TABLE = "CREATE TABLE " + TABLE_PLAYERTEAMS + "("
-                + TABLE_PLAYERS + KEY_ID + "INTEGER ," + TABLE_TEAMS + KEY_ID + "INTEGER)" ;
+                + TABLE_PLAYERS + KEY_ID + "INTEGER ," + TABLE_TEAMS + KEY_ID + "INTEGER)";
         db.execSQL(CREATE_TEAMPLAYER_TABLE);
     }
 
@@ -58,5 +60,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
         // Create tables again
         //onCreate(db);
+    }
+
+    public ArrayList<Player> getPlayerList() {
+        ArrayList<Player> playerArrayList = new ArrayList<Player>();
+        Player player1 = new Player(1, "hallo");
+        Player player2 = new Player(2, "welt");
+        playerArrayList.add(player1)  ;
+        playerArrayList.add(player2)  ;
+        return playerArrayList;
     }
 }
