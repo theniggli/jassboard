@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.*;
 
 import java.util.ArrayList;
 
@@ -39,9 +38,18 @@ public class JassBoard extends Activity {
 
         ListView playerList = (ListView) findViewById(R.id.playerList);
         ArrayList<Player> playerArrayList = dbH.getPlayerList();
-        ArrayAdapter<Player> arrayAdapter =
-                new ArrayAdapter<Player>(this, android.R.layout.simple_list_item_1, playerArrayList);
+        PlayerAdapter<Player> arrayAdapter =
+                new PlayerAdapter<Player>(this, playerArrayList);
         playerList.setAdapter(arrayAdapter);
+
+     //   playerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+     //       public void onItemClick(AdapterView<?> parent, View view,
+     //                               int position, long id) {
+     //           // When clicked, show a toast with the TextView text
+     //           Toast.makeText(getApplicationContext(),
+     //                   ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+     //       }
+     //   });
 
 
     }
