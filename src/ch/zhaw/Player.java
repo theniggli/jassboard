@@ -18,6 +18,18 @@ public class Player {
 
     }
 
+    public Player() {
+
+    }
+
+    public void setPlayerID(Integer playerID) {
+        this.playerID = playerID;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
     public void createPlayer() {
 
     }

@@ -1,6 +1,7 @@
 package ch.zhaw;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -14,20 +15,19 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 public class DataBaseHandler extends SQLiteOpenHelper {
-
     // All Static variables
     // Database Version
     private static final int DATABASE_VERSION = 1;
 
-    // Database Name
+    //Database Name
     private static final String DATABASE_NAME = "jassboard";
 
-    // Contacts table name
+    //table name
     private static final String TABLE_PLAYERS = "players";
     private static final String TABLE_TEAMS = "teams";
     private static final String TABLE_PLAYERTEAMS = "player_teams";
 
-    // Contacts Table Columns names
+    //Columns names
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
 
@@ -50,6 +50,20 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         String CREATE_TEAMPLAYER_TABLE = "CREATE TABLE " + TABLE_PLAYERTEAMS + "("
                 + TABLE_PLAYERS + KEY_ID + "INTEGER ," + TABLE_TEAMS + KEY_ID + "INTEGER)";
         db.execSQL(CREATE_TEAMPLAYER_TABLE);
+        createDummyEntries(db);
+    }
+
+    public void createDummyEntries(SQLiteDatabase db) {
+        String CREATE_DUMMY_PLAYER;
+        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + KEY_ID + "," + KEY_NAME + ") values (1, 'Roger')";
+        db.execSQL(CREATE_DUMMY_PLAYER);
+        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + KEY_ID + "," + KEY_NAME + ") values (2, 'Toni')";
+        db.execSQL(CREATE_DUMMY_PLAYER);
+        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + KEY_ID + "," + KEY_NAME + ") values (3, 'Tobi')";
+        db.execSQL(CREATE_DUMMY_PLAYER);
+        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + KEY_ID + "," + KEY_NAME + ") values (4, 'Michi')";
+        db.execSQL(CREATE_DUMMY_PLAYER);
+
     }
 
     // Upgrading database
@@ -64,13 +78,22 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     public ArrayList<Player> getPlayerList() {
         ArrayList<Player> playerArrayList = new ArrayList<Player>();
-        Player player1 = new Player(1, "hallo");
-        Player player2 = new Player(2, "welt");
-        playerArrayList.add(player1)  ;
-        playerArrayList.add(player2)  ;
+        String selectQuery = "SELECT " + KEY_ID + "," + KEY_NAME + " FROM " + TABLE_PLAYERS;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Player player = new Player();
+                player.setPlayerID(Integer.parseInt(cursor.getString(0)));
+                player.setPlayerName(cursor.getString(1));
+                playerArrayList.add(player);
+            } while (cursor.moveToNext());
+        }
         return playerArrayList;
     }
-    public ArrayList<Team> getTeamList(){
+
+    public ArrayList<Team> getTeamList() {
         ArrayList<Team> teamListArray = new ArrayList<Team>();
 
         return teamListArray;
