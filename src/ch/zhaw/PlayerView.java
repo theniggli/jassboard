@@ -14,8 +14,6 @@ import android.widget.TextView;
  * To change this template use File | Settings | File Templates.
  */
 public class PlayerView extends LinearLayout {
-
-
     private TextView mName, mId;
 
     public PlayerView(Context context, Player contact) {
@@ -25,13 +23,13 @@ public class PlayerView extends LinearLayout {
         mId = new TextView(context);
 
         String name = contact.getName();
-        mName.setText("Name: " + name);
+        mName.setText(name);
         mName.setTextSize(19);
         mName.setTextColor(Color.GREEN);
         mName.setTypeface(Typeface.SANS_SERIF);
 
-        Integer id = contact.getId();
-        mId.setText("Id: " + contact.getId());
+        String id = contact.getId().toString();
+        mId.setText(contact.getId().toString());
         mId.setTextSize(14);
         mId.setTypeface(Typeface.SANS_SERIF);
 
@@ -48,12 +46,14 @@ public class PlayerView extends LinearLayout {
     }
 
     public void setNameText(String name) {
-        mName.setText("Name: " + name);
+        mName.setText(name);
     }
 
     public void setIdText(String id) {
-        mId.setText("Id: " + id);
+        mId.setText(id);
     }
+
+
 
 
 }

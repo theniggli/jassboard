@@ -25,6 +25,8 @@ public class PlayerAdapter<Player extends ch.zhaw.Player> extends BaseAdapter {
     public PlayerAdapter(Context context, ArrayList<Player> items) {
         mContext = context;
         mItems = items;
+        System.out.println("Hello there: 1.1");
+
     }
 
     public int getCount() {

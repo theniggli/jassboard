@@ -16,7 +16,7 @@ public class JassBoard extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Log.d(TAG,"TEST");
+        Log.d(TAG, "TEST");
     }
 
 
@@ -35,26 +35,23 @@ public class JassBoard extends Activity {
 
     public void setPlayer(View view) {
         setContentView(R.layout.setplayer);
-
         ListView playerList = (ListView) findViewById(R.id.playerList);
         ArrayList<Player> playerArrayList = dbH.getPlayerList();
         PlayerAdapter<Player> arrayAdapter =
                 new PlayerAdapter<Player>(this, playerArrayList);
         playerList.setAdapter(arrayAdapter);
+        playerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                String playerID = "" + ((PlayerView) view).getId();
+                // When clicked, show a toast with the TextView text
+                Toast.makeText(getApplicationContext(),
+                        playerID, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "something");
 
-     //   playerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-     //       public void onItemClick(AdapterView<?> parent, View view,
-     //                               int position, long id) {
-     //           // When clicked, show a toast with the TextView text
-     //           Toast.makeText(getApplicationContext(),
-     //                   ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-     //       }
-     //   });
-
-
+            }
+        });
     }
-
-
 
     //layout setplayer
     public void addPlayer(View view) {
