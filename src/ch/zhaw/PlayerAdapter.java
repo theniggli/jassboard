@@ -25,8 +25,6 @@ public class PlayerAdapter<Player extends ch.zhaw.Player> extends BaseAdapter {
     public PlayerAdapter(Context context, ArrayList<Player> items) {
         mContext = context;
         mItems = items;
-        System.out.println("Hello there: 1.1");
-
     }
 
     public int getCount() {
@@ -42,14 +40,16 @@ public class PlayerAdapter<Player extends ch.zhaw.Player> extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        PlayerView btv;
-        if (convertView == null) {
-            btv = new PlayerView(mContext, (Player) mItems.get(position));
-        } else {
-            btv = (PlayerView) convertView;
-            btv.setNameText(mItems.get(position).getName());
-            btv.setIdText(mItems.get(position).getId().toString());
-        }
+        //PlayerView btv;
+        // if (convertView == null) {
+        //     btv = new PlayerView(mContext, (Player) mItems.get(position));
+        // } else {                  // Don't want this want Player in view ^^
+        //     btv = (PlayerView) convertView;
+        //     btv.setNameText(mItems.get(position).getName());
+        //     btv.setIdText(mItems.get(position).getId().toString());
+        // }
+
+        PlayerView btv = new PlayerView(mContext, (Player) mItems.get(position));
         return btv;
     }
 }

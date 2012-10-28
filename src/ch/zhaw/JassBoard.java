@@ -43,12 +43,10 @@ public class JassBoard extends Activity {
         playerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                String playerID = "" + ((PlayerView) view).getId();
-                // When clicked, show a toast with the TextView text
+                String playerID = "" + ((PlayerView) view).getPlayerId();
                 Toast.makeText(getApplicationContext(),
                         playerID, Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "something");
-
             }
         });
     }
