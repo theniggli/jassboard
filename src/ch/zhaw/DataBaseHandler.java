@@ -70,4 +70,9 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         playerArrayList.add(player2)  ;
         return playerArrayList;
     }
+    public ArrayList<Team> getTeamList(){
+        ArrayList<Team> teamListArray = new ArrayList<Team>();
+
+        return teamListArray;
+    }
 }
