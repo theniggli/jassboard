@@ -1,11 +1,16 @@
-package ch.zhaw;
+package ch.zhaw.jassboard.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
-
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+import ch.zhaw.R;
+import ch.zhaw.jassboard.persist.*;
+import ch.zhaw.jassboard.view.*;
 import java.util.ArrayList;
 
 

@@ -1,10 +1,9 @@
-package ch.zhaw;
+package ch.zhaw.jassboard.persist;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.TableLayout;
 
 import java.util.ArrayList;
 
@@ -24,12 +23,12 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_PLAYERS = "players";
     private static final String PLAYER_ID = "id";
     private static final String PLAYER_NAME = "name";
-    private static final String PLAYER_GAMES_PLAYED_SCHIEBER = "Schieber";
-    private static final String PLAYER_GAMES_PLAYED_COIFFEUR = "Coiffeur";
-    private static final String PLAYER_GAMES_PLAYED_DIFFERENZER = "Differenzler";
-    private static final String PLAYER_GAMES_WON_SCHIEBER = "Schieber";
-    private static final String PLAYER_GAMES_WON_COIFFEUR = "Coiffeur";
-    private static final String PLAYER_GAMES_WON_DIFFERENZER = "Differenzler";
+    private static final String PLAYER_GAMES_PLAYED_SCHIEBER = "GPS";
+    private static final String PLAYER_GAMES_PLAYED_COIFFEUR = "GPC";
+    private static final String PLAYER_GAMES_PLAYED_DIFFERENZER = "GPD";
+    private static final String PLAYER_GAMES_WON_SCHIEBER = "GWS";
+    private static final String PLAYER_GAMES_WON_COIFFEUR = "GWC";
+    private static final String PLAYER_GAMES_WON_DIFFERENZER = "GWD";
 
     //table Teams
     private static final String TABLE_TEAMS = "teams";
@@ -49,7 +48,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //Create Player
         String CREATE_PLAYER_TABLE = "CREATE TABLE " + TABLE_PLAYERS + "("
-                + PLAYER_ID + " INTEGER PRIMARY KEY," + PLAYER_NAME + " TEXT)";
+                + PLAYER_ID + " INTEGER PRIMARY KEY," + PLAYER_NAME + " TEXT," + PLAYER_GAMES_PLAYED_SCHIEBER + " INTEGER," + PLAYER_GAMES_PLAYED_COIFFEUR + " INTEGER," + PLAYER_GAMES_PLAYED_DIFFERENZER + " INTEGER," + PLAYER_GAMES_WON_SCHIEBER + " INTEGER," + PLAYER_GAMES_WON_COIFFEUR + " INTEGER," + PLAYER_GAMES_WON_DIFFERENZER + " INTEGER)";
         db.execSQL(CREATE_PLAYER_TABLE);
 
         String CREATE_TEAM_TABLE = "CREATE TABLE " + TABLE_TEAMS + "("

@@ -1,4 +1,4 @@
-package ch.zhaw;
+package ch.zhaw.jassboard.persist;
 
 /**
  * Created with IntelliJ IDEA.

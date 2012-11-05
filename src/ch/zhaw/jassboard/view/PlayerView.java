@@ -1,10 +1,11 @@
-package ch.zhaw;
+package ch.zhaw.jassboard.view;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import ch.zhaw.jassboard.persist.Player;
 
 /**
  * Created with IntelliJ IDEA.

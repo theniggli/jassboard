@@ -1,4 +1,4 @@
-package ch.zhaw;
+package ch.zhaw.jassboard.view;
 
 
 import android.content.Context;
@@ -17,7 +17,7 @@ import java.util.List;
  * Time: 20:32
  * To change this template use File | Settings | File Templates.
  */
-public class PlayerAdapter<Player extends ch.zhaw.Player> extends BaseAdapter {
+public class PlayerAdapter<Player> extends BaseAdapter {
     private Context mContext;
 
     private List<Player> mItems = new ArrayList<Player>();
@@ -49,7 +49,7 @@ public class PlayerAdapter<Player extends ch.zhaw.Player> extends BaseAdapter {
         //     btv.setIdText(mItems.get(position).getId().toString());
         // }
 
-        PlayerView btv = new PlayerView(mContext, (Player) mItems.get(position));
+        PlayerView btv = new PlayerView(mContext, (ch.zhaw.jassboard.persist.Player) mItems.get(position));
         return btv;
     }
 }
