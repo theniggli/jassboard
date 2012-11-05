@@ -45,7 +45,7 @@ public class ViewPlayerList extends Activity {
                 Log.d(TAG, "something");
                 Intent myIntent = new Intent(ViewPlayerList.this, ViewPlayer.class);
                 myIntent.putExtra("playerID", playerID);  //send whole player?
-               // myIntent.put("playerID", player);  //send whole player?
+                // myIntent.put("playerID", player);  //send whole player?
 
                 ViewPlayerList.this.startActivity(myIntent);
             }
