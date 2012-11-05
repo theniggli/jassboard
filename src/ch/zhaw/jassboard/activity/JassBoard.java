@@ -23,23 +23,24 @@ import java.util.ArrayList;
  */
 
 public class JassBoard extends Activity {
-    private static final String TAG = "JassBoard";
     private DataBaseHandler dbH = new DataBaseHandler(this);
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Log.d(TAG, "TEST");
     }
 
 
     public void setTeam(View view) {
-        setContentView(R.layout.setteam);
-        ListView playerList = (ListView) findViewById(R.id.playerList);
-        ArrayList<Team> teamArrayList = dbH.getTeamList();
-        ArrayAdapter<Team> arrayAdapter =
-                new ArrayAdapter<Team>(this, android.R.layout.simple_list_item_1, teamArrayList);
-        playerList.setAdapter(arrayAdapter);
+        Intent myIntent = new Intent(JassBoard.this, ViewTeamList.class);
+        JassBoard.this.startActivity(myIntent);
+
+      //  setContentView(R.layout.setteam);
+      //  ListView playerList = (ListView) findViewById(R.id.playerList);
+      //  ArrayList<Team> teamArrayList = dbH.getTeamList();
+      //  ArrayAdapter<Team> arrayAdapter =
+      //          new ArrayAdapter<Team>(this, android.R.layout.simple_list_item_1, teamArrayList);
+      //  playerList.setAdapter(arrayAdapter);
     }
 
     public void startGame(View view) {

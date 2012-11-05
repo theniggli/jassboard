@@ -24,15 +24,16 @@ public class Team {
         this.teamName = Name;
     }
 
-    public Team(Integer id, String Name, Integer GPS, Integer GPC, Integer GPD, Integer GWS, Integer GWC, Integer GWD) {
+    // public Team(Integer id, String Name, Integer GPS, Integer GPC, Integer GPD, Integer GWS, Integer GWC, Integer GWD) {
+    public Team(Integer id, String Name, Integer GPS, Integer GWS) {
         this.teamID = id;
         this.teamName = Name;
         this.gamesPlayedSchieber = GPS;
-        this.gamesPlayedCoiffeur = GPC;
-        this.gamesPlayedDifferenzler = GPD;
+        //  this.gamesPlayedCoiffeur = GPC;
+        //  this.gamesPlayedDifferenzler = GPD;
         this.gamesWonSchieber = GWS;
-        this.gamesWonCoiffeur = GWC;
-        this.gamesWonDifferenzler = GWD;
+        //  this.gamesWonCoiffeur = GWC;
+        //  this.gamesWonDifferenzler = GWD;
     }
 
     public void createPlayer() {
