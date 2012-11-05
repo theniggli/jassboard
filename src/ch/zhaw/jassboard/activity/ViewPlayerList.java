@@ -24,29 +24,20 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 public class ViewPlayerList extends Activity {
-    private static final String TAG = "JassBoard";
     private DataBaseHandler dbH = new DataBaseHandler(this);
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewplayerlist);
         ListView playerList = (ListView) findViewById(R.id.playerList);
-        ArrayList<Player> playerArrayList = dbH.getPlayerList();
-        PlayerListAdapter<Player> arrayAdapter =
-                new PlayerListAdapter<Player>(this, playerArrayList);
+        ArrayList<Player> playerArrayList = dbH.getPlayerListFull();
+        PlayerListAdapter<Player> arrayAdapter = new PlayerListAdapter<Player>(this, playerArrayList);
         playerList.setAdapter(arrayAdapter);
         playerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String playerID = "" + ((PlayerListView) view).getPlayerId();
-         //       Player player =((PlayerListView) view).getPlayer();
-         //       Toast.makeText(getApplicationContext(),
-         //               playerID, Toast.LENGTH_SHORT).show();
-         //       Log.d(TAG, "something");
                 Intent myIntent = new Intent(ViewPlayerList.this, ViewPlayer.class);
-                myIntent.putExtra("playerID", playerID);  //send whole player?
-                // myIntent.put("playerID", player);  //send whole player?
-
+                myIntent.putExtra("playerID", playerID);
                 ViewPlayerList.this.startActivity(myIntent);
             }
         });

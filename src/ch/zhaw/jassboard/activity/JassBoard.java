@@ -35,12 +35,6 @@ public class JassBoard extends Activity {
         Intent myIntent = new Intent(JassBoard.this, ViewTeamList.class);
         JassBoard.this.startActivity(myIntent);
 
-      //  setContentView(R.layout.setteam);
-      //  ListView playerList = (ListView) findViewById(R.id.playerList);
-      //  ArrayList<Team> teamArrayList = dbH.getTeamList();
-      //  ArrayAdapter<Team> arrayAdapter =
-      //          new ArrayAdapter<Team>(this, android.R.layout.simple_list_item_1, teamArrayList);
-      //  playerList.setAdapter(arrayAdapter);
     }
 
     public void startGame(View view) {

@@ -17,11 +17,11 @@ import java.util.ArrayList;
 public class DataBaseHandler extends SQLiteOpenHelper {
     //Database Name
     private static final String DATABASE_NAME = "jassboard";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 5;
 
     //table Players
     private static final String TABLE_PLAYERS = "players";
-    private static final String PLAYER_ID = "id";
+    private static final String PLAYER_ID = "players";
     private static final String PLAYER_NAME = "name";
     private static final String PLAYER_GAMES_PLAYED_SCHIEBER = "GPS";
     private static final String PLAYER_GAMES_PLAYED_COIFFEUR = "GPC";
@@ -35,11 +35,11 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     private static final String TEAM_ID = "id";
     private static final String TEAM_NAME = "name";
     private static final String TEAM_GAMES_PLAYED_SCHIEBER = "TPS";
-    private static final String TEAM_GAMES_PLAYED_COIFFEUR = "TPC";
-    private static final String TEAM_GAMES_PLAYED_DIFFERENZER = "TPD";
+    //  private static final String TEAM_GAMES_PLAYED_COIFFEUR = "TPC";
+    //  private static final String TEAM_GAMES_PLAYED_DIFFERENZER = "TPD";
     private static final String TEAM_GAMES_WON_SCHIEBER = "TWS";
-    private static final String TEAM_GAMES_WON_COIFFEUR = "TWC";
-    private static final String TEAM_GAMES_WON_DIFFERENZER = "TWD";
+    //  private static final String TEAM_GAMES_WON_COIFFEUR = "TWC";
+    //  private static final String TEAM_GAMES_WON_DIFFERENZER = "TWD";
 
     //table player_teams
     private static final String TABLE_PLAYERTEAMS = "player_teams";
@@ -52,30 +52,35 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Create Player
-        String CREATE_PLAYER_TABLE = "CREATE TABLE " + TABLE_PLAYERS + "("
-                + PLAYER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PLAYER_NAME + " TEXT," + PLAYER_GAMES_PLAYED_SCHIEBER + " INTEGER," + PLAYER_GAMES_PLAYED_COIFFEUR + " INTEGER," + PLAYER_GAMES_PLAYED_DIFFERENZER + " INTEGER," + PLAYER_GAMES_WON_SCHIEBER + " INTEGER," + PLAYER_GAMES_WON_COIFFEUR + " INTEGER," + PLAYER_GAMES_WON_DIFFERENZER + " INTEGER)";
+        String CREATE_PLAYER_TABLE = "CREATE TABLE " + TABLE_PLAYERS + "(" + PLAYER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PLAYER_NAME + " TEXT," + PLAYER_GAMES_PLAYED_SCHIEBER + " INTEGER," + PLAYER_GAMES_PLAYED_COIFFEUR + " INTEGER," + PLAYER_GAMES_PLAYED_DIFFERENZER + " INTEGER," + PLAYER_GAMES_WON_SCHIEBER + " INTEGER," + PLAYER_GAMES_WON_COIFFEUR + " INTEGER," + PLAYER_GAMES_WON_DIFFERENZER + " INTEGER)";
         db.execSQL(CREATE_PLAYER_TABLE);
 
-        String CREATE_TEAM_TABLE = "CREATE TABLE " + TABLE_TEAMS + "("
-                + TEAM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + TEAM_NAME + " TEXT," + TEAM_GAMES_PLAYED_SCHIEBER + " INTEGER," + TEAM_GAMES_PLAYED_COIFFEUR + " INTEGER," + TEAM_GAMES_PLAYED_DIFFERENZER + " INTEGER," + TEAM_GAMES_WON_SCHIEBER + " INTEGER," + TEAM_GAMES_WON_COIFFEUR + " INTEGER," + TEAM_GAMES_WON_DIFFERENZER + " INTEGER)";
+        String CREATE_TEAM_TABLE = "CREATE TABLE " + TABLE_TEAMS + "(" + TEAM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + TEAM_NAME + " TEXT," + TEAM_GAMES_PLAYED_SCHIEBER + " INTEGER," + TEAM_GAMES_WON_SCHIEBER + " INTEGER)";
         db.execSQL(CREATE_TEAM_TABLE);
 
-        String CREATE_TEAMPLAYER_TABLE = "CREATE TABLE " + TABLE_PLAYERTEAMS + "("
-                + TABLE_PLAYERS + PLAYER_ID + "INTEGER ," + TABLE_TEAMS + TEAM_ID + "INTEGER)";
+        String CREATE_TEAMPLAYER_TABLE = "CREATE TABLE " + TABLE_PLAYERTEAMS + "(" + TABLE_PLAYERS + "_" + PLAYER_ID + " INTEGER ," + TABLE_TEAMS + "_" + TEAM_ID + " INTEGER)";
         db.execSQL(CREATE_TEAMPLAYER_TABLE);
+
         createDummyEntries(db);
     }
 
     public void createDummyEntries(SQLiteDatabase db) {
-        String CREATE_DUMMY_PLAYER;
-        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + ") values ('Roger',10,10,10,10,10,10)";
-        db.execSQL(CREATE_DUMMY_PLAYER);
-        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + ") values ('Toni',10,10,10,0,0,0)";
-        db.execSQL(CREATE_DUMMY_PLAYER);
-        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + ") values ('Tobi',10,10,10,0,0,0)";
-        db.execSQL(CREATE_DUMMY_PLAYER);
-        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + ") values ('Michi',10,10,10,0,0,0)";
-        db.execSQL(CREATE_DUMMY_PLAYER);
+        String CREATE_DUMMY_ENTRY;
+        CREATE_DUMMY_ENTRY = "insert into " + TABLE_PLAYERS + "(" + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + ") values ('Roger',10,10,10,10,10,10)";
+        db.execSQL(CREATE_DUMMY_ENTRY);
+        CREATE_DUMMY_ENTRY = "insert into " + TABLE_PLAYERS + "(" + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + ") values ('Toni',10,10,10,0,0,0)";
+        db.execSQL(CREATE_DUMMY_ENTRY);
+        CREATE_DUMMY_ENTRY = "insert into " + TABLE_PLAYERS + "(" + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + ") values ('Tobi',10,10,10,0,0,0)";
+        db.execSQL(CREATE_DUMMY_ENTRY);
+        CREATE_DUMMY_ENTRY = "insert into " + TABLE_PLAYERS + "(" + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + ") values ('Michi',10,10,10,0,0,0)";
+        db.execSQL(CREATE_DUMMY_ENTRY);
+
+        CREATE_DUMMY_ENTRY = "insert into " + TABLE_TEAMS + "(" + TEAM_NAME + "," + TEAM_GAMES_PLAYED_SCHIEBER + "," + TEAM_GAMES_WON_SCHIEBER + ") values ('TeamAlpha',0,0)";
+        db.execSQL(CREATE_DUMMY_ENTRY);
+        CREATE_DUMMY_ENTRY = "insert into " + TABLE_PLAYERTEAMS + "(" + TABLE_PLAYERS + "_" + PLAYER_ID + "," + TABLE_TEAMS + "_" + TEAM_ID + ") values (1,1)";
+        //db.execSQL(CREATE_DUMMY_ENTRY);
+        CREATE_DUMMY_ENTRY = "insert into " + TABLE_PLAYERTEAMS + "(" + TABLE_PLAYERS + "_" + PLAYER_ID + "," + TABLE_TEAMS + "_" + TEAM_ID + ") values (2,1)";
+        //db.execSQL(CREATE_DUMMY_ENTRY);
 
     }
 
@@ -114,9 +119,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                Player player = new Player();
-                player.setPlayerID(Integer.parseInt(cursor.getString(0)));
-                player.setPlayerName(cursor.getString(1));
+                Player player = new Player(Integer.parseInt(cursor.getString(0)), cursor.getString(1));
                 playerArrayList.add(player);
             } while (cursor.moveToNext());
         }

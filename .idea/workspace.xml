@@ -13,11 +13,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1dd2c5d7-6a42-44b5-b2ab-babb31083437" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/addplayer.xml" afterPath="$PROJECT_DIR$/res/layout/addplayer.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/AddPlayer.java" afterPath="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/AddPlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayer.java" afterPath="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/JassBoard.java" afterPath="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/JassBoard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayerList.java" afterPath="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayerList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java" afterPath="$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java" />
     </list>
     <ignored path="jassboard.iws" />
@@ -36,6 +33,60 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java" line="115" class="ch.zhaw.jassboard.persist.DataBaseHandler" package="ch.zhaw.jassboard.persist">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java" line="116" class="ch.zhaw.jassboard.persist.DataBaseHandler" package="ch.zhaw.jassboard.persist">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java" line="117" class="ch.zhaw.jassboard.persist.DataBaseHandler" package="ch.zhaw.jassboard.persist">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java" line="125" class="ch.zhaw.jassboard.persist.DataBaseHandler" package="ch.zhaw.jassboard.persist">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -93,98 +144,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DataBaseHandler.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DataBaseHandler.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="164" column="56" selection-start="9682" selection-end="9682" vertical-scroll-proportion="0.0">
+            <state line="86" column="85" selection-start="5339" selection-end="5339" vertical-scroll-proportion="0.5435169">
               <folding>
-                <element signature="e#5399#5407#0" expanded="true" />
-                <element signature="e#8521#8529#0" expanded="true" />
-                <element signature="e#9272#9278#0" expanded="true" />
+                <element signature="e#5826#5834#0" expanded="true" />
+                <element signature="e#6901#6909#0" expanded="true" />
+                <element signature="e#8872#8880#0" expanded="true" />
+                <element signature="e#9623#9629#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewPlayer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayer.java">
+      <file leaf-file-name="Player.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="44" selection-start="1231" selection-end="1231" vertical-scroll-proportion="0.0">
+            <state line="22" column="42" selection-start="553" selection-end="584" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddPlayer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/AddPlayer.java">
+      <file leaf-file-name="ViewPlayerList.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayerList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="63" selection-start="934" selection-end="934" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="26" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addplayer.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/res/layout/addplayer.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="44" selection-start="884" selection-end="884" vertical-scroll-proportion="0.55689657">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Team.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/Team.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="66" selection-start="771" selection-end="826" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewTeamList.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewTeamList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="61" selection-start="1026" selection-end="1039" vertical-scroll-proportion="0.0">
+            <state line="33" column="101" selection-start="1157" selection-end="1157" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1126#1134#0" expanded="true" />
+                <element signature="e#1246#1685#0" expanded="true" />
+                <element signature="e#1674#1675#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JassBoard.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/JassBoard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="27" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="89" selection-start="1114" selection-end="1114" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeamListView.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/view/TeamListView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="81" selection-start="1717" selection-end="1717" vertical-scroll-proportion="-24.153847">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -208,17 +199,17 @@
         <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/util/MyParcelable.java" />
         <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/view/PlayerListAdapter.java" />
         <option value="$PROJECT_DIR$/res/layout/viewplayer.xml" />
-        <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayerList.java" />
         <option value="$PROJECT_DIR$/res/layout/viewteamlist.xml" />
         <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/view/TeamListAdapter.java" />
         <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/view/TeamListView.java" />
         <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewTeamList.java" />
-        <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/JassBoard.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/Team.java" />
-        <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java" />
         <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayer.java" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/JassBoard.java" />
+        <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayerList.java" />
+        <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java" />
       </list>
     </option>
   </component>
@@ -797,11 +788,11 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3292357" sideWeight="0.6720086" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292357" sideWeight="0.6720086" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39741752" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39636752" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -812,7 +803,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16942811" sideWeight="0.6720086" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32799146" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32799146" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -881,23 +872,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/layout/viewplayer.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="45" selection-start="488" selection-end="502" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/view/PlayerListView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.64439654" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayerList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="57" selection-start="687" selection-end="2326" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/viewplayerlist.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="642" vertical-scroll-proportion="0.0">
@@ -928,20 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/JassBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="27" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="89" selection-start="1114" selection-end="1114" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/Team.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="66" selection-start="771" selection-end="826" vertical-scroll-proportion="0.0">
@@ -958,27 +918,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="56" selection-start="9682" selection-end="9682" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#5399#5407#0" expanded="true" />
-            <element signature="e#8521#8529#0" expanded="true" />
-            <element signature="e#9272#9278#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="44" selection-start="1231" selection-end="1231" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/AddPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="63" selection-start="934" selection-end="934" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -992,8 +934,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/addplayer.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="44" selection-start="884" selection-end="884" vertical-scroll-proportion="0.55689657">
+        <state line="19" column="25" selection-start="884" selection-end="884" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/AddPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="70" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="89" selection-start="1114" selection-end="1114" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/view/PlayerListView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/JassBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="944" selection-end="944" vertical-scroll-proportion="0.39962825">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="42" selection-start="553" selection-end="584" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayerList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="101" selection-start="1157" selection-end="1157" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1126#1134#0" expanded="true" />
+            <element signature="e#1246#1685#0" expanded="true" />
+            <element signature="e#1674#1675#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="85" selection-start="5339" selection-end="5339" vertical-scroll-proportion="0.5435169">
+          <folding>
+            <element signature="e#5826#5834#0" expanded="true" />
+            <element signature="e#6901#6909#0" expanded="true" />
+            <element signature="e#8872#8880#0" expanded="true" />
+            <element signature="e#9623#9629#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
