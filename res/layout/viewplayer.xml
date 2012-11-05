@@ -8,4 +8,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="Hello, You are in viewPlayer" />
+    <ListView android:id="@+id/playerListView"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"/>
 </LinearLayout>

@@ -14,11 +14,11 @@ import ch.zhaw.jassboard.persist.Player;
  * Time: 20:42
  * To change this template use File | Settings | File Templates.
  */
-public class PlayerView extends LinearLayout {
+public class PlayerListView extends LinearLayout {
     private TextView mName, mId;
     private Player player;  //I know the player in here may is stupid.. but it works this way...
 
-    public PlayerView(Context context, Player player) {
+    public PlayerListView(Context context, Player player) {
         super(context);
         this.player = player;  //I want this in here for easy return to JassBoard
         this.setOrientation(VERTICAL);

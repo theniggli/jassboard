@@ -17,12 +17,12 @@ import java.util.List;
  * Time: 20:32
  * To change this template use File | Settings | File Templates.
  */
-public class PlayerAdapter<Player> extends BaseAdapter {
+public class PlayerListAdapter<Player> extends BaseAdapter {
     private Context mContext;
 
     private List<Player> mItems = new ArrayList<Player>();
 
-    public PlayerAdapter(Context context, ArrayList<Player> items) {
+    public PlayerListAdapter(Context context, ArrayList<Player> items) {
         mContext = context;
         mItems = items;
     }
@@ -40,16 +40,16 @@ public class PlayerAdapter<Player> extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        //PlayerView btv;
+        //PlayeraView btv;
         // if (convertView == null) {
-        //     btv = new PlayerView(mContext, (Player) mItems.get(position));
+        //     btv = new PlayeraView(mContext, (Player) mItems.get(position));
         // } else {                  // Don't want this want Player in view ^^
-        //     btv = (PlayerView) convertView;
+        //     btv = (PlayeraView) convertView;
         //     btv.setNameText(mItems.get(position).getName());
         //     btv.setIdText(mItems.get(position).getId().toString());
         // }
 
-        PlayerView btv = new PlayerView(mContext, (ch.zhaw.jassboard.persist.Player) mItems.get(position));
+        PlayerListView btv = new PlayerListView(mContext, (ch.zhaw.jassboard.persist.Player) mItems.get(position));
         return btv;
     }
 }

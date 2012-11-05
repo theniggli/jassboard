@@ -11,8 +11,8 @@ import android.widget.Toast;
 import ch.zhaw.R;
 import ch.zhaw.jassboard.persist.DataBaseHandler;
 import ch.zhaw.jassboard.persist.Player;
-import ch.zhaw.jassboard.view.PlayerAdapter;
-import ch.zhaw.jassboard.view.PlayerView;
+import ch.zhaw.jassboard.view.PlayerListAdapter;
+import ch.zhaw.jassboard.view.PlayerListView;
 
 import java.util.ArrayList;
 
@@ -32,17 +32,17 @@ public class ViewPlayerList extends Activity {
         setContentView(R.layout.viewplayerlist);
         ListView playerList = (ListView) findViewById(R.id.playerList);
         ArrayList<Player> playerArrayList = dbH.getPlayerList();
-        PlayerAdapter<Player> arrayAdapter =
-                new PlayerAdapter<Player>(this, playerArrayList);
+        PlayerListAdapter<Player> arrayAdapter =
+                new PlayerListAdapter<Player>(this, playerArrayList);
         playerList.setAdapter(arrayAdapter);
         playerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                String playerID = "" + ((PlayerView) view).getPlayerId();
-                Player player =((PlayerView) view).getPlayer();
-                Toast.makeText(getApplicationContext(),
-                        playerID, Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "something");
+                String playerID = "" + ((PlayerListView) view).getPlayerId();
+         //       Player player =((PlayerListView) view).getPlayer();
+         //       Toast.makeText(getApplicationContext(),
+         //               playerID, Toast.LENGTH_SHORT).show();
+         //       Log.d(TAG, "something");
                 Intent myIntent = new Intent(ViewPlayerList.this, ViewPlayer.class);
                 myIntent.putExtra("playerID", playerID);  //send whole player?
                 // myIntent.put("playerID", player);  //send whole player?
