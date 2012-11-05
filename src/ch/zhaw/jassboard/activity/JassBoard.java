@@ -14,6 +14,14 @@ import ch.zhaw.jassboard.persist.Team;
 import java.util.ArrayList;
 
 
+/**
+ * Created with IntelliJ IDEA.
+ * User: niggli
+ * Date: 11/5/12
+ * Time: 10:24 AM
+ * To change this template use File | Settings | File Templates.
+ */
+
 public class JassBoard extends Activity {
     private static final String TAG = "JassBoard";
     private DataBaseHandler dbH = new DataBaseHandler(this);
@@ -39,13 +47,8 @@ public class JassBoard extends Activity {
     }
 
     public void setPlayer(View view) {
-        Intent myIntent = new Intent(JassBoard.this, ViewPlayer.class);
+        Intent myIntent = new Intent(JassBoard.this, ViewPlayerList.class);
         JassBoard.this.startActivity(myIntent);
-    }
-
-    //layout setplayer
-    public void addPlayer(View view) {
-        //ListViewPlayers();
     }
 
 }

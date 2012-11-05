@@ -1,30 +1,23 @@
 package ch.zhaw.jassboard.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import ch.zhaw.R;
 import ch.zhaw.jassboard.persist.DataBaseHandler;
 
 /**
  * Created with IntelliJ IDEA.
- * User: niggli
+ * User: john
  * Date: 11/5/12
- * Time: 10:24 AM
+ * Time: 10:20 AM
  * To change this template use File | Settings | File Templates.
  */
 
-public class ViewPlayer  extends Activity {
-    private static final String TAG = "JassBoard";
+public class AddPlayer  extends Activity {
     private DataBaseHandler dbH = new DataBaseHandler(this);
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.viewplayer);
-
-        Intent intent = getIntent();
-        String value = intent.getStringExtra("playerID"); //if it's a string you stored.
-
+        setContentView(R.layout.addplayer);
     }
 }
