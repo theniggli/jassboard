@@ -34,6 +34,12 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_TEAMS = "teams";
     private static final String TEAM_ID = "id";
     private static final String TEAM_NAME = "name";
+    private static final String TEAM_GAMES_PLAYED_SCHIEBER = "TPS";
+    private static final String TEAM_GAMES_PLAYED_COIFFEUR = "TPC";
+    private static final String TEAM_GAMES_PLAYED_DIFFERENZER = "TPD";
+    private static final String TEAM_GAMES_WON_SCHIEBER = "TWS";
+    private static final String TEAM_GAMES_WON_COIFFEUR = "TWC";
+    private static final String TEAM_GAMES_WON_DIFFERENZER = "TWD";
 
     //table player_teams
     private static final String TABLE_PLAYERTEAMS = "player_teams";
@@ -52,7 +58,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_PLAYER_TABLE);
 
         String CREATE_TEAM_TABLE = "CREATE TABLE " + TABLE_TEAMS + "("
-                + TEAM_ID + " INTEGER PRIMARY KEY," + TEAM_NAME + " TEXT)";
+                + TEAM_ID + " INTEGER PRIMARY KEY," + TEAM_NAME + " TEXT," + TEAM_GAMES_PLAYED_SCHIEBER + " INTEGER," + TEAM_GAMES_PLAYED_COIFFEUR + " INTEGER," + TEAM_GAMES_PLAYED_DIFFERENZER + " INTEGER," + TEAM_GAMES_WON_SCHIEBER + " INTEGER," + TEAM_GAMES_WON_COIFFEUR + " INTEGER," + TEAM_GAMES_WON_DIFFERENZER + " INTEGER)";
         db.execSQL(CREATE_TEAM_TABLE);
 
         String CREATE_TEAMPLAYER_TABLE = "CREATE TABLE " + TABLE_PLAYERTEAMS + "("
@@ -63,13 +69,13 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     public void createDummyEntries(SQLiteDatabase db) {
         String CREATE_DUMMY_PLAYER;
-        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + PLAYER_ID + "," + PLAYER_NAME + ") values (1, 'Roger')";
+        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + PLAYER_ID + "," + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + ") values (1, 'Roger',10,10,10,10,10,10)";
         db.execSQL(CREATE_DUMMY_PLAYER);
-        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + PLAYER_ID + "," + PLAYER_NAME + ") values (2, 'Toni')";
+        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + PLAYER_ID + "," + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + ") values (2, 'Toni',10,10,10,0,0,0)";
         db.execSQL(CREATE_DUMMY_PLAYER);
-        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + PLAYER_ID + "," + PLAYER_NAME + ") values (3, 'Tobi')";
+        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + PLAYER_ID + "," + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + ") values (3, 'Tobi',10,10,10,0,0,0)";
         db.execSQL(CREATE_DUMMY_PLAYER);
-        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + PLAYER_ID + "," + PLAYER_NAME + ") values (4, 'Michi')";
+        CREATE_DUMMY_PLAYER = "insert into " + TABLE_PLAYERS + "(" + PLAYER_ID + "," + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + ") values (4, 'Michi',10,10,10,0,0,0)";
         db.execSQL(CREATE_DUMMY_PLAYER);
 
     }
