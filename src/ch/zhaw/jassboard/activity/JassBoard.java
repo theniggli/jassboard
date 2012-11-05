@@ -1,16 +1,16 @@
 package ch.zhaw.jassboard.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 import ch.zhaw.R;
-import ch.zhaw.jassboard.persist.*;
-import ch.zhaw.jassboard.view.*;
+import ch.zhaw.jassboard.persist.DataBaseHandler;
+import ch.zhaw.jassboard.persist.Team;
+
 import java.util.ArrayList;
 
 
@@ -39,28 +39,13 @@ public class JassBoard extends Activity {
     }
 
     public void setPlayer(View view) {
-        setContentView(R.layout.setplayer);
-        ListView playerList = (ListView) findViewById(R.id.playerList);
-        ArrayList<Player> playerArrayList = dbH.getPlayerList();
-        PlayerAdapter<Player> arrayAdapter =
-                new PlayerAdapter<Player>(this, playerArrayList);
-        playerList.setAdapter(arrayAdapter);
-        playerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                String playerID = "" + ((PlayerView) view).getPlayerId();
-                Toast.makeText(getApplicationContext(),
-                        playerID, Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "something");
-            }
-        });
+        Intent myIntent = new Intent(JassBoard.this, ViewPlayer.class);
+        JassBoard.this.startActivity(myIntent);
     }
 
     //layout setplayer
     public void addPlayer(View view) {
         //ListViewPlayers();
-
-
     }
 
 }
