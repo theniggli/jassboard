@@ -39,11 +39,14 @@ public class ViewPlayerList extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 String playerID = "" + ((PlayerView) view).getPlayerId();
+                Player player =((PlayerView) view).getPlayer();
                 Toast.makeText(getApplicationContext(),
                         playerID, Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "something");
                 Intent myIntent = new Intent(ViewPlayerList.this, ViewPlayer.class);
                 myIntent.putExtra("playerID", playerID);  //send whole player?
+               // myIntent.put("playerID", player);  //send whole player?
+
                 ViewPlayerList.this.startActivity(myIntent);
             }
         });

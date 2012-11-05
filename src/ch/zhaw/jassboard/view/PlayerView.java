@@ -60,4 +60,8 @@ public class PlayerView extends LinearLayout {
     public void setIdText(String id) {
         mId.setText(id);
     }
+
+    public Player getPlayer(){
+        return player;
+    }
 }
