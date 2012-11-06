@@ -13,8 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1dd2c5d7-6a42-44b5-b2ab-babb31083437" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/AddTeam.java" afterPath="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/AddTeam.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/JassBoard.java" afterPath="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/JassBoard.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java" afterPath="$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java" />
     </list>
     <ignored path="jassboard.iws" />
@@ -108,10 +107,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataBaseHandler.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java">
+      <file leaf-file-name="JassBoard.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/JassBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="271" column="41" selection-start="15118" selection-end="15118" vertical-scroll-proportion="0.73880595">
+            <state line="39" column="0" selection-start="1035" selection-end="1035" vertical-scroll-proportion="0.5913978">
               <folding />
             </state>
           </provider>
@@ -135,7 +134,6 @@
         <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/view/TeamListView.java" />
         <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/Team.java" />
         <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayer.java" />
-        <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/JassBoard.java" />
         <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewPlayerList.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/layout/viewteamlist.xml" />
@@ -147,6 +145,7 @@
         <option value="$PROJECT_DIR$/res/layout/addteam.xml" />
         <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/AddTeam.java" />
         <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java" />
+        <option value="$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/JassBoard.java" />
       </list>
     </option>
   </component>
@@ -785,8 +784,9 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32860824" sideWeight="0.6726027" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739726" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3958904" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3958904" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -796,12 +796,11 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21198453" sideWeight="0.6041096" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21198453" sideWeight="0.6726027" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.6041096" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32739726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32794458" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977018" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -867,11 +866,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/layout/viewteamlist.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="46" selection-start="634" selection-end="634" vertical-scroll-proportion="0.4516129" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/ViewTeamList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="33" selection-start="494" selection-end="494" vertical-scroll-proportion="5.8" />
@@ -951,6 +945,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="262" column="28" selection-start="15109" selection-end="15109" vertical-scroll-proportion="1.0663717">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/AddTeam.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="47" selection-start="2583" selection-end="2583" vertical-scroll-proportion="0.0">
@@ -958,9 +959,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/persist/DataBaseHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/zhaw/jassboard/activity/JassBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="271" column="41" selection-start="15118" selection-end="15118" vertical-scroll-proportion="0.73880595">
+        <state line="39" column="0" selection-start="1035" selection-end="1035" vertical-scroll-proportion="0.5913978">
           <folding />
         </state>
       </provider>

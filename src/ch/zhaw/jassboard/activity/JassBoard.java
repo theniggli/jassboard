@@ -30,15 +30,14 @@ public class JassBoard extends Activity {
         setContentView(R.layout.main);
     }
 
-
     public void setTeam(View view) {
         Intent myIntent = new Intent(JassBoard.this, ViewTeamList.class);
         JassBoard.this.startActivity(myIntent);
-
     }
 
     public void startGame(View view) {
         //setContentView(R.layout.startGame);
+
     }
 
     public void setPlayer(View view) {

@@ -54,13 +54,10 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         //Create Player
         String CREATE_PLAYER_TABLE = "CREATE TABLE " + TABLE_PLAYERS + "(" + PLAYER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PLAYER_NAME + " TEXT," + PLAYER_GAMES_PLAYED_SCHIEBER + " INTEGER," + PLAYER_GAMES_PLAYED_COIFFEUR + " INTEGER," + PLAYER_GAMES_PLAYED_DIFFERENZER + " INTEGER," + PLAYER_GAMES_WON_SCHIEBER + " INTEGER," + PLAYER_GAMES_WON_COIFFEUR + " INTEGER," + PLAYER_GAMES_WON_DIFFERENZER + " INTEGER)";
         db.execSQL(CREATE_PLAYER_TABLE);
-
         String CREATE_TEAM_TABLE = "CREATE TABLE " + TABLE_TEAMS + "(" + TEAM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + TEAM_NAME + " TEXT," + TEAM_GAMES_PLAYED_SCHIEBER + " INTEGER," + TEAM_GAMES_WON_SCHIEBER + " INTEGER)";
         db.execSQL(CREATE_TEAM_TABLE);
-
         String CREATE_TEAMPLAYER_TABLE = "CREATE TABLE " + TABLE_PLAYERTEAMS + "(" + TABLE_PLAYERS + "_" + PLAYER_ID + " INTEGER ," + TABLE_TEAMS + "_" + TEAM_ID + " INTEGER)";
         db.execSQL(CREATE_TEAMPLAYER_TABLE);
-
         createDummyEntries(db);
     }
 
@@ -74,14 +71,12 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_DUMMY_ENTRY);
         CREATE_DUMMY_ENTRY = "insert into " + TABLE_PLAYERS + "(" + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + ") values ('Michi',10,10,10,0,0,0)";
         db.execSQL(CREATE_DUMMY_ENTRY);
-
         CREATE_DUMMY_ENTRY = "insert into " + TABLE_TEAMS + "(" + TEAM_NAME + "," + TEAM_GAMES_PLAYED_SCHIEBER + "," + TEAM_GAMES_WON_SCHIEBER + ") values ('TeamAlpha',0,0)";
         db.execSQL(CREATE_DUMMY_ENTRY);
         CREATE_DUMMY_ENTRY = "insert into " + TABLE_PLAYERTEAMS + "(" + TABLE_PLAYERS + "_" + PLAYER_ID + "," + TABLE_TEAMS + "_" + TEAM_ID + ") values (1,1)";
         db.execSQL(CREATE_DUMMY_ENTRY);
         CREATE_DUMMY_ENTRY = "insert into " + TABLE_PLAYERTEAMS + "(" + TABLE_PLAYERS + "_" + PLAYER_ID + "," + TABLE_TEAMS + "_" + TEAM_ID + ") values (2,1)";
         db.execSQL(CREATE_DUMMY_ENTRY);
-
     }
 
     // Upgrading database
@@ -91,7 +86,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PLAYERS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TEAMS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PLAYERTEAMS);
-
         // Create tables again
         onCreate(db);
     }
@@ -153,7 +147,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
             } while (cursor.moveToNext());
         }
-
         return playerAL;
     }
 
@@ -172,7 +165,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
             } while (cursor.moveToNext());
         }
-
         return teamAL;
     }
 
@@ -190,7 +182,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         }
         return teamArrayList;
     }
-
 
     public boolean addPlayer(String playerName) {
         //check if playername exists
