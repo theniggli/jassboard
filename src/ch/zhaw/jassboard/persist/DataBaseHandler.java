@@ -238,5 +238,36 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return playerArrayList;
     }
 
+    public boolean playerExists(Integer playerID) {
+        ArrayList<Player> playerArrayList = new ArrayList<Player>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sqlQuery = "SELECT 1 FROM " + TABLE_PLAYERS + " WHERE " + PLAYER_ID + "=" + playerID;
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+        if (cursor.getCount() == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
+    public boolean addTeam(String teamName, int player1_id, int player2_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sqlQuery = "SELECT 1 FROM " + TABLE_TEAMS + " WHERE " + TEAM_NAME + "='" + teamName + "'";
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+        if (cursor.getCount() == 0) {
+            sqlQuery = "insert into " + TABLE_TEAMS + "(" + TEAM_NAME + "," + TEAM_GAMES_PLAYED_SCHIEBER + "," + TEAM_GAMES_WON_SCHIEBER + ") values ('" + teamName + "',0,0)";
+            db.execSQL(sqlQuery);
+            sqlQuery = "SELECT " + TEAM_ID + " FROM " + TABLE_TEAMS + " WHERE " + TEAM_NAME + "='" + teamName + "'";
+            cursor = db.rawQuery(sqlQuery, null);
+            cursor.moveToFirst();
+            Integer teamID = Integer.parseInt(cursor.getString(0));
+            sqlQuery = "insert into " + TABLE_PLAYERTEAMS + "(" + TABLE_PLAYERS + "_" + PLAYER_ID + "," + TABLE_TEAMS + "_" + TEAM_ID + ") values (" + player1_id + "," + teamID + ")";
+            db.execSQL(sqlQuery);
+            sqlQuery = "insert into " + TABLE_PLAYERTEAMS + "(" + TABLE_PLAYERS + "_" + PLAYER_ID + "," + TABLE_TEAMS + "_" + TEAM_ID + ") values (" + player2_id + "," + teamID + ")";
+            db.execSQL(sqlQuery);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

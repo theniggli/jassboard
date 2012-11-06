@@ -1,11 +1,10 @@
 package ch.zhaw.jassboard.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Spinner;
+import android.widget.*;
 import ch.zhaw.R;
 import ch.zhaw.jassboard.persist.DataBaseHandler;
 
@@ -42,11 +41,32 @@ public class AddTeam extends Activity {
         Spinner spinnerPlayer2 = (Spinner) findViewById(R.id.player2);
         String player1 = spinnerPlayer1.getSelectedItem().toString();
         String player2 = spinnerPlayer2.getSelectedItem().toString();
-        String player1_name = player1.substring(0, player1.lastIndexOf('-') ) ;
-        String player2_name = player2.substring(0, player2.lastIndexOf('-') ) ;
-        String player1_id = player1.substring( player1.lastIndexOf('-') +1 ) ;
-        String player2_id = player2.substring( player2.lastIndexOf('-') +1 ) ;
+        String player1_name = player1.substring(0, player1.lastIndexOf('-') -1 );
+        String player2_name = player2.substring(0, player2.lastIndexOf('-') -1 );
+        int player1_id = Integer.parseInt(player1.substring(player1.lastIndexOf('-') + 2));
+        int player2_id = Integer.parseInt(player2.substring(player2.lastIndexOf('-') + 2));
 
+        EditText edit = (EditText) findViewById(R.id.teamName);
+        String teamName = edit.getText().toString();
+
+        if (teamName != "") {
+            if (player1_id != player2_id) {
+                if (dbH.playerExists(player1_id) && dbH.playerExists(player1_id)) {
+                    if (dbH.addTeam(teamName,player1_id,player2_id)) {
+                        Toast.makeText(getApplicationContext(), "Player added", Toast.LENGTH_SHORT).show();
+                        Intent refresh = new Intent(this, ViewTeamList.class);
+                        startActivity(refresh);
+                        this.finish();
+                    }   else {
+                        Toast.makeText(getApplicationContext(), "Couldn't add Team", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Player does not exist", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "Selectet same Player twice", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 }
