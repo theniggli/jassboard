@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 public class ViewTeamList extends Activity {
-    private static final String TAG = "JassBoard";
+    private static final String TAG = "Menu";
     private DataBaseHandler dbH = new DataBaseHandler(this);
 
     public void onCreate(Bundle savedInstanceState) {

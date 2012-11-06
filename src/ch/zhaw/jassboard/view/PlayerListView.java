@@ -20,7 +20,7 @@ public class PlayerListView extends LinearLayout {
 
     public PlayerListView(Context context, Player player) {
         super(context);
-        this.player = player;  //I want this in here for easy return to JassBoard
+        this.player = player;  //I want this in here for easy return to Menu
         this.setOrientation(VERTICAL);
         mName = new TextView(context);
         mId = new TextView(context);

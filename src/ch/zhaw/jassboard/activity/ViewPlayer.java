@@ -19,7 +19,6 @@ import java.util.ArrayList;
  */
 
 public class ViewPlayer extends Activity {
-    private static final String TAG = "JassBoard";
     private DataBaseHandler dbH = new DataBaseHandler(this);
 
     public void onCreate(Bundle savedInstanceState) {

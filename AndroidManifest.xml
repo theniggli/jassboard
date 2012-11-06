@@ -5,7 +5,7 @@
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="16"/>
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
-        <activity android:name="ch.zhaw.jassboard.activity.JassBoard"
+        <activity android:name=".jassboard.activity.Menu"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -18,5 +18,7 @@
         <activity android:label="@string/app_name" android:name=".jassboard.activity.ViewTeamList"/>
         <activity android:label="@string/app_name" android:name=".jassboard.activity.ViewTeam"/>
         <activity android:label="@string/app_name" android:name=".jassboard.activity.AddTeam"/>
+        <activity android:label="@string/app_name" android:name=".jassboard.activity.JassBoard"/>
+        <activity android:label="@string/app_name" android:name=".jassboard.activity.GameMode"/>
     </application>
 </manifest>

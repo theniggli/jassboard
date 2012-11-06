@@ -16,12 +16,12 @@ import ch.zhaw.jassboard.persist.DataBaseHandler;
  * To change this template use File | Settings | File Templates.
  */
 
-public class JassBoard extends Activity {
+public class GameMode extends Activity {
     private DataBaseHandler dbH = new DataBaseHandler(this);
 
     public void onCreate(Bundle savedInstanceState) {
-      //  super.onCreate(savedInstanceState);
-      //  setContentView(R.layout.main);
+       // super.onCreate(savedInstanceState);
+       // setContentView(R.layout.main);
     }
 
 }
