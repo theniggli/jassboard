@@ -5,12 +5,12 @@
     <string name="set_player">Set player</string>
     <string name="start_game">Start Game</string>
     <string name="add_player">Add a Player</string>
-
     <string name="add_team">Add a Team</string>
-
-    <string name="set_team2">Set team</string>
-    <string name="set_team3">Set team</string>
-    <string name="create_player">Create Player</string>
-    <string name="enterPlayerName">Please enter player Name</string>
-
+    <string name="create_player">Create player</string>
+    <string name="enterPlayerName">Please enter player name</string>
+    <string name="players_of_team">Players of this team</string>
+    <string name="enterTeamName">Please enter a team name</string>
+    <string name="create_team">Create team</string>
+    <string name="selectplayer1">Select first teammember</string>
+    <string name="selectplayer2">Select second teammember</string>
 </resources>

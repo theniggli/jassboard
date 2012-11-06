@@ -7,14 +7,30 @@
     <TextView android:id="@+id/text"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="@string/enterPlayerName"/>
-    <EditText android:id="@+id/playerName"
+              android:text="@string/enterTeamName"/>
+    <EditText android:id="@+id/teamName"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:inputType="text"/>
-    <Button android:id="@+id/create_player"
+    <TextView android:id="@+id/text"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/selectplayer1"/>
+    <Spinner
+            android:id="@+id/player1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/text"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/selectplayer2"/>
+    <Spinner
+            android:id="@+id/player2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+    <Button android:id="@+id/create_team"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/create_player"
+            android:text="@string/create_team"
             android:onClick="addNewTeam"/>
 </LinearLayout>

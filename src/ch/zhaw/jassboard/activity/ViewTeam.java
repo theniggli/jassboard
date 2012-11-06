@@ -7,6 +7,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import ch.zhaw.R;
 import ch.zhaw.jassboard.persist.DataBaseHandler;
+import ch.zhaw.jassboard.persist.Player;
+import ch.zhaw.jassboard.view.PlayerListAdapter;
 
 import java.util.ArrayList;
 
@@ -27,19 +29,16 @@ public class ViewTeam extends Activity {
         setContentView(R.layout.viewteam);
 
         Intent intent = getIntent();
-        String playerID = intent.getStringExtra("teamID"); //if it's a string you stored.
+        String teamID = intent.getStringExtra("teamID"); //if it's a string you stored.
 
-      //  ListView playerList = (ListView) findViewById(R.id.playerListView);
-      //  ArrayList<String> your_array_list = dbH.getPlayerAL(Integer.parseInt(playerID));
+        ListView teamListView = (ListView) findViewById(R.id.teamListView);
+        ArrayList<String> teamListArray = dbH.getTeamAL(Integer.parseInt(teamID));
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, teamListArray);
+        teamListView.setAdapter(arrayAdapter);
 
-      //  ArrayAdapter<String> arrayAdapter =
-      //          new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, your_array_list);
-      //  playerList.setAdapter(arrayAdapter);
-
-
-        //  ArrayList<String> playerArrayList = dbH.getPlayerAL(Integer.parseInt(playerID));
-        //  ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, playerArrayList);
-        //  playerList.setAdapter(arrayAdapter);
-
+        ListView teamPlayerList = (ListView) findViewById(R.id.teamPlayerList);
+        ArrayList<Player> teamPlayer = dbH.getTeamPlayers(Integer.parseInt(teamID));
+        PlayerListAdapter<Player> arrayAdapter2 = new PlayerListAdapter<Player>(this, teamPlayer);
+        teamPlayerList.setAdapter(arrayAdapter2);
     }
 }

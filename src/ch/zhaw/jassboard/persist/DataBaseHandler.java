@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class DataBaseHandler extends SQLiteOpenHelper {
     //Database Name
     private static final String DATABASE_NAME = "jassboard";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
 
     //table Players
     private static final String TABLE_PLAYERS = "players";
@@ -78,9 +78,9 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         CREATE_DUMMY_ENTRY = "insert into " + TABLE_TEAMS + "(" + TEAM_NAME + "," + TEAM_GAMES_PLAYED_SCHIEBER + "," + TEAM_GAMES_WON_SCHIEBER + ") values ('TeamAlpha',0,0)";
         db.execSQL(CREATE_DUMMY_ENTRY);
         CREATE_DUMMY_ENTRY = "insert into " + TABLE_PLAYERTEAMS + "(" + TABLE_PLAYERS + "_" + PLAYER_ID + "," + TABLE_TEAMS + "_" + TEAM_ID + ") values (1,1)";
-        //db.execSQL(CREATE_DUMMY_ENTRY);
+        db.execSQL(CREATE_DUMMY_ENTRY);
         CREATE_DUMMY_ENTRY = "insert into " + TABLE_PLAYERTEAMS + "(" + TABLE_PLAYERS + "_" + PLAYER_ID + "," + TABLE_TEAMS + "_" + TEAM_ID + ") values (2,1)";
-        //db.execSQL(CREATE_DUMMY_ENTRY);
+        db.execSQL(CREATE_DUMMY_ENTRY);
 
     }
 
@@ -157,8 +157,27 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return playerAL;
     }
 
+    public ArrayList<String> getTeamAL(int teamID) {
+        String selectQuery = "SELECT " + TEAM_ID + "," + TEAM_NAME + "," + TEAM_GAMES_PLAYED_SCHIEBER + "," + TEAM_GAMES_WON_SCHIEBER + " FROM " + TABLE_TEAMS + " WHERE " + TEAM_ID + "=" + teamID;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        ArrayList<String> teamAL = new ArrayList<String>();
+
+        if (cursor.moveToFirst()) {
+            do {
+                teamAL.add("TeamID: " + cursor.getString(0));
+                teamAL.add("TeamName: " + cursor.getString(1));
+                teamAL.add("GPS: " + cursor.getString(2));
+                teamAL.add("GWS: " + cursor.getString(3));
+
+            } while (cursor.moveToNext());
+        }
+
+        return teamAL;
+    }
+
     public ArrayList<Team> getTeamList() {
-        ArrayList<Team> playerArrayList = new ArrayList<Team>();
+        ArrayList<Team> teamArrayList = new ArrayList<Team>();
         String selectQuery = "SELECT " + TEAM_ID + "," + TEAM_NAME + "," + TEAM_GAMES_PLAYED_SCHIEBER + "," + TEAM_GAMES_WON_SCHIEBER + " FROM " + TABLE_TEAMS;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -166,10 +185,10 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 team = new Team(Integer.parseInt(cursor.getString(0)), cursor.getString(1), Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)));
-                playerArrayList.add(team);
+                teamArrayList.add(team);
             } while (cursor.moveToNext());
         }
-        return playerArrayList;
+        return teamArrayList;
     }
 
 
@@ -186,4 +205,38 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    public ArrayList<Player> getTeamPlayers(Integer teamID) {
+        //ony PlayerName and PlayerID
+        ArrayList<Player> playerArrayList = new ArrayList<Player>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sqlQuery = "SELECT " + PLAYER_ID + "," + PLAYER_NAME + " FROM " + TABLE_PLAYERTEAMS + "," + TABLE_PLAYERS + " WHERE " + TABLE_TEAMS + "_" + TEAM_ID + "=" + teamID + " AND " + TABLE_PLAYERS + "_" + PLAYER_ID + "=" + PLAYER_ID;
+
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+        Player player;
+        if (cursor.moveToFirst()) {
+            do {
+                player = new Player(Integer.parseInt(cursor.getString(0)), cursor.getString(1));
+                playerArrayList.add(player);
+            } while (cursor.moveToNext());
+        }
+        return playerArrayList;
+    }
+
+    public ArrayList<String> getplayerIDnName() {
+        //ony PlayerName and PlayerID
+        ArrayList<String> playerArrayList = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sqlQuery = "SELECT " + PLAYER_ID + "," + PLAYER_NAME + " FROM " + TABLE_PLAYERS;
+
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                playerArrayList.add(cursor.getString(1) + " - " + Integer.parseInt(cursor.getString(0)) + "");
+            } while (cursor.moveToNext());
+        }
+        return playerArrayList;
+    }
+
+
 }
