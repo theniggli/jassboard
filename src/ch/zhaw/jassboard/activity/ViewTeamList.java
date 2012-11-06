@@ -8,9 +8,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import ch.zhaw.R;
 import ch.zhaw.jassboard.persist.DataBaseHandler;
-import ch.zhaw.jassboard.persist.Player;
-import ch.zhaw.jassboard.view.PlayerListAdapter;
-import ch.zhaw.jassboard.view.PlayerListView;
+import ch.zhaw.jassboard.persist.Team;
+import ch.zhaw.jassboard.view.TeamListAdapter;
+import ch.zhaw.jassboard.view.TeamListView;
 
 import java.util.ArrayList;
 
@@ -28,31 +28,24 @@ public class ViewTeamList extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewteamlist);
-        ListView playerList = (ListView) findViewById(R.id.playerList);
-        ArrayList<Player> playerArrayList = dbH.getPlayerList();
-        PlayerListAdapter<Player> arrayAdapter =
-                new PlayerListAdapter<Player>(this, playerArrayList);
-        playerList.setAdapter(arrayAdapter);
-        playerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                String playerID = "" + ((PlayerListView) view).getPlayerId();
-                //       Player player =((PlayerListView) view).getPlayer();
-                //       Toast.makeText(getApplicationContext(),
-                //               playerID, Toast.LENGTH_SHORT).show();
-                //       Log.d(TAG, "something");
-              //  Intent myIntent = new Intent(ViewPlayerList.this, ViewPlayer.class);
-              //  myIntent.putExtra("playerID", playerID);  //send whole player?
-                // myIntent.put("playerID", player);  //send whole player?
+        ListView teamList = (ListView) findViewById(R.id.teamList);
+        ArrayList<Team> teamArrayList = dbH.getTeamList();
+        TeamListAdapter<Team> arrayAdapter = new TeamListAdapter<Team>(this, teamArrayList);
+        teamList.setAdapter(arrayAdapter);
+        teamList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String teamID = "" + ((TeamListView) view).getTeamId();
 
-             //   ViewPlayerList.this.startActivity(myIntent);
+                Intent myIntent = new Intent(ViewTeamList.this, ViewTeam.class);
+                myIntent.putExtra("teamID", teamID);
+                ViewTeamList.this.startActivity(myIntent);
+
             }
         });
     }
 
-    //layout setplayer
     public void addTeam(View view) {
-      //  Intent myIntent = new Intent(ViewPlayerList.this, AddPlayer.class);
-      //  ViewPlayerList.this.startActivity(myIntent);
+        Intent myIntent = new Intent(ViewTeamList.this, AddTeam.class);
+        ViewTeamList.this.startActivity(myIntent);
     }
 }

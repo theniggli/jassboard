@@ -165,7 +165,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         Team team;
         if (cursor.moveToFirst()) {
             do {
-                team = new Team(Integer.parseInt(cursor.getString(0)), cursor.getString(1), Integer.parseInt(cursor.getString(3)), Integer.parseInt(cursor.getString(4)));
+                team = new Team(Integer.parseInt(cursor.getString(0)), cursor.getString(1), Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)));
                 playerArrayList.add(team);
             } while (cursor.moveToNext());
         }

@@ -16,6 +16,7 @@
         <activity android:label="@string/app_name" android:name=".jassboard.activity.ViewPlayer"/>
         <activity android:label="@string/app_name" android:name=".jassboard.activity.AddPlayer"/>
         <activity android:label="@string/app_name" android:name=".jassboard.activity.ViewTeamList"/>
-
+        <activity android:label="@string/app_name" android:name=".jassboard.activity.ViewTeam"/>
+        <activity android:label="@string/app_name" android:name=".jassboard.activity.AddTeam"/>
     </application>
 </manifest>

@@ -8,8 +8,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/add_team"
-            android:onClick="addPlayer"/>
-    <ListView android:id="@+id/playerList"
+            android:onClick="addTeam"/>
+    <ListView android:id="@+id/teamList"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"/>
 </LinearLayout>
