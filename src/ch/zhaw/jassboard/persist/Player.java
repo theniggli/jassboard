@@ -1,5 +1,11 @@
 package ch.zhaw.jassboard.persist;
 
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import com.j256.ormlite.field.DatabaseField;
+
 /**
  * Created with IntelliJ IDEA.
  * User: nigglrog
@@ -8,27 +14,47 @@ package ch.zhaw.jassboard.persist;
  * To change this template use File | Settings | File Templates.
  */
 public class Player {
+    @DatabaseField(generatedId = true)
     private Integer playerID;
+    @DatabaseField
     private String playerName;
 
     //Statistics
+    @DatabaseField
     private Integer gamesPlayedSchieber;
+    @DatabaseField
     private Integer gamesPlayedCoiffeur;
+    @DatabaseField
     private Integer gamesPlayedDifferenzler;
+    @DatabaseField
     private Integer gamesWonSchieber;
+    @DatabaseField
     private Integer gamesWonCoiffeur;
+    @DatabaseField
     private Integer gamesWonDifferenzler;
+    @DatabaseField
     private Integer roundsPlayedSchieber;
+    @DatabaseField
     private Integer roundsPlayedCoiffeur;
+    @DatabaseField
     private Integer roundsPlayedDifferenzler;
+    @DatabaseField
     private Integer roundsWonSchieber;
+    @DatabaseField
     private Integer roundsWonCoiffeur;
+    @DatabaseField
     private Integer roundsWonDifferenzler;
+    @DatabaseField
     private Integer pointsMadeSchieber;
+    @DatabaseField
     private Integer pointsMadeCoiffeur;
+    @DatabaseField
     private Integer pointsMadeDifferenzler;
+    @DatabaseField
     private Integer pointsMaxSchieber;
+    @DatabaseField
     private Integer pointsMaxCoiffeur;
+    @DatabaseField
     private Integer pointsMaxDifferenzler;
 
     public Player(Integer id, String Name) {
