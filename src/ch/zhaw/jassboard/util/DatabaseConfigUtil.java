@@ -1,4 +1,4 @@
-package ch.zhaw.jassboard.persist;
+package ch.zhaw.jassboard.util;
 
 import com.j256.ormlite.android.apptools.OrmLiteConfigUtil;
 
