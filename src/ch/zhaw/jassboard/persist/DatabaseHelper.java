@@ -24,7 +24,7 @@ import java.sql.SQLException;
 
 /**
  * Database helper class used to manage the creation and upgrading of your database. This class also usually provides
- * the DAODatabaseHelpers used by the other classes.  DatabaseHelper
+ * the DAODatabaseHelpers used by the other classes.  DatabaseHelper2
  */
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
@@ -104,7 +104,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      */
     public RuntimeExceptionDao<Player, Integer> getPlayerDao() {
         if (simpleRuntimeDao == null) {
-           // simpleRuntimeDao = getRuntimeExceptionDao(Player.class);
+            simpleRuntimeDao = getRuntimeExceptionDao(Player.class);
         }
         return simpleRuntimeDao;
     }
