@@ -1,0 +1,71 @@
+#
+# generated on 2012/11/13 11:09:20
+#
+# --table-start--
+dataClass=ch.zhaw.jassboard.persist.Player
+tableName=player
+# --table-fields-start--
+# --field-start--
+fieldName=playerID
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=playerName
+# --field-end--
+# --field-start--
+fieldName=gamesPlayedSchieber
+# --field-end--
+# --field-start--
+fieldName=gamesPlayedCoiffeur
+# --field-end--
+# --field-start--
+fieldName=gamesPlayedDifferenzler
+# --field-end--
+# --field-start--
+fieldName=gamesWonSchieber
+# --field-end--
+# --field-start--
+fieldName=gamesWonCoiffeur
+# --field-end--
+# --field-start--
+fieldName=gamesWonDifferenzler
+# --field-end--
+# --field-start--
+fieldName=roundsPlayedSchieber
+# --field-end--
+# --field-start--
+fieldName=roundsPlayedCoiffeur
+# --field-end--
+# --field-start--
+fieldName=roundsPlayedDifferenzler
+# --field-end--
+# --field-start--
+fieldName=roundsWonSchieber
+# --field-end--
+# --field-start--
+fieldName=roundsWonCoiffeur
+# --field-end--
+# --field-start--
+fieldName=roundsWonDifferenzler
+# --field-end--
+# --field-start--
+fieldName=pointsMadeSchieber
+# --field-end--
+# --field-start--
+fieldName=pointsMadeCoiffeur
+# --field-end--
+# --field-start--
+fieldName=pointsMadeDifferenzler
+# --field-end--
+# --field-start--
+fieldName=pointsMaxSchieber
+# --field-end--
+# --field-start--
+fieldName=pointsMaxCoiffeur
+# --field-end--
+# --field-start--
+fieldName=pointsMaxDifferenzler
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
