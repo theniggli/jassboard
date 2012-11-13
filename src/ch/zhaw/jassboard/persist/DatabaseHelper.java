@@ -34,7 +34,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // the DAO object we use to access the Player table
-    private Dao<Player, Integer> simpleDao = null;
+    private Dao simpleDao = null;
     private RuntimeExceptionDao<Player, Integer> simpleRuntimeDao = null;
 
     public DatabaseHelper(Context context) {
@@ -104,7 +104,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      */
     public RuntimeExceptionDao<Player, Integer> getPlayerDao() {
         if (simpleRuntimeDao == null) {
-            simpleRuntimeDao = getRuntimeExceptionDao(Player.class);
+           // simpleRuntimeDao = getRuntimeExceptionDao(Player.class);
         }
         return simpleRuntimeDao;
     }

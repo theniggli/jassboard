@@ -57,6 +57,10 @@ public class Player {
     @DatabaseField
     private Integer pointsMaxDifferenzler;
 
+    public Player() {
+
+    }
+
     public Player(String Name) {
         this.playerName = Name;
         this.gamesPlayedSchieber = 0;
@@ -79,6 +83,7 @@ public class Player {
         this.pointsMaxDifferenzler = 0;
 
     }
+
     public Player(Integer id, String Name) {
         this.playerID = id;
         this.playerName = Name;
@@ -113,7 +118,7 @@ public class Player {
         this.gamesWonDifferenzler = GWD;
     }
 
-    public Player(Integer id, String Name, Integer GPS, Integer GPC, Integer GPD, Integer GWS, Integer GWC, Integer GWD, Integer RPS, Integer RPC, Integer RPD, Integer RWS, Integer RWC, Integer RWD,Integer PMS, Integer PMC, Integer PMD, Integer PMaxS, Integer PMaxC, Integer PMaxD) {
+    public Player(Integer id, String Name, Integer GPS, Integer GPC, Integer GPD, Integer GWS, Integer GWC, Integer GWD, Integer RPS, Integer RPC, Integer RPD, Integer RWS, Integer RWC, Integer RWD, Integer PMS, Integer PMC, Integer PMD, Integer PMaxS, Integer PMaxC, Integer PMaxD) {
         this.playerID = id;
         this.playerName = Name;
         this.gamesPlayedSchieber = GPS;

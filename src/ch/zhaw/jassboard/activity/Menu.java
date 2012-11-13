@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Spinner;
 import android.widget.TextView;
 import ch.zhaw.R;
 import ch.zhaw.jassboard.persist.DataBaseHandler;
@@ -33,9 +34,9 @@ public class Menu extends OrmLiteBaseActivity<DatabaseHelper> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        //test
-        TextView tv = new TextView(this);
-        doSampleDatabaseStuff("onCreate", tv);
+        TextView tv = (TextView) findViewById(R.id.text);
+
+        //  doSampleDatabaseStuff("onCreate", tv);
     }
 
     public void setTeam(View view) {
