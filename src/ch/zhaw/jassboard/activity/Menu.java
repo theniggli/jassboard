@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import ch.zhaw.R;
-import ch.zhaw.jassboard.example.SimpleData;
 import ch.zhaw.jassboard.persist.DataBaseHandler;
 import ch.zhaw.jassboard.persist.DatabaseHelper;
 import ch.zhaw.jassboard.persist.Player;
@@ -35,7 +34,7 @@ public class Menu extends OrmLiteBaseActivity<DatabaseHelper> {
         setContentView(R.layout.main);
 
         //TextView tv = (TextView) findViewById(R.id.text);
-        //doSampleDatabaseStuff2("onCreate", tv);
+       // doSampleDatabaseStuff2("onCreate", tv);
     }
 
     public void setTeam(View view) {
@@ -53,26 +52,6 @@ public class Menu extends OrmLiteBaseActivity<DatabaseHelper> {
         Menu.this.startActivity(myIntent);
     }
 
-    private void doSampleDatabaseStuff(String action, TextView tv) {
-        // get our dao
-      RuntimeExceptionDao<Player, Integer> simpleDao = getHelper().getPlayerDao();
-        // query for all of the data objects in the database
-        List<Player> list = simpleDao.queryForAll();
-        // our string builder for building the content-view
-        StringBuilder sb = new StringBuilder();
-        sb.append("got ").append(list.size()).append(" entries in ").append(action).append("\n");
-
-        // if we already have items in the database
-        int simpleC = 0;
-        for (Player simple : list) {
-            sb.append("------------------------------------------\n");
-            sb.append("[").append(simpleC).append("] = ").append(simple).append("\n");
-            simpleC++;
-        }
-
-        tv.setText(sb.toString());
-//        Log.i(LOG_TAG, "Done with page at " + System.currentTimeMillis());
-    }
     private void doSampleDatabaseStuff2(String action, TextView tv) {
         // get our dao
         RuntimeExceptionDao<Player, Integer> simpleDao = getHelper().getPlayerDao();
@@ -81,21 +60,6 @@ public class Menu extends OrmLiteBaseActivity<DatabaseHelper> {
         // our string builder for building the content-view
         StringBuilder sb = new StringBuilder();
         sb.append("got ").append(list.size()).append(" entries in ").append(action).append("\n");
-
-        // if we already have items in the database
-        int simpleC = 0;
-        for (Player simple : list) {
-            sb.append("------------------------------------------\n");
-            sb.append("[").append(simpleC).append("] = ").append(simple).append("\n");
-            simpleC++;
-        }
-        sb.append("------------------------------------------\n");
-        for (Player simple : list) {
-            simpleDao.delete(simple);
-            sb.append("deleted id ").append(simple.playerID).append("\n");
-            Log.i(LOG_TAG, "deleting simple(" + simple.playerID + ")");
-            simpleC++;
-        }
 
         int createNum;
         do {

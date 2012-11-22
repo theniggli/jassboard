@@ -1,30 +1,6 @@
 #
-# generated on 2012/11/22 05:15:07
+# generated on 2012/11/22 06:14:19
 #
-# --table-start--
-dataClass=ch.zhaw.jassboard.example.SimpleData
-tableName=simpledata
-# --table-fields-start--
-# --field-start--
-fieldName=id
-generatedId=true
-# --field-end--
-# --field-start--
-fieldName=string
-indexName=simpledata_string_idx
-# --field-end--
-# --field-start--
-fieldName=millis
-# --field-end--
-# --field-start--
-fieldName=date
-# --field-end--
-# --field-start--
-fieldName=even
-# --field-end--
-# --table-fields-end--
-# --table-end--
-#################################
 # --table-start--
 dataClass=ch.zhaw.jassboard.persist.Player
 tableName=player
@@ -35,6 +11,7 @@ generatedId=true
 # --field-end--
 # --field-start--
 fieldName=playerName
+indexName=player_playerName_idx
 # --field-end--
 # --field-start--
 fieldName=gamesPlayedSchieber

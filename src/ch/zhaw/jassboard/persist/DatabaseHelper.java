@@ -29,7 +29,7 @@ import java.sql.SQLException;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     // name of the database file for your application -- change to something appropriate for your app
-    private static final String DATABASE_NAME = "JassBoard";
+    private static final String DATABASE_NAME = "JassBoard2";
     // any time you make changes to your database objects, you may have to increase the database version
     private static final int DATABASE_VERSION = 1;
 
@@ -48,26 +48,22 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
         try {
-            Log.i(DatabaseHelper.class.getName(), "onCreate");
             TableUtils.createTable(connectionSource, Player.class);
         } catch (SQLException e) {
-            Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
             throw new RuntimeException(e);
         }
 
         // here we try inserting data in the on-create as a test
         RuntimeExceptionDao<Player, Integer> dao = getPlayerDao();
-        long millis = System.currentTimeMillis();
         // create some entries in the onCreate
-        Player simple = new Player("Roger");
+        Player simple = new Player("Roger2");
         dao.create(simple);
-        simple = new Player("Toni");
+        simple = new Player("Toni2");
         dao.create(simple);
-        simple = new Player("Tobi");
+        simple = new Player("Tobi2");
         dao.create(simple);
-        simple = new Player("Michi");
+        simple = new Player("Michi2");
         dao.create(simple);
-        Log.i(DatabaseHelper.class.getName(), "created new entries in onCreate: " + millis);
     }
 
     /**
@@ -77,12 +73,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
-            Log.i(DatabaseHelper.class.getName(), "onUpgrade");
             TableUtils.dropTable(connectionSource, Player.class, true);
             // after we drop the old databases, we create the new ones
             onCreate(db, connectionSource);
         } catch (SQLException e) {
-            Log.e(DatabaseHelper.class.getName(), "Can't drop databases", e);
             throw new RuntimeException(e);
         }
     }
