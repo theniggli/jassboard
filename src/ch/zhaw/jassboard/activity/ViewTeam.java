@@ -1,14 +1,18 @@
 package ch.zhaw.jassboard.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import ch.zhaw.R;
-import ch.zhaw.jassboard.persist.DataBaseHandler;
+import ch.zhaw.jassboard.persist.DatabaseHelper;
 import ch.zhaw.jassboard.persist.Player;
+import ch.zhaw.jassboard.persist.Team;
 import ch.zhaw.jassboard.view.PlayerListAdapter;
+import ch.zhaw.jassboard.view.TeamView;
+import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
+import com.j256.ormlite.dao.Dao;
 
 import java.util.ArrayList;
 
@@ -20,25 +24,31 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 
-public class ViewTeam extends Activity {
-    private static final String TAG = "Menu";
-    private DataBaseHandler dbH = new DataBaseHandler(this);
+public class ViewTeam extends OrmLiteBaseActivity<DatabaseHelper> {
+    //private static final String TAG = "Menu";
+    //private DataBaseHandler dbH = new DataBaseHandler(this);
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewteam);
 
         Intent intent = getIntent();
-        String teamID = intent.getStringExtra("teamID"); //if it's a string you stored.
+        Integer teamID = Integer.parseInt(intent.getStringExtra("teamID")); //if it's a string you stored.
 
-        ListView teamListView = (ListView) findViewById(R.id.teamListView);
-        ArrayList<String> teamListArray = dbH.getTeamAL(Integer.parseInt(teamID));
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, teamListArray);
-        teamListView.setAdapter(arrayAdapter);
 
-        ListView teamPlayerList = (ListView) findViewById(R.id.teamPlayerList);
-        ArrayList<Player> teamPlayer = dbH.getTeamPlayers(Integer.parseInt(teamID));
-        PlayerListAdapter<Player> arrayAdapter2 = new PlayerListAdapter<Player>(this, teamPlayer);
-        teamPlayerList.setAdapter(arrayAdapter2);
+        try {
+            Dao<Team, Integer> dao = getHelper().getTeamDao();
+            Team team = dao.queryForId(teamID);
+            TeamView tv = new TeamView(this, team);
+            LinearLayout layout = (LinearLayout) findViewById(R.id.viewteamLinearLayout);
+            layout.addView(tv);
+        } catch (java.sql.SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+      //  ListView teamPlayerList = (ListView) findViewById(R.id.teamPlayerList);
+      //  ArrayList<Player> teamPlayer = dbH.getTeamPlayers(Integer.parseInt(teamID));
+      //  PlayerListAdapter<Player> arrayAdapter2 = new PlayerListAdapter<Player>(this, teamPlayer);
+      //  teamPlayerList.setAdapter(arrayAdapter2);
     }
 }

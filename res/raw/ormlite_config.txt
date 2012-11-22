@@ -1,5 +1,5 @@
 #
-# generated on 2012/11/22 06:14:19
+# generated on 2012/11/22 08:53:09
 #
 # --table-start--
 dataClass=ch.zhaw.jassboard.persist.Player
@@ -12,6 +12,92 @@ generatedId=true
 # --field-start--
 fieldName=playerName
 indexName=player_playerName_idx
+# --field-end--
+# --field-start--
+fieldName=gamesPlayedSchieber
+# --field-end--
+# --field-start--
+fieldName=gamesPlayedCoiffeur
+# --field-end--
+# --field-start--
+fieldName=gamesPlayedDifferenzler
+# --field-end--
+# --field-start--
+fieldName=gamesWonSchieber
+# --field-end--
+# --field-start--
+fieldName=gamesWonCoiffeur
+# --field-end--
+# --field-start--
+fieldName=gamesWonDifferenzler
+# --field-end--
+# --field-start--
+fieldName=roundsPlayedSchieber
+# --field-end--
+# --field-start--
+fieldName=roundsPlayedCoiffeur
+# --field-end--
+# --field-start--
+fieldName=roundsPlayedDifferenzler
+# --field-end--
+# --field-start--
+fieldName=roundsWonSchieber
+# --field-end--
+# --field-start--
+fieldName=roundsWonCoiffeur
+# --field-end--
+# --field-start--
+fieldName=roundsWonDifferenzler
+# --field-end--
+# --field-start--
+fieldName=pointsMadeSchieber
+# --field-end--
+# --field-start--
+fieldName=pointsMadeCoiffeur
+# --field-end--
+# --field-start--
+fieldName=pointsMadeDifferenzler
+# --field-end--
+# --field-start--
+fieldName=pointsMaxSchieber
+# --field-end--
+# --field-start--
+fieldName=pointsMaxCoiffeur
+# --field-end--
+# --field-start--
+fieldName=pointsMaxDifferenzler
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=ch.zhaw.jassboard.persist.PlayerTeam
+tableName=playerteam
+# --table-fields-start--
+# --field-start--
+fieldName=PlayerTeamID
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=playerID
+# --field-end--
+# --field-start--
+fieldName=teamID
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=ch.zhaw.jassboard.persist.Team
+tableName=team
+# --table-fields-start--
+# --field-start--
+fieldName=teamID
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=teamName
+indexName=team_teamName_idx
 # --field-end--
 # --field-start--
 fieldName=gamesPlayedSchieber

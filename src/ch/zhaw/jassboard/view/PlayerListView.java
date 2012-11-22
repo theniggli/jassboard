@@ -25,13 +25,13 @@ public class PlayerListView extends LinearLayout {
         mName = new TextView(context);
         mId = new TextView(context);
 
-        String name = player.getName();
+        String name = player.getPlayerName();
         mName.setText(name);
         mName.setTextSize(19);
         mName.setTextColor(Color.GREEN);
         mName.setTypeface(Typeface.SANS_SERIF);
 
-        Number id = player.getId();
+        Number id = player.getPlayerID();
         mId.setText(id.toString());
         mId.setTextSize(14);
         mId.setTextColor(Color.RED);
@@ -50,7 +50,7 @@ public class PlayerListView extends LinearLayout {
     }
 
     public Number getPlayerId() {
-        return player.getId();
+        return player.getPlayerID();
     }
 
     public void setNameText(String name) {

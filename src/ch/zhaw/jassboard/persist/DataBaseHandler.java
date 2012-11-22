@@ -90,66 +90,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<Player> getPlayerListFull() {
-        ArrayList<Player> playerArrayList = new ArrayList<Player>();
-        String selectQuery = "SELECT " + PLAYER_ID + "," + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + " FROM " + TABLE_PLAYERS;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                Player player = new Player(Integer.parseInt(cursor.getString(0)), cursor.getString(1), Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)), Integer.parseInt(cursor.getString(4)), Integer.parseInt(cursor.getString(5)), Integer.parseInt(cursor.getString(6)), Integer.parseInt(cursor.getString(7)));
-                playerArrayList.add(player);
-            } while (cursor.moveToNext());
-        }
-        return playerArrayList;
-    }
-
-    public ArrayList<Player> getPlayerList() {
-        ArrayList<Player> playerArrayList = new ArrayList<Player>();
-        String selectQuery = "SELECT " + PLAYER_ID + "," + PLAYER_NAME + " FROM " + TABLE_PLAYERS;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                Player player = new Player(Integer.parseInt(cursor.getString(0)), cursor.getString(1));
-                playerArrayList.add(player);
-            } while (cursor.moveToNext());
-        }
-        return playerArrayList;
-    }
-
-    public Player getPlayer(int playerID) {
-        String selectQuery = "SELECT " + PLAYER_ID + "," + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + " FROM " + TABLE_PLAYERS + " WHERE " + PLAYER_ID + "=" + playerID;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        Player player = new Player(Integer.parseInt(cursor.getString(0)), cursor.getString(1), Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)), Integer.parseInt(cursor.getString(4)), Integer.parseInt(cursor.getString(5)), Integer.parseInt(cursor.getString(6)), Integer.parseInt(cursor.getString(7)));
-        return player;
-    }
-
-    public ArrayList<String> getPlayerAL(int playerID) {
-        String selectQuery = "SELECT " + PLAYER_ID + "," + PLAYER_NAME + "," + PLAYER_GAMES_PLAYED_SCHIEBER + "," + PLAYER_GAMES_PLAYED_COIFFEUR + "," + PLAYER_GAMES_PLAYED_DIFFERENZER + "," + PLAYER_GAMES_WON_SCHIEBER + "," + PLAYER_GAMES_WON_COIFFEUR + "," + PLAYER_GAMES_WON_DIFFERENZER + " FROM " + TABLE_PLAYERS + " WHERE " + PLAYER_ID + "=" + playerID;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        ArrayList<String> playerAL = new ArrayList<String>();
-
-        if (cursor.moveToFirst()) {
-            do {
-                playerAL.add("PlayerID: " + cursor.getString(0));
-                playerAL.add("PlayerName: " + cursor.getString(1));
-                playerAL.add("GPS: " + cursor.getString(2));
-                playerAL.add("GPC: " + cursor.getString(3));
-                playerAL.add("GPD: " + cursor.getString(4));
-                playerAL.add("GWS: " + cursor.getString(5));
-                playerAL.add("GWC: " + cursor.getString(6));
-                playerAL.add("GWD: " + cursor.getString(7));
-
-            } while (cursor.moveToNext());
-        }
-        return playerAL;
-    }
-
     public ArrayList<String> getTeamAL(int teamID) {
         String selectQuery = "SELECT " + TEAM_ID + "," + TEAM_NAME + "," + TEAM_GAMES_PLAYED_SCHIEBER + "," + TEAM_GAMES_WON_SCHIEBER + " FROM " + TABLE_TEAMS + " WHERE " + TEAM_ID + "=" + teamID;
         SQLiteDatabase db = this.getReadableDatabase();

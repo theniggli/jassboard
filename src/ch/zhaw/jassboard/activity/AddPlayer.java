@@ -18,7 +18,7 @@ import ch.zhaw.jassboard.persist.DataBaseHandler;
  */
 
 public class AddPlayer extends Activity {
-    private DataBaseHandler dbH = new DataBaseHandler(this);
+//    private DataBaseHandler dbH = new DataBaseHandler(this);
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,17 +29,17 @@ public class AddPlayer extends Activity {
         EditText edit = (EditText) findViewById(R.id.playerName);
         String playerName = edit.getText().toString();
 
-        if (playerName != "") {
-            if (dbH.addPlayer(playerName) == true) {
-                Toast.makeText(getApplicationContext(), "Player added", Toast.LENGTH_SHORT).show();
-                Intent refresh = new Intent(this, ViewPlayerList.class);
-                startActivity(refresh);
-                this.finish();
-            } else {
-                Toast.makeText(getApplicationContext(), "Invalid Playername", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(getApplicationContext(), "Blank Playername", Toast.LENGTH_SHORT).show();
-        }
+//        if (playerName != "") {
+//            if (dbH.addPlayer(playerName) == true) {
+//                Toast.makeText(getApplicationContext(), "Player added", Toast.LENGTH_SHORT).show();
+//                Intent refresh = new Intent(this, ViewPlayerList.class);
+//                startActivity(refresh);
+//                this.finish();
+//            } else {
+//                Toast.makeText(getApplicationContext(), "Invalid Playername", Toast.LENGTH_SHORT).show();
+//            }
+//        } else {
+//            Toast.makeText(getApplicationContext(), "Blank Playername", Toast.LENGTH_SHORT).show();
+//        }
     }
 }

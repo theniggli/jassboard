@@ -1,17 +1,15 @@
 package ch.zhaw.jassboard.activity;
 
 import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import ch.zhaw.R;
-import ch.zhaw.jassboard.persist.DataBaseHandler;
 import ch.zhaw.jassboard.persist.DatabaseHelper;
 import ch.zhaw.jassboard.persist.Player;
+import ch.zhaw.jassboard.view.PlayerView;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
-import com.j256.ormlite.dao.RuntimeExceptionDao;
-
-import java.util.ArrayList;
+import com.j256.ormlite.dao.Dao;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,29 +20,23 @@ import java.util.ArrayList;
  */
 
 public class ViewPlayer extends OrmLiteBaseActivity<DatabaseHelper> {
-    private DataBaseHandler dbH = new DataBaseHandler(this);
+    //private DataBaseHandler dbH = new DataBaseHandler(this);
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewplayer);
 
         Intent intent = getIntent();
-        String playerID = intent.getStringExtra("playerID"); //if it's a string you stored.
+        Integer playerID = Integer.parseInt(intent.getStringExtra("playerID")); //if it's a string you stored.
 
-        ListView playerList = (ListView) findViewById(R.id.playerListView);
-        ArrayList<String> your_array_list = dbH.getPlayerAL(Integer.parseInt(playerID));
-
-        //RuntimeExceptionDao<Player, Integer> simpleDao = getHelper().getPlayerDao();
-        //ArrayList<Player> your_array_list = (ArrayList) simpleDao.queryForAll();
-
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, your_array_list);
-        playerList.setAdapter(arrayAdapter);
-
-
-        //  ArrayList<String> playerArrayList = dbH.getPlayerAL(Integer.parseInt(playerID));
-        //  ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, playerArrayList);
-        //  playerList.setAdapter(arrayAdapter);
-
+        try {
+            Dao<Player, Integer> dao = getHelper().getPlayerDao();
+            Player player = dao.queryForId(playerID);
+            PlayerView pv = new PlayerView(this, player);
+            LinearLayout layout = (LinearLayout) findViewById(R.id.viewplayerLinearLayout);
+            layout.addView(pv);
+        } catch (java.sql.SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -17,7 +17,7 @@ import ch.zhaw.jassboard.persist.DataBaseHandler;
  */
 
 public class JassBoard extends Activity {
-    private DataBaseHandler dbH = new DataBaseHandler(this);
+   // private DataBaseHandler dbH = new DataBaseHandler(this);
 
     public void onCreate(Bundle savedInstanceState) {
       //  super.onCreate(savedInstanceState);

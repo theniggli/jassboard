@@ -13,6 +13,7 @@ import ch.zhaw.jassboard.persist.Player;
 import ch.zhaw.jassboard.view.PlayerListAdapter;
 import ch.zhaw.jassboard.view.PlayerListView;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
+import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import java.util.ArrayList;
@@ -32,20 +33,24 @@ public class ViewPlayerList extends OrmLiteBaseActivity<DatabaseHelper> {
         setContentView(R.layout.viewplayerlist);
         ListView playerList = (ListView) findViewById(R.id.playerList);
 
-        RuntimeExceptionDao<Player, Integer> simpleDao = getHelper().getPlayerDao();
+        try {
+            Dao<Player, Integer> dao = getHelper().getPlayerDao();
+            ArrayList<Player> playerArrayList = (ArrayList) dao.queryForAll();
+            PlayerListAdapter<Player> arrayAdapter = new PlayerListAdapter<Player>(this, playerArrayList);
 
-        ArrayList<Player> playerArrayList = (ArrayList) simpleDao.queryForAll();
-        PlayerListAdapter<Player> arrayAdapter = new PlayerListAdapter<Player>(this, playerArrayList);
+            playerList.setAdapter(arrayAdapter);
+            playerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String playerID = "" + ((PlayerListView) view).getPlayerId();
+                    Intent myIntent = new Intent(ViewPlayerList.this, ViewPlayer.class);
+                    myIntent.putExtra("playerID", playerID);
+                    ViewPlayerList.this.startActivity(myIntent);
+                }
+            });
+        } catch (java.sql.SQLException e) {
+            throw new RuntimeException(e);
 
-        playerList.setAdapter(arrayAdapter);
-        playerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String playerID = "" + ((PlayerListView) view).getPlayerId();
-                Intent myIntent = new Intent(ViewPlayerList.this, ViewPlayer.class);
-                myIntent.putExtra("playerID", playerID);
-                ViewPlayerList.this.startActivity(myIntent);
-            }
-        });
+        }
     }
 
     //layout setplayer

@@ -25,13 +25,13 @@ public class TeamListView extends LinearLayout {
         mName = new TextView(context);
         mId = new TextView(context);
 
-        String name = team.getName();
+        String name = team.getTeamName();
         mName.setText(name);
         mName.setTextSize(19);
         mName.setTextColor(Color.GREEN);
         mName.setTypeface(Typeface.SANS_SERIF);
 
-        Number id = team.getId();
+        Number id = team.getTeamID();
         mId.setText(id.toString());
         mId.setTextSize(14);
         mId.setTextColor(Color.RED);
@@ -50,7 +50,7 @@ public class TeamListView extends LinearLayout {
     }
 
     public Number getTeamId() {
-        return team.getId();
+        return team.getTeamID();
     }
 
     public void setNameText(String name) {

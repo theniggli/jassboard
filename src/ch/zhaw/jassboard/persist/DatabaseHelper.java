@@ -29,7 +29,7 @@ import java.sql.SQLException;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     // name of the database file for your application -- change to something appropriate for your app
-    private static final String DATABASE_NAME = "JassBoard2";
+    private static final String DATABASE_NAME = "JassBoard5";
     // any time you make changes to your database objects, you may have to increase the database version
     private static final int DATABASE_VERSION = 1;
 
@@ -49,21 +49,49 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
         try {
             TableUtils.createTable(connectionSource, Player.class);
+            TableUtils.createTable(connectionSource, Team.class);
+            TableUtils.createTable(connectionSource, PlayerTeam.class);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        // here we try inserting data in the on-create as a test
-        RuntimeExceptionDao<Player, Integer> dao = getPlayerDao();
-        // create some entries in the onCreate
-        Player simple = new Player("Roger2");
-        dao.create(simple);
-        simple = new Player("Toni2");
-        dao.create(simple);
-        simple = new Player("Tobi2");
-        dao.create(simple);
-        simple = new Player("Michi2");
-        dao.create(simple);
+        try {
+            Dao<Team, Integer> teamDao = getTeamDao();
+            Team team = new Team("TeamJongIl");
+            teamDao.create(team);
+            team = new Team("TeamMao");
+            teamDao.create(team);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            Dao<Player, Integer> playerDao = getPlayerDao();
+            Player player = new Player("Roger");
+            playerDao.create(player);
+            player = new Player("Toni");
+            playerDao.create(player);
+            player = new Player("Tobi");
+            playerDao.create(player);
+            player = new Player("Michi");
+            playerDao.create(player);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            Dao<PlayerTeam, Integer> teamPlayerDao = getPlayerTeamDao();
+            PlayerTeam teamPlayer = new PlayerTeam(1,1);
+            teamPlayerDao.create(teamPlayer);
+            teamPlayer = new PlayerTeam(2,1);
+            teamPlayerDao.create(teamPlayer);
+            teamPlayer = new PlayerTeam(3,2);
+            teamPlayerDao.create(teamPlayer);
+            teamPlayer = new PlayerTeam(4,2);
+            teamPlayerDao.create(teamPlayer);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -85,23 +113,32 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * Returns the Database Access Object (DAO) for our Player class. It will create it or just give the cached
      * value.
      */
-    public Dao<Player, Integer> getDao() throws SQLException {
+    public Dao<Player, Integer> getPlayerDao() throws SQLException {
         if (simpleDao == null) {
             simpleDao = getDao(Player.class);
         }
         return simpleDao;
     }
 
+    public Dao<Team, Integer> getTeamDao() throws SQLException {
+
+        if (simpleDao == null) {
+            simpleDao = getDao(Team.class);
+        }
+        return simpleDao;
+    }
+
+    public Dao<PlayerTeam, Integer> getPlayerTeamDao() throws SQLException {
+
+        if (simpleDao == null) {
+            simpleDao = getDao(PlayerTeam.class);
+        }
+        return simpleDao;
+    }
     /**
      * Returns the RuntimeExceptionDao (Database Access Object) version of a Dao for our Player class. It will
      * create it or just give the cached value. RuntimeExceptionDao only through RuntimeExceptions.
      */
-    public RuntimeExceptionDao<Player, Integer> getPlayerDao() {
-        if (simpleRuntimeDao == null) {
-            simpleRuntimeDao = getRuntimeExceptionDao(Player.class);
-        }
-        return simpleRuntimeDao;
-    }
 
     /**
      * Close the database connections and clear any cached DAOs.
