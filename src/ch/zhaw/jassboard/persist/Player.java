@@ -15,8 +15,8 @@ import com.j256.ormlite.field.DatabaseField;
  */
 public class Player {
     @DatabaseField(generatedId = true)
-    private Integer playerID;
-    @DatabaseField
+    public Integer playerID;
+    @DatabaseField(index = true)
     private String playerName;
 
     //Statistics
