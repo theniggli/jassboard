@@ -39,24 +39,20 @@ public class ViewTeamList extends OrmLiteBaseActivity<DatabaseHelper> {
         ListView teamList = (ListView) findViewById(R.id.teamList);
 
         //ArrayList<Team> teamArrayList = dbH.getTeamList();
-        try {
-            Dao<Team, Integer> dao = getHelper().getTeamDao();
-            ArrayList<Team> teamArrayList = (ArrayList) dao.queryForAll();
-            TeamListAdapter<Team> arrayAdapter = new TeamListAdapter<Team>(this, teamArrayList);
-            teamList.setAdapter(arrayAdapter);
-            teamList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String teamID = "" + ((TeamListView) view).getTeamId();
+        RuntimeExceptionDao<Team, Integer> dao = getHelper().getTeamDao();
+        ArrayList<Team> teamArrayList = (ArrayList) dao.queryForAll();
+        TeamListAdapter<Team> arrayAdapter = new TeamListAdapter<Team>(this, teamArrayList);
+        teamList.setAdapter(arrayAdapter);
+        teamList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String teamID = "" + ((TeamListView) view).getTeamId();
 
-                    Intent myIntent = new Intent(ViewTeamList.this, ViewTeam.class);
-                    myIntent.putExtra("teamID", teamID);
-                    ViewTeamList.this.startActivity(myIntent);
+                Intent myIntent = new Intent(ViewTeamList.this, ViewTeam.class);
+                myIntent.putExtra("teamID", teamID);
+                ViewTeamList.this.startActivity(myIntent);
 
-                }
-            });
-        } catch (java.sql.SQLException e) {
-            throw new RuntimeException(e);
-        }
+            }
+        });
     }
 
     public void addTeam(View view) {

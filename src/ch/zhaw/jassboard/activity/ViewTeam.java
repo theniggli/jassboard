@@ -13,6 +13,7 @@ import ch.zhaw.jassboard.view.PlayerListAdapter;
 import ch.zhaw.jassboard.view.TeamView;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import java.util.ArrayList;
 
@@ -36,19 +37,16 @@ public class ViewTeam extends OrmLiteBaseActivity<DatabaseHelper> {
         Integer teamID = Integer.parseInt(intent.getStringExtra("teamID")); //if it's a string you stored.
 
 
-        try {
-            Dao<Team, Integer> dao = getHelper().getTeamDao();
-            Team team = dao.queryForId(teamID);
-            TeamView tv = new TeamView(this, team);
-            LinearLayout layout = (LinearLayout) findViewById(R.id.viewteamLinearLayout);
-            layout.addView(tv);
-        } catch (java.sql.SQLException e) {
-            throw new RuntimeException(e);
-        }
+        RuntimeExceptionDao<Team, Integer> dao = getHelper().getTeamDao();
+        Team team = dao.queryForId(teamID);
+        TeamView tv = new TeamView(this, team);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.viewteamLinearLayout);
+        layout.addView(tv);
 
-      //  ListView teamPlayerList = (ListView) findViewById(R.id.teamPlayerList);
-      //  ArrayList<Player> teamPlayer = dbH.getTeamPlayers(Integer.parseInt(teamID));
-      //  PlayerListAdapter<Player> arrayAdapter2 = new PlayerListAdapter<Player>(this, teamPlayer);
-      //  teamPlayerList.setAdapter(arrayAdapter2);
+
+        //  ListView teamPlayerList = (ListView) findViewById(R.id.teamPlayerList);
+        //  ArrayList<Player> teamPlayer = dbH.getTeamPlayers(Integer.parseInt(teamID));
+        //  PlayerListAdapter<Player> arrayAdapter2 = new PlayerListAdapter<Player>(this, teamPlayer);
+        //  teamPlayerList.setAdapter(arrayAdapter2);
     }
 }

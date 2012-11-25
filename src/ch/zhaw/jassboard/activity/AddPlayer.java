@@ -11,7 +11,7 @@ import ch.zhaw.jassboard.persist.DataBaseHandler;
 
 /**
  * Created with IntelliJ IDEA.
- * User: john
+ * User: niggli
  * Date: 11/5/12
  * Time: 10:20 AM
  * To change this template use File | Settings | File Templates.

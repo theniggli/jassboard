@@ -58,6 +58,25 @@ public class Team {
 
     public Team(String Name) {
         this.teamName = Name;
+        this.gamesPlayedSchieber = 0;
+        this.gamesPlayedCoiffeur = 0;
+        this.gamesPlayedDifferenzler = 0;
+        this.gamesWonSchieber = 0;
+        this.gamesWonCoiffeur = 0;
+        this.gamesWonDifferenzler = 0;
+        this.roundsPlayedSchieber = 0;
+        this.roundsPlayedCoiffeur = 0;
+        this.roundsPlayedDifferenzler = 0;
+        this.roundsWonSchieber = 0;
+        this.roundsWonCoiffeur = 0;
+        this.roundsWonDifferenzler = 0;
+        this.pointsMadeSchieber = 0;
+        this.pointsMadeCoiffeur = 0;
+        this.pointsMadeDifferenzler = 0;
+        this.pointsMaxSchieber = 0;
+        this.pointsMaxCoiffeur = 0;
+        this.pointsMaxDifferenzler = 0;
+
     }
 
     public Team(Integer id, String Name) {

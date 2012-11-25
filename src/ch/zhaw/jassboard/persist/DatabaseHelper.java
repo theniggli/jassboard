@@ -29,13 +29,18 @@ import java.sql.SQLException;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     // name of the database file for your application -- change to something appropriate for your app
-    private static final String DATABASE_NAME = "JassBoard5";
+    private static final String DATABASE_NAME = "JassBoard";
     // any time you make changes to your database objects, you may have to increase the database version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // the DAO object we use to access the Player table
-    private Dao simpleDao = null;
-    private RuntimeExceptionDao<Player, Integer> simpleRuntimeDao = null;
+//    private Dao simpleDao = null;
+//    private RuntimeExceptionDao<Player, Integer> simpleRuntimeDao = null;
+
+    private RuntimeExceptionDao<Player, Integer> playerRuntimeDao = null;
+    private RuntimeExceptionDao<Team, Integer> teamRuntimeDao = null;
+    private RuntimeExceptionDao<PlayerTeam, Integer> playerTeamRuntimeDao = null;
+
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
@@ -55,97 +60,95 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             throw new RuntimeException(e);
         }
 
-        try {
-            Dao<Team, Integer> teamDao = getTeamDao();
-            Team team = new Team("TeamJongIl");
-            teamDao.create(team);
-            team = new Team("TeamMao");
-            teamDao.create(team);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        RuntimeExceptionDao<Team, Integer> teamDao = getTeamDao();
+        Team team = new Team("TeamJongIl");
+        teamDao.create(team);
+        team = new Team("TeamMao");
+        teamDao.create(team);
 
-        try {
-            Dao<Player, Integer> playerDao = getPlayerDao();
-            Player player = new Player("Roger");
-            playerDao.create(player);
-            player = new Player("Toni");
-            playerDao.create(player);
-            player = new Player("Tobi");
-            playerDao.create(player);
-            player = new Player("Michi");
-            playerDao.create(player);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        RuntimeExceptionDao<Player, Integer> playerDao = getPlayerDao();
+        Player player = new Player("Roger");
+        playerDao.create(player);
+        player = new Player("Toni");
+        playerDao.create(player);
+        player = new Player("Tobi");
+        playerDao.create(player);
+        player = new Player("Michi");
+        playerDao.create(player);
 
-        try {
-            Dao<PlayerTeam, Integer> teamPlayerDao = getPlayerTeamDao();
-            PlayerTeam teamPlayer = new PlayerTeam(1,1);
-            teamPlayerDao.create(teamPlayer);
-            teamPlayer = new PlayerTeam(2,1);
-            teamPlayerDao.create(teamPlayer);
-            teamPlayer = new PlayerTeam(3,2);
-            teamPlayerDao.create(teamPlayer);
-            teamPlayer = new PlayerTeam(4,2);
-            teamPlayerDao.create(teamPlayer);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        RuntimeExceptionDao<PlayerTeam, Integer> teamPlayerDao = getPlayerTeamDao();
+        PlayerTeam teamPlayer = new PlayerTeam(1, 1);
+        teamPlayerDao.create(teamPlayer);
+        teamPlayer = new PlayerTeam(2, 1);
+        teamPlayerDao.create(teamPlayer);
+        teamPlayer = new PlayerTeam(3, 2);
+        teamPlayerDao.create(teamPlayer);
+        teamPlayer = new PlayerTeam(4, 2);
+        teamPlayerDao.create(teamPlayer);
     }
 
-    /**
-     * This is called when your application is upgraded and it has a higher version number. This allows you to adjust
-     * the various data to match the new version number.
-     */
     @Override
     public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
             TableUtils.dropTable(connectionSource, Player.class, true);
-            // after we drop the old databases, we create the new ones
+            TableUtils.dropTable(connectionSource, Team.class, true);
+            TableUtils.dropTable(connectionSource, PlayerTeam.class, true);
+
             onCreate(db, connectionSource);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    /**
-     * Returns the Database Access Object (DAO) for our Player class. It will create it or just give the cached
-     * value.
-     */
-    public Dao<Player, Integer> getPlayerDao() throws SQLException {
-        if (simpleDao == null) {
-            simpleDao = getDao(Player.class);
+//    public Dao<Player, Integer> getPlayerDao() throws SQLException {
+//        if (playerDao == null) {
+//            playerDao = getDao(Player.class);
+//        }
+//        return playerDao;
+//    }
+//
+//    public Dao<Team, Integer> getTeamDao() throws SQLException {
+//
+//        if (simpleDao == null) {
+//            simpleDao = getDao(Team.class);
+//        }
+//        return simpleDao;
+//    }
+//
+//    public Dao<PlayerTeam, Integer> getPlayerTeamDao() throws SQLException {
+//
+//        if (simpleDao == null) {
+//            simpleDao = getDao(PlayerTeam.class);
+//        }
+//        return simpleDao;
+//    }
+
+    public RuntimeExceptionDao<Player, Integer> getPlayerDao() {
+        if (playerRuntimeDao == null) {
+            playerRuntimeDao = getRuntimeExceptionDao(Player.class);
         }
-        return simpleDao;
+        return playerRuntimeDao;
     }
 
-    public Dao<Team, Integer> getTeamDao() throws SQLException {
-
-        if (simpleDao == null) {
-            simpleDao = getDao(Team.class);
+    public RuntimeExceptionDao<Team, Integer> getTeamDao() {
+        if (teamRuntimeDao == null) {
+            teamRuntimeDao = getRuntimeExceptionDao(Team.class);
         }
-        return simpleDao;
+        return teamRuntimeDao;
     }
 
-    public Dao<PlayerTeam, Integer> getPlayerTeamDao() throws SQLException {
-
-        if (simpleDao == null) {
-            simpleDao = getDao(PlayerTeam.class);
+    public RuntimeExceptionDao<PlayerTeam, Integer> getPlayerTeamDao() {
+        if (playerTeamRuntimeDao == null) {
+            playerTeamRuntimeDao = getRuntimeExceptionDao(PlayerTeam.class);
         }
-        return simpleDao;
+        return playerTeamRuntimeDao;
     }
-    /**
-     * Returns the RuntimeExceptionDao (Database Access Object) version of a Dao for our Player class. It will
-     * create it or just give the cached value. RuntimeExceptionDao only through RuntimeExceptions.
-     */
 
-    /**
-     * Close the database connections and clear any cached DAOs.
-     */
     @Override
     public void close() {
         super.close();
-        simpleRuntimeDao = null;
+        playerRuntimeDao = null;
+        teamRuntimeDao = null;
+        playerTeamRuntimeDao = null;
     }
 }

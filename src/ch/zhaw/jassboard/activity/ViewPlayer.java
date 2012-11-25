@@ -10,6 +10,7 @@ import ch.zhaw.jassboard.persist.Player;
 import ch.zhaw.jassboard.view.PlayerView;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,14 +30,11 @@ public class ViewPlayer extends OrmLiteBaseActivity<DatabaseHelper> {
         Intent intent = getIntent();
         Integer playerID = Integer.parseInt(intent.getStringExtra("playerID")); //if it's a string you stored.
 
-        try {
-            Dao<Player, Integer> dao = getHelper().getPlayerDao();
-            Player player = dao.queryForId(playerID);
-            PlayerView pv = new PlayerView(this, player);
-            LinearLayout layout = (LinearLayout) findViewById(R.id.viewplayerLinearLayout);
-            layout.addView(pv);
-        } catch (java.sql.SQLException e) {
-            throw new RuntimeException(e);
-        }
+        RuntimeExceptionDao<Player, Integer> dao = getHelper().getPlayerDao();
+        Player player = dao.queryForId(playerID);
+        PlayerView pv = new PlayerView(this, player);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.viewplayerLinearLayout);
+        layout.addView(pv);
+
     }
 }

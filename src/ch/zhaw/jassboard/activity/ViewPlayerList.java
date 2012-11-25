@@ -33,24 +33,20 @@ public class ViewPlayerList extends OrmLiteBaseActivity<DatabaseHelper> {
         setContentView(R.layout.viewplayerlist);
         ListView playerList = (ListView) findViewById(R.id.playerList);
 
-        try {
-            Dao<Player, Integer> dao = getHelper().getPlayerDao();
-            ArrayList<Player> playerArrayList = (ArrayList) dao.queryForAll();
-            PlayerListAdapter<Player> arrayAdapter = new PlayerListAdapter<Player>(this, playerArrayList);
 
-            playerList.setAdapter(arrayAdapter);
-            playerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String playerID = "" + ((PlayerListView) view).getPlayerId();
-                    Intent myIntent = new Intent(ViewPlayerList.this, ViewPlayer.class);
-                    myIntent.putExtra("playerID", playerID);
-                    ViewPlayerList.this.startActivity(myIntent);
-                }
-            });
-        } catch (java.sql.SQLException e) {
-            throw new RuntimeException(e);
+        RuntimeExceptionDao<Player, Integer> dao = getHelper().getPlayerDao();
+        ArrayList<Player> playerArrayList = (ArrayList) dao.queryForAll();
+        PlayerListAdapter<Player> arrayAdapter = new PlayerListAdapter<Player>(this, playerArrayList);
 
-        }
+        playerList.setAdapter(arrayAdapter);
+        playerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String playerID = "" + ((PlayerListView) view).getPlayerId();
+                Intent myIntent = new Intent(ViewPlayerList.this, ViewPlayer.class);
+                myIntent.putExtra("playerID", playerID);
+                ViewPlayerList.this.startActivity(myIntent);
+            }
+        });
     }
 
     //layout setplayer
