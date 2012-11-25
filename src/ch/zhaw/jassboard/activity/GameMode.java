@@ -1,5 +1,6 @@
 package ch.zhaw.jassboard.activity;
 
+import ch.zhaw.R;
 import android.os.Bundle;
 import ch.zhaw.jassboard.util.DatabaseHelper;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
@@ -16,8 +17,7 @@ import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
 
     public void onCreate(Bundle savedInstanceState) {
-       // super.onCreate(savedInstanceState);
-       // setContentView(R.layout.main);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.gamemode);
     }
-
 }

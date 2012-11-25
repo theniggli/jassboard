@@ -31,8 +31,8 @@ public class Menu extends OrmLiteBaseActivity<DatabaseHelper> {
     }
 
     public void startGame(View view) {
-        //setContentView(R.layout.startGame);
-
+        Intent myIntent = new Intent(Menu.this, GameMode.class);
+        Menu.this.startActivity(myIntent);
     }
 
     public void setPlayer(View view) {
