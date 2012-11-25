@@ -49,7 +49,7 @@ public class TeamListView extends LinearLayout {
         return mId.getText().toString();
     }
 
-    public Number getTeamId() {
+    public Integer getTeamId() {
         return team.getTeamID();
     }
 

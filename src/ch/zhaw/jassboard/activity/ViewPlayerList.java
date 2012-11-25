@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import ch.zhaw.R;
+import ch.zhaw.jassboard.persist.PlayerTeam;
 import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.persist.Player;
 import ch.zhaw.jassboard.view.PlayerListAdapter;
@@ -17,6 +18,7 @@ import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -59,6 +61,11 @@ public class ViewPlayerList extends OrmLiteBaseActivity<DatabaseHelper> {
                         // do something when the OK button is clicked
                         RuntimeExceptionDao<Player, Integer> playerDao = getHelper().getPlayerDao();
                         playerDao.deleteById(playerID);
+                        //delete from teamplayer
+                        RuntimeExceptionDao<PlayerTeam, Integer> teamplayerDao = getHelper().getPlayerTeamDao();
+                        List<PlayerTeam> playerteamArrayList = teamplayerDao.queryForEq("playerID", playerID);
+                        teamplayerDao.delete(playerteamArrayList);
+                        //readable Toast message
                         Toast.makeText(getApplicationContext(), R.string.player + ": " + playerID + " " + R.string.deleted + ".", Toast.LENGTH_SHORT).show();
                         //reload Activity
                         refresh();

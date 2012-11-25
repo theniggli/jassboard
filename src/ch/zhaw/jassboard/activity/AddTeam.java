@@ -26,6 +26,7 @@ public class AddTeam extends OrmLiteBaseActivity<DatabaseHelper> {
 
         Spinner spinnerPlayer1 = (Spinner) findViewById(R.id.player1);
         Spinner spinnerPlayer2 = (Spinner) findViewById(R.id.player2);
+
 //        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, playerIDnName);  //array you are populating
 //        arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 //        spinnerPlayer1.setAdapter(arrayAdapter);

@@ -13,14 +13,14 @@ public class PlayerTeam {
     @DatabaseField(generatedId = true)
     public Integer PlayerTeamID;
     @DatabaseField
-    private Integer playerID;
+    private Integer playerID;      //used in ViewPlayerList
     @DatabaseField
-    private Integer teamID;
+    private Integer teamID;      //used in ViewTeamList
 
     public PlayerTeam() {
     }
 
-    public PlayerTeam(Integer playerID,Integer teamID) {
+    public PlayerTeam(Integer playerID, Integer teamID) {
         this.playerID = playerID;
         this.teamID = teamID;
     }
