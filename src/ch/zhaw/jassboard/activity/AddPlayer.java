@@ -33,11 +33,10 @@ public class AddPlayer extends OrmLiteBaseActivity<DatabaseHelper> {
             RuntimeExceptionDao<Player, Integer> playerDao = getHelper().getPlayerDao();
             Player player = new Player(playerName);
             playerDao.create(player);
-//            Intent refresh = new Intent(this, ViewTeamList.class);
-//            startActivity(refresh);
+
             this.finish();
         } else {
-            Toast.makeText(getApplicationContext(), "Blank Playername", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), " " + R.string.blankplayername, Toast.LENGTH_SHORT).show();
         }
     }
 }

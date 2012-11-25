@@ -49,6 +49,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             throw new RuntimeException(e);
         }
 
+        //--------------------------------------------------------------------------------------
+        //insert dummy Values
+        //--------------------------------------------------------------------------------------
         RuntimeExceptionDao<Team, Integer> teamDao = getTeamDao();
         Team team = new Team("TeamJongIl");
         teamDao.create(team);
@@ -74,6 +77,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         teamPlayerDao.create(teamPlayer);
         teamPlayer = new PlayerTeam(4, 2);
         teamPlayerDao.create(teamPlayer);
+        //--------------------------------------------------------------------------------------
+        //insert dummy Values END
+        //--------------------------------------------------------------------------------------
     }
 
     @Override

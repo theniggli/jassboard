@@ -67,13 +67,13 @@ public class ViewTeamList extends OrmLiteBaseActivity<DatabaseHelper> {
                         teamDao.deleteById(teamID);
                         //delete from teamplayer
                         RuntimeExceptionDao<PlayerTeam, Integer> teamplayerDao = getHelper().getPlayerTeamDao();
-                        List<PlayerTeam> playerteamArrayList =  teamplayerDao.queryForEq("teamID",teamID);
+                        List<PlayerTeam> playerteamArrayList = teamplayerDao.queryForEq("teamID", teamID);
                         teamplayerDao.delete(playerteamArrayList);
 
                         //TODO
                         //readable Toast message
-                        String message = new String("-" + R.string.team + ": " + teamID + " " + R.string.deleted + ".") ;
-                        Toast.makeText(getApplicationContext(), message , Toast.LENGTH_SHORT).show();
+                        String message = new String("-" + R.string.team + ": " + teamID + " " + R.string.deleted + ".");
+                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                         //reload Activity
                         refresh();
                     }
@@ -99,5 +99,9 @@ public class ViewTeamList extends OrmLiteBaseActivity<DatabaseHelper> {
         Intent refresh = new Intent(this, ViewTeamList.class);
         startActivity(refresh);
         this.finish();
+    }
+
+    public void onResume(Bundle savedInstanceState) {
+        onCreate(savedInstanceState);
     }
 }

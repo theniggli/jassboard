@@ -1,10 +1,19 @@
 package ch.zhaw.jassboard.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.*;
 import ch.zhaw.R;
+import ch.zhaw.jassboard.persist.Player;
+import ch.zhaw.jassboard.persist.PlayerTeam;
+import ch.zhaw.jassboard.persist.Team;
 import ch.zhaw.jassboard.util.DatabaseHelper;
+import ch.zhaw.jassboard.view.PlayerListAdapter;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
+
+import java.util.ArrayList;
 
 
 /**
@@ -21,49 +30,51 @@ public class AddTeam extends OrmLiteBaseActivity<DatabaseHelper> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addteam);
 
-        //populate spinners
-//        ArrayList<String> playerIDnName = dbH.getplayerIDnName();
-
         Spinner spinnerPlayer1 = (Spinner) findViewById(R.id.player1);
         Spinner spinnerPlayer2 = (Spinner) findViewById(R.id.player2);
 
-//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, playerIDnName);  //array you are populating
-//        arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-//        spinnerPlayer1.setAdapter(arrayAdapter);
-//        spinnerPlayer2.setAdapter(arrayAdapter);
+        //populate spinners
+        RuntimeExceptionDao<Player, Integer> dao = getHelper().getPlayerDao();
+        ArrayList<Player> playerArrayList = (ArrayList) dao.queryForAll();
+        PlayerListAdapter<Player> arrayAdapter = new PlayerListAdapter<Player>(this, playerArrayList);
+
+        spinnerPlayer1.setAdapter(arrayAdapter);
+        spinnerPlayer2.setAdapter(arrayAdapter);
     }
 
-    //    public void addNewTeam(View view) {
-//        Spinner spinnerPlayer1 = (Spinner) findViewById(R.id.player1);
-//        Spinner spinnerPlayer2 = (Spinner) findViewById(R.id.player2);
-//        String player1 = spinnerPlayer1.getSelectedItem().toString();
-//        String player2 = spinnerPlayer2.getSelectedItem().toString();
-//        String player1_name = player1.substring(0, player1.lastIndexOf('-') -1 );
-//        String player2_name = player2.substring(0, player2.lastIndexOf('-') -1 );
-//        int player1_id = Integer.parseInt(player1.substring(player1.lastIndexOf('-') + 2));
-//        int player2_id = Integer.parseInt(player2.substring(player2.lastIndexOf('-') + 2));
-//
-//        EditText edit = (EditText) findViewById(R.id.teamName);
-//        String teamName = edit.getText().toString();
-//
-//        if (teamName != "") {
-//            if (player1_id != player2_id) {
-//                if (dbH.playerExists(player1_id) && dbH.playerExists(player1_id)) {
-//                    if (dbH.addTeam(teamName,player1_id,player2_id)) {
-//                        Toast.makeText(getApplicationContext(), "Player added", Toast.LENGTH_SHORT).show();
-//                        Intent refresh = new Intent(this, ViewTeamList.class);
-//                        startActivity(refresh);
-//                        this.finish();
-//                    }   else {
-//                        Toast.makeText(getApplicationContext(), "Couldn't add Team", Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                    Toast.makeText(getApplicationContext(), "Player does not exist", Toast.LENGTH_SHORT).show();
-//                }
-//            } else {
-//                Toast.makeText(getApplicationContext(), "Selectet same Player twice", Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//   }
+    public void addNewTeam(View view) {
+        Spinner spinnerPlayer1 = (Spinner) findViewById(R.id.player1);
+        Spinner spinnerPlayer2 = (Spinner) findViewById(R.id.player2);
+        Player player1 = (Player) spinnerPlayer1.getSelectedItem();
+        Player player2 = (Player) spinnerPlayer2.getSelectedItem();
+
+        EditText edit = (EditText) findViewById(R.id.teamName);
+        String teamName = edit.getText().toString();
+
+        if (teamName != "") {
+            if (player1.getPlayerID() != player2.getPlayerID()) {
+                //create team
+                RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
+                Team team = new Team(teamName);
+                teamDAO.create(team);
+                //create PlayerTeam
+                RuntimeExceptionDao<PlayerTeam, Integer> playerTeamDAO = getHelper().getPlayerTeamDao();
+                //player1
+                PlayerTeam playerteam = new PlayerTeam(player1.getPlayerID(), team.getTeamID());
+                playerTeamDAO.create(playerteam);
+                //player2
+                playerteam = new PlayerTeam(player2.getPlayerID(), team.getTeamID());
+                playerTeamDAO.create(playerteam);
+                Toast.makeText(getApplicationContext(), R.string.team + " " + team.getTeamName() + " " + R.string.created + ".", Toast.LENGTH_SHORT).show();
+
+                this.finish();
+
+            } else {
+                Toast.makeText(getApplicationContext(), R.string.sameplayerselectedtwice, Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), R.string.blankteamname, Toast.LENGTH_SHORT).show();
+        }
+    }
 
 }

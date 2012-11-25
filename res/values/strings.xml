@@ -22,4 +22,8 @@
     <string name="cancel">Cancel</string>
     <string name="player">Player</string>
     <string name="team">Team</string>
+    <string name="blankteamname">Blank Teamname</string>
+    <string name="blankplayername">Blank Playername</string>
+    <string name="sameplayerselectedtwice">Same Player selected twice</string>
+    <string name="created">created</string>
 </resources>

@@ -40,15 +40,6 @@ public class PlayerListAdapter<Player> extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        //PlayeraView btv;
-        // if (convertView == null) {
-        //     btv = new PlayeraView(mContext, (Player) mItems.get(position));
-        // } else {                  // Don't want this want Player in view ^^
-        //     btv = (PlayeraView) convertView;
-        //     btv.setNameText(mItems.get(position).getName());
-        //     btv.setIdText(mItems.get(position).getId().toString());
-        // }
-
         PlayerListView btv = new PlayerListView(mContext, (ch.zhaw.jassboard.persist.Player) mItems.get(position));
         return btv;
     }

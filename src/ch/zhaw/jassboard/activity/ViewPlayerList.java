@@ -86,6 +86,10 @@ public class ViewPlayerList extends OrmLiteBaseActivity<DatabaseHelper> {
         this.onCreate(s);
     }
 
+    public void onStart(Bundle s) {
+        this.onCreate(s);
+    }
+
     //layout setplayer
     public void addPlayer(View view) {
         Intent myIntent = new Intent(ViewPlayerList.this, AddPlayer.class);

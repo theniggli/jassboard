@@ -15,7 +15,7 @@ public class PlayerTeam {
     @DatabaseField
     private Integer playerID;      //used in ViewPlayerList
     @DatabaseField
-    private Integer teamID;      //used in ViewTeamList
+    private Integer teamID;      //used in ViewTeamList,ViewTeam
 
     public PlayerTeam() {
     }
