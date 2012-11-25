@@ -15,53 +15,30 @@ import ch.zhaw.jassboard.persist.Team;
  * To change this template use File | Settings | File Templates.
  */
 public class TeamView extends LinearLayout {
-    private TextView mName, mId;
-    private Team team;  //I know the player in here may is stupid.. but it works this way...
+    private TextView nameTextView, idTextView;
+
+    private int teamID;
+    private String teamName;
 
     public TeamView(Context context, Team team) {
         super(context);
-        this.team = team;  //I want this in here for easy return to Menu
         this.setOrientation(VERTICAL);
-        mName = new TextView(context);
-        mId = new TextView(context);
+        nameTextView = new TextView(context);
+        idTextView = new TextView(context);
 
-        String name = team.getTeamName();
-        mName.setText(name);
-        mName.setTextSize(19);
-        mName.setTextColor(Color.GREEN);
-        mName.setTypeface(Typeface.SANS_SERIF);
+        teamName = team.getTeamName();
+        nameTextView.setText(teamName);
+        nameTextView.setTextSize(19);
+        nameTextView.setTextColor(Color.CYAN);
+        nameTextView.setTypeface(Typeface.SANS_SERIF);
 
-        Number id = team.getTeamID();
-        mId.setText(id.toString());
-        mId.setTextSize(14);
-        mId.setTextColor(Color.RED);
-        mId.setTypeface(Typeface.SANS_SERIF);
+        teamID = team.getTeamID();
+        idTextView.setText("" + teamID);
+        idTextView.setTextSize(14);
+        idTextView.setTextColor(Color.RED);
+        idTextView.setTypeface(Typeface.SANS_SERIF);
 
-        addView(mName, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        addView(mId, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-    }
-
-    public String getNameText() {
-        return mName.getText().toString();
-    }
-
-    public String getIdText() {
-        return mId.getText().toString();
-    }
-
-    public Number getTeamId() {
-        return team.getTeamID();
-    }
-
-    public void setNameText(String name) {
-        mName.setText(name);
-    }
-
-    public void setIdText(String id) {
-        mId.setText(id);
-    }
-
-    public Team getTeam(){
-        return team;
+        addView(nameTextView, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        addView(idTextView, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
     }
 }
