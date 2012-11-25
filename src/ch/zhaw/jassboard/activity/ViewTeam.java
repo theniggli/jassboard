@@ -2,20 +2,13 @@ package ch.zhaw.jassboard.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import ch.zhaw.R;
-import ch.zhaw.jassboard.persist.DatabaseHelper;
-import ch.zhaw.jassboard.persist.Player;
+import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.persist.Team;
-import ch.zhaw.jassboard.view.PlayerListAdapter;
 import ch.zhaw.jassboard.view.TeamView;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
-import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
-
-import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,7 +20,6 @@ import java.util.ArrayList;
 
 public class ViewTeam extends OrmLiteBaseActivity<DatabaseHelper> {
     //private static final String TAG = "Menu";
-    //private DataBaseHandler dbH = new DataBaseHandler(this);
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

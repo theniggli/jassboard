@@ -1,25 +1,18 @@
 package ch.zhaw.jassboard.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import ch.zhaw.R;
-import ch.zhaw.jassboard.persist.DataBaseHandler;
-import ch.zhaw.jassboard.persist.DatabaseHelper;
-import ch.zhaw.jassboard.persist.Player;
+import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.persist.Team;
-import ch.zhaw.jassboard.view.PlayerView;
 import ch.zhaw.jassboard.view.TeamListAdapter;
 import ch.zhaw.jassboard.view.TeamListView;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
-import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -30,8 +23,6 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 public class ViewTeamList extends OrmLiteBaseActivity<DatabaseHelper> {
-    //private static final String TAG = "Menu";
-    //private DataBaseHandler dbH = new DataBaseHandler(this);
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

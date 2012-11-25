@@ -1,9 +1,5 @@
 package ch.zhaw.jassboard.persist;
 
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import com.j256.ormlite.field.DatabaseField;
 
 /**

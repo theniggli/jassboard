@@ -2,18 +2,11 @@ package ch.zhaw.jassboard.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import ch.zhaw.R;
-import ch.zhaw.jassboard.persist.DataBaseHandler;
-import ch.zhaw.jassboard.persist.DatabaseHelper;
-import ch.zhaw.jassboard.persist.Player;
+import ch.zhaw.jassboard.util.DatabaseHelper;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
-import com.j256.ormlite.dao.RuntimeExceptionDao;
 
-import java.util.List;
-import java.util.Random;
 
 
 /**
@@ -25,9 +18,7 @@ import java.util.Random;
  */
 
 public class Menu extends OrmLiteBaseActivity<DatabaseHelper> {
-   // private DataBaseHandler dbH = new DataBaseHandler(this);
 
-    private final String LOG_TAG = getClass().getSimpleName();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

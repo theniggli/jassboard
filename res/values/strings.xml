@@ -13,4 +13,11 @@
     <string name="create_team">Create team</string>
     <string name="selectplayer1">Select first teammember</string>
     <string name="selectplayer2">Select second teammember</string>
+    <string name="deletepl">Delete Player</string>
+    <string name="deleteplayer">Do you want to delete this Player?</string>
+    <string name="delete">Delete</string>
+    <string name="deleted">deleted</string>
+    <string name="cancel">Cancel</string>
+    <string name="player">Player</string>
+
 </resources>

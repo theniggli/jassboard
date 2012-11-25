@@ -13,7 +13,7 @@ public class PlayerTeam {
     @DatabaseField(generatedId = true)
     public Integer PlayerTeamID;
     @DatabaseField
-    public Integer playerID;
+    private Integer playerID;
     @DatabaseField
     private Integer teamID;
 
@@ -25,4 +25,15 @@ public class PlayerTeam {
         this.teamID = teamID;
     }
 
+    public Integer getPlayerTeamID() {
+        return PlayerTeamID;
+    }
+
+    public Integer getPlayerID() {
+        return playerID;
+    }
+
+    public Integer getTeamID() {
+        return teamID;
+    }
 }

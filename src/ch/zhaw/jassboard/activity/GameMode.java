@@ -1,11 +1,8 @@
 package ch.zhaw.jassboard.activity;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import ch.zhaw.R;
-import ch.zhaw.jassboard.persist.DataBaseHandler;
+import ch.zhaw.jassboard.util.DatabaseHelper;
+import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 
 
 /**
@@ -16,8 +13,7 @@ import ch.zhaw.jassboard.persist.DataBaseHandler;
  * To change this template use File | Settings | File Templates.
  */
 
-public class GameMode extends Activity {
-   // private DataBaseHandler dbH = new DataBaseHandler(this);
+public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
 
     public void onCreate(Bundle savedInstanceState) {
        // super.onCreate(savedInstanceState);
