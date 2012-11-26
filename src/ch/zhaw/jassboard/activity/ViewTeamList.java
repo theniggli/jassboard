@@ -75,7 +75,7 @@ public class ViewTeamList extends OrmLiteBaseActivity<DatabaseHelper> {
                         String message = new String("-" + R.string.team + ": " + teamID + " " + R.string.deleted + ".");
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                         //reload Activity
-                        refresh();
+                        reloadData();
                     }
                 });
                 myAlertDialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -94,14 +94,17 @@ public class ViewTeamList extends OrmLiteBaseActivity<DatabaseHelper> {
         ViewTeamList.this.startActivity(myIntent);
     }
 
-    public void refresh() {
-        //uncool but working
-        Intent refresh = new Intent(this, ViewTeamList.class);
-        startActivity(refresh);
-        this.finish();
+    @Override
+    protected void onResume() {
+        super.onResume();
+        reloadData();
     }
 
-    public void onResume(Bundle savedInstanceState) {
-        onCreate(savedInstanceState);
+    public void reloadData() {
+        ListView teamList = (ListView) findViewById(R.id.teamList);
+        RuntimeExceptionDao<Team, Integer> dao = getHelper().getTeamDao();
+        ArrayList<Team> teamArrayList = (ArrayList) dao.queryForAll();
+        TeamListAdapter<Team> arrayAdapter = new TeamListAdapter<Team>(this, teamArrayList);
+        teamList.setAdapter(arrayAdapter);
     }
 }

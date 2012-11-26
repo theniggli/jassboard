@@ -32,14 +32,13 @@ public class ViewPlayerList extends OrmLiteBaseActivity<DatabaseHelper> {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewplayerlist);
+
         ListView playerList = (ListView) findViewById(R.id.playerList);
-
-
         RuntimeExceptionDao<Player, Integer> dao = getHelper().getPlayerDao();
         ArrayList<Player> playerArrayList = (ArrayList) dao.queryForAll();
         PlayerListAdapter<Player> arrayAdapter = new PlayerListAdapter<Player>(this, playerArrayList);
-
         playerList.setAdapter(arrayAdapter);
+
         playerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String playerID = "" + ((PlayerListView) view).getPlayerId();
@@ -68,7 +67,7 @@ public class ViewPlayerList extends OrmLiteBaseActivity<DatabaseHelper> {
                         //readable Toast message
                         Toast.makeText(getApplicationContext(), R.string.player + ": " + playerID + " " + R.string.deleted + ".", Toast.LENGTH_SHORT).show();
                         //reload Activity
-                        refresh();
+                        reloadData();
                     }
                 });
                 myAlertDialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -82,24 +81,23 @@ public class ViewPlayerList extends OrmLiteBaseActivity<DatabaseHelper> {
         });
     }
 
-    public void onResume(Bundle s) {
-        this.onCreate(s);
-    }
-
-    public void onStart(Bundle s) {
-        this.onCreate(s);
-    }
-
     //layout setplayer
     public void addPlayer(View view) {
         Intent myIntent = new Intent(ViewPlayerList.this, AddPlayer.class);
         ViewPlayerList.this.startActivity(myIntent);
     }
 
-    public void refresh() {
-        //uncool but working
-        Intent refresh = new Intent(this, ViewPlayerList.class);
-        startActivity(refresh);
-        this.finish();
+    @Override
+    protected void onResume() {
+        super.onResume();
+        reloadData();
+    }
+
+    public void reloadData() {
+        ListView playerList = (ListView) findViewById(R.id.playerList);
+        RuntimeExceptionDao<Player, Integer> dao = getHelper().getPlayerDao();
+        ArrayList<Player> playerArrayList = (ArrayList) dao.queryForAll();
+        PlayerListAdapter<Player> arrayAdapter = new PlayerListAdapter<Player>(this, playerArrayList);
+        playerList.setAdapter(arrayAdapter);
     }
 }
