@@ -26,6 +26,10 @@
     <string name="blankplayername">Blank Playername</string>
     <string name="sameplayerselectedtwice">Same Player selected twice</string>
     <string name="created">created</string>
+    <string name="player1">Player 1</string>
+    <string name="player2">Player 2</string>
+    <string name="player3">Player 3</string>
+    <string name="player4">Player 4</string>
     <string-array name="game_modes">
         <item>Schieber</item>
         <item>Coiffeur</item>
