@@ -30,24 +30,23 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
             public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 int gamemode = spinnerPlayer1.getSelectedItemPosition();
                 LinearLayout gameModeSchieber = (LinearLayout) findViewById(R.id.gamemodeschieber);
-                LinearLayout gameModeCoiffeur = (LinearLayout) findViewById(R.id.gamemodecoiffeur);
-                LinearLayout gameModeDifferenzler = (LinearLayout) findViewById(R.id.gamemodedifferenzler);
+                LinearLayout gameModewFourPlayers = (LinearLayout) findViewById(R.id.fourplayerselection);
+                LinearLayout gameModewTwoTeams = (LinearLayout) findViewById(R.id.twoteamselection);
 
                 if (gamemode == 0) {
 //                    Schieber
-                    gameModeSchieber.setVisibility(0);
-                    gameModeCoiffeur.setVisibility(1);
-                    gameModeDifferenzler.setVisibility(1);
+                    gameModeSchieber.setVisibility(LinearLayout.VISIBLE);
+                    onRadioButtonClicked(findViewById(R.id.radio_teams));
                 } else if (gamemode == 1) {
 //                    Coiffeur
-                    gameModeSchieber.setVisibility(1);
-                    gameModeCoiffeur.setVisibility(0);
-                    gameModeDifferenzler.setVisibility(1);
+                    gameModeSchieber.setVisibility(LinearLayout.GONE);
+                    gameModewFourPlayers.setVisibility(LinearLayout.VISIBLE);
+                    gameModewTwoTeams.setVisibility(LinearLayout.GONE);
                 } else if (gamemode == 2) {
 //                    Differenzler
-                    gameModeSchieber.setVisibility(1);
-                    gameModeCoiffeur.setVisibility(1);
-                    gameModeDifferenzler.setVisibility(0);
+                    gameModeSchieber.setVisibility(LinearLayout.GONE);
+                    gameModewFourPlayers.setVisibility(LinearLayout.VISIBLE);
+                    gameModewTwoTeams.setVisibility(LinearLayout.GONE);
                 }
             }
 
@@ -55,7 +54,26 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
             public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
+    }
 
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        LinearLayout gameModewFourPlayers = (LinearLayout) findViewById(R.id.fourplayerselection);
+        LinearLayout gameModewTwoTeams = (LinearLayout) findViewById(R.id.twoteamselection);
 
+        switch (view.getId()) {
+            case R.id.radio_players:
+                if (checked) {
+                    gameModewTwoTeams.setVisibility(LinearLayout.GONE);
+                    gameModewFourPlayers.setVisibility(LinearLayout.VISIBLE);
+                }
+                break;
+            case R.id.radio_teams:
+                if (checked) {
+                    gameModewTwoTeams.setVisibility(LinearLayout.VISIBLE);
+                    gameModewFourPlayers.setVisibility(LinearLayout.GONE);
+                }
+                break;
+        }
     }
 }

@@ -22,6 +22,8 @@
     <string name="cancel">Cancel</string>
     <string name="player">Player</string>
     <string name="team">Team</string>
+    <string name="players">Players</string>
+    <string name="teams">Teams</string>
     <string name="blankteamname">Blank Teamname</string>
     <string name="blankplayername">Blank Playername</string>
     <string name="sameplayerselectedtwice">Same Player selected twice</string>
@@ -30,6 +32,8 @@
     <string name="player2">Player 2</string>
     <string name="player3">Player 3</string>
     <string name="player4">Player 4</string>
+    <string name="team1">Team 1</string>
+    <string name="team2">Team 2</string>
     <string-array name="game_modes">
         <item>Schieber</item>
         <item>Coiffeur</item>
