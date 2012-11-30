@@ -15,7 +15,8 @@ import ch.zhaw.jassboard.persist.Team;
  * To change this template use File | Settings | File Templates.
  */
 public class TeamListView extends LinearLayout {
-    private TextView nameTextView, idTextView;
+    private TextView nameTextView;
+//    private TextView idTextView;
 
     private int teamID;
     private String teamName;
@@ -24,22 +25,22 @@ public class TeamListView extends LinearLayout {
         super(context);
         this.setOrientation(VERTICAL);
         nameTextView = new TextView(context);
-        idTextView = new TextView(context);
+//        idTextView = new TextView(context);
 
         teamName = team.getTeamName();
         nameTextView.setText(teamName);
         nameTextView.setTextSize(19);
-        nameTextView.setTextColor(Color.RED);
+        nameTextView.setTextColor(Color.GRAY);
         nameTextView.setTypeface(Typeface.SANS_SERIF);
 
         teamID = team.getTeamID();
-        idTextView.setText("" + teamID);
-        idTextView.setTextSize(14);
-        idTextView.setTextColor(Color.YELLOW);
-        idTextView.setTypeface(Typeface.SANS_SERIF);
+//        idTextView.setText("" + teamID);
+//        idTextView.setTextSize(14);
+//        idTextView.setTextColor(Color.YELLOW);
+//        idTextView.setTypeface(Typeface.SANS_SERIF);
 
         addView(nameTextView, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        addView(idTextView, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+//        addView(idTextView, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
     }
 
     public Integer getTeamId() {

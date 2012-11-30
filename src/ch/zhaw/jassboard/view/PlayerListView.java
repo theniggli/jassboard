@@ -15,7 +15,8 @@ import ch.zhaw.jassboard.persist.Player;
  * To change this template use File | Settings | File Templates.
  */
 public class PlayerListView extends LinearLayout {
-    private TextView nameTextView, idTextView;
+    private TextView nameTextView;
+//    private TextView idTextView;
     private int playerID;
     private String playerName;
 
@@ -23,22 +24,22 @@ public class PlayerListView extends LinearLayout {
         super(context);
         this.setOrientation(VERTICAL);
         nameTextView = new TextView(context);
-        idTextView = new TextView(context);
+//        idTextView = new TextView(context);
 
         playerName = player.getPlayerName();
         nameTextView.setText(playerName);
         nameTextView.setTextSize(19);
-        nameTextView.setTextColor(Color.BLUE);
+        nameTextView.setTextColor(Color.GRAY);
         nameTextView.setTypeface(Typeface.SANS_SERIF);
 
         playerID = player.getPlayerID();
-        idTextView.setText("" + playerID);
-        idTextView.setTextSize(14);
-        idTextView.setTextColor(Color.RED);
-        idTextView.setTypeface(Typeface.SANS_SERIF);
+//        idTextView.setText("" + playerID);
+//        idTextView.setTextSize(14);
+//        idTextView.setTextColor(Color.RED);
+//        idTextView.setTypeface(Typeface.SANS_SERIF);
 
         addView(nameTextView, new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        addView(idTextView, new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+//        addView(idTextView, new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
     }
 
     public Integer getPlayerId() {
