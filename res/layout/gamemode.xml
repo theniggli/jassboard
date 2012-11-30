@@ -86,4 +86,10 @@
                  android:layout_height="wrap_content"
                  android:drawSelectorOnTop="true"/>
     </LinearLayout>
+    <Button android:id="@+id/start_game"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start_game"
+            android:onClick="startGame"
+            android:visibility="gone"/>
 </LinearLayout>
