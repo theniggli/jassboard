@@ -5,9 +5,16 @@ import android.view.View;
 import android.widget.*;
 import ch.zhaw.R;
 import android.os.Bundle;
+import ch.zhaw.jassboard.persist.Player;
+import ch.zhaw.jassboard.persist.Team;
 import ch.zhaw.jassboard.util.DatabaseHelper;
+import ch.zhaw.jassboard.view.PlayerListAdapter;
 import ch.zhaw.jassboard.view.PlayerListView;
+import ch.zhaw.jassboard.view.TeamListAdapter;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
+
+import java.util.ArrayList;
 
 
 /**
@@ -19,35 +26,63 @@ import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
  */
 
 public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
+    final Button startGameButton = (Button) findViewById(R.id.start_game);
+    final LinearLayout gameModewFourPlayers = (LinearLayout) findViewById(R.id.fourplayerselection);
+    final LinearLayout gameModewTwoTeams = (LinearLayout) findViewById(R.id.twoteamselection);
+    final Spinner gameModeSpinner = (Spinner) findViewById(R.id.gamemodespinner);
+
+    //get spinners
+    Spinner team1Spinner = (Spinner) findViewById(R.id.team1);
+    Spinner team2Spinner = (Spinner) findViewById(R.id.team2);
+    Spinner player1Spinner = (Spinner) findViewById(R.id.player1);
+    Spinner player2Spinner = (Spinner) findViewById(R.id.player2);
+    Spinner player3Spinner = (Spinner) findViewById(R.id.player3);
+    Spinner player4Spinner = (Spinner) findViewById(R.id.player4);
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gamemode);
 
-        final Spinner spinnerPlayer1 = (Spinner) findViewById(R.id.gamemodespinner);
-        spinnerPlayer1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        //Get Players
+        RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
+        ArrayList<Player> playerArrayList = (ArrayList) playerDAO.queryForAll();
+        PlayerListAdapter<Player> playerArrayAdapter = new PlayerListAdapter<Player>(this, playerArrayList);
+        player1Spinner.setAdapter(playerArrayAdapter);
+        player2Spinner.setAdapter(playerArrayAdapter);
+        player3Spinner.setAdapter(playerArrayAdapter);
+        player4Spinner.setAdapter(playerArrayAdapter);
+
+        //Get Team
+        RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
+        ArrayList<Team> teamArrayList = (ArrayList) teamDAO.queryForAll();
+        TeamListAdapter<Team> teamArrayAdapter = new TeamListAdapter<Team>(this, teamArrayList);
+        team1Spinner.setAdapter(teamArrayAdapter);
+        team2Spinner.setAdapter(teamArrayAdapter);
+
+
+        gameModeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                int gamemode = spinnerPlayer1.getSelectedItemPosition();
+                int gamemode = gameModeSpinner.getSelectedItemPosition();
                 LinearLayout gameModeSchieber = (LinearLayout) findViewById(R.id.gamemodeschieber);
-                LinearLayout gameModeCoiffeur = (LinearLayout) findViewById(R.id.gamemodecoiffeur);
-                LinearLayout gameModeDifferenzler = (LinearLayout) findViewById(R.id.gamemodedifferenzler);
 
                 if (gamemode == 0) {
 //                    Schieber
-                    gameModeSchieber.setVisibility(0);
-                    gameModeCoiffeur.setVisibility(1);
-                    gameModeDifferenzler.setVisibility(1);
+                    gameModeSchieber.setVisibility(LinearLayout.VISIBLE);
+                    onRadioButtonClicked(findViewById(R.id.radio_teams));
+                    startGameButton.setVisibility(LinearLayout.VISIBLE);
                 } else if (gamemode == 1) {
 //                    Coiffeur
-                    gameModeSchieber.setVisibility(1);
-                    gameModeCoiffeur.setVisibility(0);
-                    gameModeDifferenzler.setVisibility(1);
+                    gameModeSchieber.setVisibility(LinearLayout.GONE);
+                    gameModewFourPlayers.setVisibility(LinearLayout.VISIBLE);
+                    gameModewTwoTeams.setVisibility(LinearLayout.GONE);
+                    startGameButton.setVisibility(LinearLayout.VISIBLE);
                 } else if (gamemode == 2) {
 //                    Differenzler
-                    gameModeSchieber.setVisibility(1);
-                    gameModeCoiffeur.setVisibility(1);
-                    gameModeDifferenzler.setVisibility(0);
+                    gameModeSchieber.setVisibility(LinearLayout.GONE);
+                    gameModewFourPlayers.setVisibility(LinearLayout.VISIBLE);
+                    gameModewTwoTeams.setVisibility(LinearLayout.GONE);
+                    startGameButton.setVisibility(LinearLayout.VISIBLE);
                 }
             }
 
@@ -55,7 +90,50 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
             public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
+    }
 
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
 
+        switch (view.getId()) {
+            case R.id.radio_players:
+                if (checked) {
+                    gameModewTwoTeams.setVisibility(LinearLayout.GONE);
+                    gameModewFourPlayers.setVisibility(LinearLayout.VISIBLE);
+                    startGameButton.setVisibility(LinearLayout.VISIBLE);
+                }
+                break;
+            case R.id.radio_teams:
+                if (checked) {
+                    gameModewTwoTeams.setVisibility(LinearLayout.VISIBLE);
+                    gameModewFourPlayers.setVisibility(LinearLayout.GONE);
+                    startGameButton.setVisibility(LinearLayout.VISIBLE);
+                }
+                break;
+        }
+    }
+
+    public void startGame(View view) {
+        //goto game here ^^
+        int gamemode = gameModeSpinner.getSelectedItemPosition();
+
+        Player player1 = (Player) player1Spinner.getSelectedItem();
+        Player player2 = (Player) player2Spinner.getSelectedItem();
+        Player player3 = (Player) player3Spinner.getSelectedItem();
+        Player player4 = (Player) player4Spinner.getSelectedItem();
+
+        Team team1 = (Team) team1Spinner.getSelectedItem();
+        Team team2 = (Team) team2Spinner.getSelectedItem();
+
+        if (gamemode == 0) {
+            //Schieber
+
+        } else if (gamemode == 1) {
+            //Coiffeur
+
+        } else if (gamemode == 2) {
+            //Differenzler
+
+        }
     }
 }
