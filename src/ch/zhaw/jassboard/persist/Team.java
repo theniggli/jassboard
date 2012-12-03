@@ -164,6 +164,7 @@ public class Team {
         return pointsMaxDifferenzler;
     }
 
+
     //Getters for statistics
     public int getGamesPlayed() {
         return gamesPlayedSchieber + gamesPlayedCoiffeur + gamesPlayedDifferenzler;
@@ -190,50 +191,98 @@ public class Team {
     }
 
     public int getGamesWonPercent() {
-        return (100 * (gamesWonSchieber + gamesWonCoiffeur + gamesWonDifferenzler) / (gamesPlayedSchieber + gamesPlayedCoiffeur + gamesPlayedDifferenzler));
+        if ((gamesPlayedSchieber + gamesPlayedCoiffeur + gamesPlayedDifferenzler) != 0) {
+            return (100 * (gamesWonSchieber + gamesWonCoiffeur + gamesWonDifferenzler) / (gamesPlayedSchieber + gamesPlayedCoiffeur + gamesPlayedDifferenzler));
+        } else {
+            return 0;
+        }
     }
 
     public int getRoundsWonPercent() {
-        return (100 * (roundsWonSchieber + roundsWonCoiffeur + roundsWonDifferenzler) / (roundsPlayedSchieber + roundsPlayedCoiffeur + roundsPlayedDifferenzler));
+        if ((roundsPlayedSchieber + roundsPlayedCoiffeur + roundsPlayedDifferenzler) != 0) {
+            return (100 * (roundsWonSchieber + roundsWonCoiffeur + roundsWonDifferenzler) / (roundsPlayedSchieber + roundsPlayedCoiffeur + roundsPlayedDifferenzler));
+        } else {
+            return 0;
+        }
     }
 
     public int getPointsMadePercent() {
-        return (100 * (pointsMadeSchieber + pointsMadeCoiffeur + pointsMadeDifferenzler) / (pointsMaxSchieber + pointsMaxCoiffeur + pointsMaxDifferenzler));
+        if ((pointsMaxSchieber + pointsMaxCoiffeur + pointsMaxDifferenzler) != 0) {
+            return (100 * (pointsMadeSchieber + pointsMadeCoiffeur + pointsMadeDifferenzler) / (pointsMaxSchieber + pointsMaxCoiffeur + pointsMaxDifferenzler));
+        } else {
+            return 0;
+        }
     }
 
     public int getSchieberGamesWonPercent() {
-        return (100 * gamesWonSchieber / gamesPlayedSchieber);
+        if (gamesPlayedSchieber != 0) {
+            return (100 * gamesWonSchieber / gamesPlayedSchieber);
+        } else {
+            return 0;
+        }
     }
 
     public int getSchieberRoundsWonPercent() {
-        return (100 * roundsWonSchieber / roundsPlayedSchieber);
+        if (gamesPlayedSchieber != 0) {
+            return (100 * roundsWonSchieber / roundsPlayedSchieber);
+        } else {
+            return 0;
+        }
     }
 
     public int getSchieberPointsMadePercent() {
-        return (100 * pointsMadeSchieber / pointsMaxSchieber);
+        if (gamesPlayedSchieber != 0) {
+            return (100 * pointsMadeSchieber / pointsMaxSchieber);
+        } else {
+            return 0;
+        }
     }
 
     public int getCoiffeurGamesWonPercent() {
-        return (100 * gamesWonCoiffeur / gamesPlayedCoiffeur);
+        if (gamesPlayedSchieber != 0) {
+            return (100 * gamesWonCoiffeur / gamesPlayedCoiffeur);
+        } else {
+            return 0;
+        }
     }
 
     public int getCoiffeurRoundsWonPercent() {
-        return (100 * roundsWonCoiffeur / roundsPlayedCoiffeur);
+        if (gamesPlayedSchieber != 0) {
+            return (100 * roundsWonCoiffeur / roundsPlayedCoiffeur);
+        } else {
+            return 0;
+        }
     }
 
     public int getCoiffeurPointsMadePercent() {
-        return (100 * pointsMadeCoiffeur / pointsMaxCoiffeur);
+        if (gamesPlayedSchieber != 0) {
+            return (100 * pointsMadeCoiffeur / pointsMaxCoiffeur);
+        } else {
+            return 0;
+        }
     }
 
     public int getDifferenzlerGamesWonPercent() {
-        return (100 * gamesWonDifferenzler / gamesPlayedDifferenzler);
+        if (gamesPlayedSchieber != 0) {
+            return (100 * gamesWonDifferenzler / gamesPlayedDifferenzler);
+        } else {
+            return 0;
+        }
     }
 
     public int getDifferenzlerRoundsWonPercent() {
-        return (100 * roundsWonDifferenzler / roundsPlayedDifferenzler);
+        if (gamesPlayedSchieber != 0) {
+            return (100 * roundsWonDifferenzler / roundsPlayedDifferenzler);
+        } else {
+            return 0;
+        }
     }
 
     public int getDifferenzlerPointsMadePercent() {
-        return (100 * pointsMadeDifferenzler / pointsMaxDifferenzler);
+        if (gamesPlayedSchieber != 0) {
+            return (100 * pointsMadeDifferenzler / pointsMaxDifferenzler);
+        } else {
+            return 0;
+        }
     }
 }
