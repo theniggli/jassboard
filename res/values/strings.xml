@@ -38,13 +38,20 @@
     <string name="playerstatistics">Player Statistics</string>
     <string name="teamstatistics">Player Statistics</string>
     <string name="welcome">Welcome to Jassboard</string>
-
+    <string name="id">ID</string>
+    <string name="gameswon">Games won</string>
+    <string name="roundswon">Rounds won</string>
+    <string name="pointsmade">Points made</string>
+    <string name="off">off</string>
+    <string name="playername">Player Name</string>
+    <string name="teamname">Team Name</string>
+    <string name="schieber">Schieber</string>
+    <string name="coiffeur">Coiffeur</string>
+    <string name="differenzler">Differenzler</string>
 
     <string-array name="game_modes">
         <item>Schieber</item>
         <item>Coiffeur</item>
         <item>Differenzler</item>
     </string-array>
-
-
 </resources>

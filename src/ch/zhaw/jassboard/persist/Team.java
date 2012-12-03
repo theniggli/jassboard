@@ -163,4 +163,77 @@ public class Team {
     public Integer getPointsMaxDifferenzler() {
         return pointsMaxDifferenzler;
     }
+
+    //Getters for statistics
+    public int getGamesPlayed() {
+        return gamesPlayedSchieber + gamesPlayedCoiffeur + gamesPlayedDifferenzler;
+    }
+
+    public int getGamesWon() {
+        return gamesWonSchieber + gamesWonCoiffeur + gamesWonDifferenzler;
+    }
+
+    public int getRoundsPlayed() {
+        return roundsPlayedSchieber + roundsPlayedCoiffeur + roundsPlayedDifferenzler;
+    }
+
+    public int getRoundsWon() {
+        return roundsWonSchieber + roundsWonCoiffeur + roundsWonDifferenzler;
+    }
+
+    public int getPointsMax() {
+        return pointsMaxSchieber + pointsMaxCoiffeur + pointsMaxDifferenzler;
+    }
+
+    public int getPointsMade() {
+        return pointsMadeSchieber + pointsMadeCoiffeur + pointsMadeDifferenzler;
+    }
+
+    public int getGamesWonPercent() {
+        return (100 * (gamesWonSchieber + gamesWonCoiffeur + gamesWonDifferenzler) / (gamesPlayedSchieber + gamesPlayedCoiffeur + gamesPlayedDifferenzler));
+    }
+
+    public int getRoundsWonPercent() {
+        return (100 * (roundsWonSchieber + roundsWonCoiffeur + roundsWonDifferenzler) / (roundsPlayedSchieber + roundsPlayedCoiffeur + roundsPlayedDifferenzler));
+    }
+
+    public int getPointsMadePercent() {
+        return (100 * (pointsMadeSchieber + pointsMadeCoiffeur + pointsMadeDifferenzler) / (pointsMaxSchieber + pointsMaxCoiffeur + pointsMaxDifferenzler));
+    }
+
+    public int getSchieberGamesWonPercent() {
+        return (100 * gamesWonSchieber / gamesPlayedSchieber);
+    }
+
+    public int getSchieberRoundsWonPercent() {
+        return (100 * roundsWonSchieber / roundsPlayedSchieber);
+    }
+
+    public int getSchieberPointsMadePercent() {
+        return (100 * pointsMadeSchieber / pointsMaxSchieber);
+    }
+
+    public int getCoiffeurGamesWonPercent() {
+        return (100 * gamesWonCoiffeur / gamesPlayedCoiffeur);
+    }
+
+    public int getCoiffeurRoundsWonPercent() {
+        return (100 * roundsWonCoiffeur / roundsPlayedCoiffeur);
+    }
+
+    public int getCoiffeurPointsMadePercent() {
+        return (100 * pointsMadeCoiffeur / pointsMaxCoiffeur);
+    }
+
+    public int getDifferenzlerGamesWonPercent() {
+        return (100 * gamesWonDifferenzler / gamesPlayedDifferenzler);
+    }
+
+    public int getDifferenzlerRoundsWonPercent() {
+        return (100 * roundsWonDifferenzler / roundsPlayedDifferenzler);
+    }
+
+    public int getDifferenzlerPointsMadePercent() {
+        return (100 * pointsMadeDifferenzler / pointsMaxDifferenzler);
+    }
 }
