@@ -18,17 +18,19 @@ import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
  * To change this template use File | Settings | File Templates.
  */
 public class ViewRanks extends OrmLiteBaseActivity<DatabaseHelper> {
-    LinearLayout rankingListLayout = (LinearLayout) findViewById(R.id.rankinglist);
-    RadioButton radioPlayers = (RadioButton) findViewById(R.id.radio_players);
-    RadioButton radioTeams = (RadioButton) findViewById(R.id.radio_teams);
-    RadioButton radioGameswon = (RadioButton) findViewById(R.id.radio_gameswon);
-    RadioButton radioRoundswon = (RadioButton) findViewById(R.id.radio_roundswon);
-    RadioButton radioPointsmade = (RadioButton) findViewById(R.id.radio_pointsmade);
+    LinearLayout rankingListLayout;
+    RadioButton radioPlayers, radioTeams, radioGameswon, radioRoundswon, radioPointsmade;
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewranks);
+        rankingListLayout = (LinearLayout) findViewById(R.id.rankinglist);
+        radioPlayers = (RadioButton) findViewById(R.id.radio_players);
+        radioTeams = (RadioButton) findViewById(R.id.radio_teams);
+        radioGameswon = (RadioButton) findViewById(R.id.radio_gameswon);
+        radioRoundswon = (RadioButton) findViewById(R.id.radio_roundswon);
+        radioPointsmade = (RadioButton) findViewById(R.id.radio_pointsmade);
     }
 
     public void onRadioButtonClicked(View view) {

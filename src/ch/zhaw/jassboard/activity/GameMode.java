@@ -26,10 +26,6 @@ import java.util.ArrayList;
  */
 
 public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
-    final Button startGameButton = (Button) findViewById(R.id.start_game);
-    final LinearLayout gameModewFourPlayers = (LinearLayout) findViewById(R.id.fourplayerselection);
-    final LinearLayout gameModewTwoTeams = (LinearLayout) findViewById(R.id.twoteamselection);
-    final Spinner gameModeSpinner = (Spinner) findViewById(R.id.gamemodespinner);
 
     //get spinners
     Spinner team1Spinner = (Spinner) findViewById(R.id.team1);
@@ -42,6 +38,11 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gamemode);
+
+        final Button startGameButton = (Button) findViewById(R.id.start_game);
+        final LinearLayout gameModewFourPlayers = (LinearLayout) findViewById(R.id.fourplayerselection);
+        final LinearLayout gameModewTwoTeams = (LinearLayout) findViewById(R.id.twoteamselection);
+        final Spinner gameModeSpinner = (Spinner) findViewById(R.id.gamemodespinner);
 
         //Get Players
         RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
@@ -95,6 +96,10 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
 
+        Button startGameButton = (Button) findViewById(R.id.start_game);
+        LinearLayout gameModewFourPlayers = (LinearLayout) findViewById(R.id.fourplayerselection);
+        LinearLayout gameModewTwoTeams = (LinearLayout) findViewById(R.id.twoteamselection);
+
         switch (view.getId()) {
             case R.id.radio_players:
                 if (checked) {
@@ -115,6 +120,8 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
 
     public void startGame(View view) {
         //goto game here ^^
+        Spinner gameModeSpinner = (Spinner) findViewById(R.id.gamemodespinner);
+
         int gamemode = gameModeSpinner.getSelectedItemPosition();
 
         Player player1 = (Player) player1Spinner.getSelectedItem();
