@@ -7,8 +7,6 @@ import ch.zhaw.R;
 import ch.zhaw.jassboard.util.DatabaseHelper;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 
-
-
 /**
  * Created with IntelliJ IDEA.
  * User: niggli
