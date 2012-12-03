@@ -38,8 +38,8 @@ public class Menu extends OrmLiteBaseActivity<DatabaseHelper> {
         Menu.this.startActivity(myIntent);
     }
 
-    public void viewStatistics(View view)    {
-        Intent myIntent = new Intent(Menu.this, ViewStatistics.class);
+    public void viewRanks(View view)    {
+        Intent myIntent = new Intent(Menu.this, ViewRanks.class);
         Menu.this.startActivity(myIntent);
     }
 }

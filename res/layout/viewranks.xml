@@ -5,6 +5,9 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:orientation="vertical">
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/rankswelcome"/>
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -20,22 +23,30 @@
                      android:text="@string/players"
                      android:onClick="onRadioButtonClicked"/>
     </RadioGroup>
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+        <RadioButton android:id="@+id/radio_gameswon"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/gameswon"
+                     android:onClick="onRadioButtonClicked"/>
+        <RadioButton android:id="@+id/radio_roundswon"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/roundswon"
+                     android:onClick="onRadioButtonClicked"/>
+        <RadioButton android:id="@+id/radio_pointsmade"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/pointsmade"
+                     android:onClick="onRadioButtonClicked"/>
+    </RadioGroup>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:id="@+id/teamstatistics"
+                  android:id="@+id/rankinglist"
                   android:layout_width="fill_parent"
                   android:layout_height="fill_parent"
                   android:orientation="vertical">
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/teamstatistics"/>
-    </LinearLayout>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:id="@+id/playertatistics"
-                  android:layout_width="fill_parent"
-                  android:layout_height="fill_parent"
-                  android:orientation="vertical">
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/playerstatistics"/>
     </LinearLayout>
 </LinearLayout>

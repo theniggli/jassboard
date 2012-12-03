@@ -34,9 +34,8 @@
     <string name="player4">Player 4</string>
     <string name="team1">Team 1</string>
     <string name="team2">Team 2</string>
-    <string name="viewstatistics">View statistics</string>
-    <string name="playerstatistics">Player Statistics</string>
-    <string name="teamstatistics">Player Statistics</string>
+    <string name="viewranks">View Ranks</string>
+    <string name="rankswelcome">Please select from the radiobuttons below which rankinglist you would like to see.</string>
     <string name="welcome">Welcome to Jassboard</string>
     <string name="id">ID</string>
     <string name="gameswon">Games won</string>
@@ -48,7 +47,6 @@
     <string name="schieber">Schieber</string>
     <string name="coiffeur">Coiffeur</string>
     <string name="differenzler">Differenzler</string>
-
     <string-array name="game_modes">
         <item>Schieber</item>
         <item>Coiffeur</item>

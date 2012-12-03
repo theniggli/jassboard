@@ -23,10 +23,10 @@
             android:layout_height="80dp"
             android:text="@string/set_team"
             android:onClick="setTeam" />
-    <Button android:id="@+id/button_view_statistics"
+    <Button android:id="@+id/button_view_ranks"
             android:layout_width="fill_parent"
             android:layout_height="80dp"
-            android:text="@string/viewstatistics"
-            android:onClick="viewStatistics" />
+            android:text="@string/viewranks"
+            android:onClick="viewRanks" />
 </LinearLayout>
 
