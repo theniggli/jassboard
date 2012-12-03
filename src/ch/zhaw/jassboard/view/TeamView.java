@@ -90,7 +90,7 @@ public class TeamView extends LinearLayout {
         pointsSchieberMadePercent.setTextSize(14);
         pointsSchieberMadePercent.setTextColor(Color.GRAY);
         pointsSchieberMadePercent.setTypeface(Typeface.SANS_SERIF);
-        addView(roundsSchieberWonPercent, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        addView(pointsSchieberMadePercent, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
         //Coiffeur
         TextView coiffeur = new TextView(context);
@@ -119,7 +119,7 @@ public class TeamView extends LinearLayout {
         pointsCoiffeurMadePercent.setTextSize(14);
         pointsCoiffeurMadePercent.setTextColor(Color.GRAY);
         pointsCoiffeurMadePercent.setTypeface(Typeface.SANS_SERIF);
-        addView(roundsCoiffeurWonPercent, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        addView(pointsCoiffeurMadePercent, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
         //Differenzler
         TextView differenzler = new TextView(context);
@@ -148,6 +148,6 @@ public class TeamView extends LinearLayout {
         pointsDifferenzlerMadePercent.setTextSize(14);
         pointsDifferenzlerMadePercent.setTextColor(Color.GRAY);
         pointsDifferenzlerMadePercent.setTypeface(Typeface.SANS_SERIF);
-        addView(roundsDifferenzlerWonPercent, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        addView(pointsDifferenzlerMadePercent, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
     }
 }
