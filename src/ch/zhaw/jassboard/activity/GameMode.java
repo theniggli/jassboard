@@ -27,13 +27,6 @@ import java.util.ArrayList;
 
 public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
 
-    //get spinners
-    Spinner team1Spinner = (Spinner) findViewById(R.id.team1);
-    Spinner team2Spinner = (Spinner) findViewById(R.id.team2);
-    Spinner player1Spinner = (Spinner) findViewById(R.id.player1);
-    Spinner player2Spinner = (Spinner) findViewById(R.id.player2);
-    Spinner player3Spinner = (Spinner) findViewById(R.id.player3);
-    Spinner player4Spinner = (Spinner) findViewById(R.id.player4);
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +36,14 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
         final LinearLayout gameModewFourPlayers = (LinearLayout) findViewById(R.id.fourplayerselection);
         final LinearLayout gameModewTwoTeams = (LinearLayout) findViewById(R.id.twoteamselection);
         final Spinner gameModeSpinner = (Spinner) findViewById(R.id.gamemodespinner);
+
+        //get spinners
+        Spinner team1Spinner = (Spinner) findViewById(R.id.team1);
+        Spinner team2Spinner = (Spinner) findViewById(R.id.team2);
+        Spinner player1Spinner = (Spinner) findViewById(R.id.player1);
+        Spinner player2Spinner = (Spinner) findViewById(R.id.player2);
+        Spinner player3Spinner = (Spinner) findViewById(R.id.player3);
+        Spinner player4Spinner = (Spinner) findViewById(R.id.player4);
 
         //Get Players
         RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
@@ -121,6 +122,13 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
     public void startGame(View view) {
         //goto game here ^^
         Spinner gameModeSpinner = (Spinner) findViewById(R.id.gamemodespinner);
+        //get spinners
+        Spinner team1Spinner = (Spinner) findViewById(R.id.team1);
+        Spinner team2Spinner = (Spinner) findViewById(R.id.team2);
+        Spinner player1Spinner = (Spinner) findViewById(R.id.player1);
+        Spinner player2Spinner = (Spinner) findViewById(R.id.player2);
+        Spinner player3Spinner = (Spinner) findViewById(R.id.player3);
+        Spinner player4Spinner = (Spinner) findViewById(R.id.player4);
 
         int gamemode = gameModeSpinner.getSelectedItemPosition();
 
