@@ -1,15 +1,14 @@
 package ch.zhaw.jassboard.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import ch.zhaw.R;
-import android.os.Bundle;
 import ch.zhaw.jassboard.persist.Player;
 import ch.zhaw.jassboard.persist.Team;
 import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.view.PlayerListAdapter;
-import ch.zhaw.jassboard.view.PlayerListView;
 import ch.zhaw.jassboard.view.TeamListAdapter;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
@@ -142,6 +141,8 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
 
         if (gamemode == 0) {
             //Schieber
+            Intent myIntent = new Intent(this, JasstafelActivity.class);
+            this.startActivity(myIntent);
 
         } else if (gamemode == 1) {
             //Coiffeur
