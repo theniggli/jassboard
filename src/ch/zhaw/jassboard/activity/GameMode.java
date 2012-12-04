@@ -141,7 +141,7 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
 
         if (gamemode == 0) {
             //Schieber
-            Intent myIntent = new Intent(this, JasstafelActivity.class);
+            Intent myIntent = new Intent(this, SchieberTafel.class);
             this.startActivity(myIntent);
 
         } else if (gamemode == 1) {

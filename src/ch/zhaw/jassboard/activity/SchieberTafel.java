@@ -1,25 +1,12 @@
 package ch.zhaw.jassboard.activity;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
 import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OptionalDataException;
 
 /**
  * TODO describe class
@@ -118,8 +105,8 @@ public class SchieberTafel extends JasstafelActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu paramMenu) {
-        getMenuInflater().inflate(2131165185, paramMenu);
-        updateRotateDialogsMenuItem(paramMenu.findItem(2131230759), this.rotateDialogs);
+//        getMenuInflater().inflate(2131165185, paramMenu);
+//        updateRotateDialogsMenuItem(paramMenu.findItem(2131230759), this.rotateDialogs);
         return true;
     }
 
