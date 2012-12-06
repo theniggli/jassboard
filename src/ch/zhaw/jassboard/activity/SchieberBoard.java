@@ -1,14 +1,21 @@
 package ch.zhaw.jassboard.activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
+import android.text.InputFilter;
+import android.text.method.DigitsKeyListener;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
+import ch.zhaw.R;
 
 import java.util.ArrayList;
 
@@ -43,10 +50,12 @@ public class SchieberBoard extends View {
     RectF zone_t_50;
     RectF zone_t_custom;
     RectF zone_t_total;
+    private Context paramContext;
 
     public SchieberBoard(Context paramContext) {
         super(paramContext);
         this._activity = ((SchieberTafel) paramContext);
+        this.paramContext = paramContext;
         this._paint = new Paint();
         this._paint.setColor(-1);
         this._paint.setStyle(Style.STROKE);
@@ -319,6 +328,54 @@ public class SchieberBoard extends View {
         draw();
     }
 
+    private void showScoreDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(paramContext);
+        final CharSequence[] calcEnemy = {"Gegner berechnen"};
+        final boolean[] states = {false};
+        builder.setTitle("Trumpf wählen");
+
+        LayoutInflater li = (LayoutInflater) (paramContext).getSystemService((paramContext).LAYOUT_INFLATER_SERVICE);
+        View trumpView = li.inflate(R.layout.viewcategory, null);
+        final EditText input = new EditText(paramContext);
+        input.setFilters(new InputFilter[]{
+                // Maximum 4 characters.
+                new InputFilter.LengthFilter(4),
+                // Digits only.
+                DigitsKeyListener.getInstance(),  // Not strictly needed, IMHO.
+        });
+
+        // Digits only & use numeric soft-keyboard.
+        input.setKeyListener(DigitsKeyListener.getInstance());
+
+
+
+//        Spinner trumpSpinner = (Spinner) trumpView.findViewById(R.id.viewSpin);
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+//                (paramContext), R.array.category, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        trumpSpinner.setAdapter(adapter);
+//
+//        trumpSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//
+//            public void onItemSelected(AdapterView<?> parent, View arg1, int arg2, long arg3) {
+//                String selItem = parent.getSelectedItem().toString();
+//            }
+//
+//            public void onNothingSelected(AdapterView<?> arg0) {
+//                // TODO Auto-generated method stub
+//            }
+//        });
+//        builder.setView(trumpView);
+////
+        builder.setView(input);
+        builder.setMultiChoiceItems(calcEnemy, states, new DialogInterface.OnMultiChoiceClickListener() {
+            public void onClick(DialogInterface dialogInterface, int item, boolean state) {
+            }
+        });
+
+        builder.show();
+    }
+
     public boolean onTouchEvent(MotionEvent paramMotionEvent) {
 //        if (paramMotionEvent.getAction() == 0) {
 //            if (this.zone_t_100.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
@@ -333,10 +390,16 @@ public class SchieberBoard extends View {
 //                this._activity.team_t.add_score(20);
 //                this._activity.team_b.add_score(0);
 //            }
-//            if (this.zone_t_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
+            if (this.zone_t_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
+            {
 //                this._activity.showCustomDialog(0);
+                showScoreDialog();
+            }
 //            if (this.zone_t_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
+//            {
 //                this._activity.showCustomDialog(2);
+//            }
+
 //            if (this.zone_b_100.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
 //                this._activity.team_b.add_score(100);
 //                this._activity.team_t.add_score(0);
