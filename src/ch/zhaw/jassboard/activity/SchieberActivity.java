@@ -15,7 +15,7 @@ import android.widget.NumberPicker;
  * @since 12/1/12 8:50 AM
  */
 
-public class SchieberTafel extends JasstafelActivity {
+public class SchieberActivity extends JasstafelActivity {
     public static final int DIALOG_CUSTOM_B = 1;
     public static final int DIALOG_CUSTOM_T = 0;
     public static final int DIALOG_EXPLANATION = 4;
@@ -35,7 +35,7 @@ public class SchieberTafel extends JasstafelActivity {
 //  public SchieberTeam team_b = new SchieberTeam();
 //  public SchieberTeam team_t = new SchieberTeam();
 
-    public SchieberTafel() {
+    public SchieberActivity() {
 //    setActivityId(Dispatcher.schieberTafelId);
     }
 
@@ -266,7 +266,7 @@ public class SchieberTafel extends JasstafelActivity {
 //            localObjectOutputStream2.writeObject(this.team_b);
 //            localObjectOutputStream2.close();
 //            localFileOutputStream2.close();
-//            super.onPause();
+            super.onPause();
 //            return;
 //        } catch (FileNotFoundException localFileNotFoundException) {
 //            while (true)
@@ -275,6 +275,25 @@ public class SchieberTafel extends JasstafelActivity {
 //            while (true)
 //                localIOException.printStackTrace();
 //        }
+    }
+
+    @Override
+    protected void onStop() {
+        System.out.println("App stopped");
+
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        System.out.println("App destoryed");
+
+        super.onDestroy();
+    }
+
+    protected void onResume() {
+        super.onResume();
+//    this.jasstafelActivityNavigation.onResume();
     }
 
     public void showCustomDialog(int paramInt) {
@@ -303,3 +322,4 @@ public class SchieberTafel extends JasstafelActivity {
 //        }
 //    }
 }}
+
