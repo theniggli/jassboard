@@ -1,8 +1,8 @@
 package ch.zhaw.jassboard.activity;
 
+import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -111,6 +111,7 @@ public class SchieberTafel extends JasstafelActivity {
     }
 
     public void onDialogClosed(int paramInt, Bundle paramBundle) {
+        System.out.println("dialog closed");
 //        int i = paramBundle.getInt("dialog_type");
 //        SchieberTeam localSchieberTeam1;
 //        SchieberTeam localSchieberTeam2;
@@ -120,7 +121,7 @@ public class SchieberTafel extends JasstafelActivity {
 //            localSchieberTeam2 = null;
 //            int j = paramBundle.getInt("score");
 //            k = paramBundle.getInt("multiplicator");
-//            boolean bool = paramBundle.getBoolean("complete_opponents_score");
+            boolean bool = paramBundle.getBoolean("complete_opponents_score");
 //            if (i == 1) {
 //                localSchieberTeam1 = this.team_b;
 //                localSchieberTeam2 = this.team_t;
@@ -277,14 +278,13 @@ public class SchieberTafel extends JasstafelActivity {
     }
 
     public void showCustomDialog(int paramInt) {
-//        FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-//        Bundle localBundle = new Bundle();
-//        localBundle.putInt("dialog_type", paramInt);
-//        localBundle.putBoolean("rotate_dialogs", this.rotateDialogs);
-//        if ((paramInt == 1) || (paramInt == 0)) {
-//            new SchieberAddScoreDialog(localBundle).show(localFragmentTransaction, "dialog");
-//            return;
-//        }
+        FragmentTransaction localFragmentTransaction = getFragmentManager().beginTransaction();
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("dialog_type", paramInt);
+        localBundle.putBoolean("rotate_dialogs", this.rotateDialogs);
+        if ((paramInt == 1) || (paramInt == 0)) {
+            new SchieberAddScoreDialog(getApplicationContext(), localBundle).show(localFragmentTransaction, "dialog");
+        }
 //        SchieberTeam localSchieberTeam;
 //        if ((paramInt == 3) || (paramInt == 2)) {
 //            localSchieberTeam = null;

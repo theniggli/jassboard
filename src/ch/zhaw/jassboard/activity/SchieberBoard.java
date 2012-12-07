@@ -1,21 +1,14 @@
 package ch.zhaw.jassboard.activity;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
-import android.text.InputFilter;
-import android.text.method.DigitsKeyListener;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
-import ch.zhaw.R;
 
 import java.util.ArrayList;
 
@@ -102,9 +95,9 @@ public class SchieberBoard extends View {
     }
 
     private void calculatePoints() {
-//        this.rectangles_num = 0;
-//        this.rectangles.clear();
-//        this.rectangles_rotation.clear();
+        this.rectangles_num = 0;
+        this.rectangles.clear();
+        this.rectangles_rotation.clear();
 //        float f1 = 6 + this._width / 12;
 //        float f2 = -15 + this._height / 20;
 //        int i = 1;
@@ -122,17 +115,17 @@ public class SchieberBoard extends View {
 //            break label302;
 //            double d1 = 3 * this._width / 4;
 //            double d2 = 13 * this._height / 100;
-//            int j = 1;
+            int j = 1;
 //            float f3;
 //            float f4;
-//            int k;
+            int k;
 //            float f5;
 //            float f6;
-//            int m;
+            int m;
 //            double d3;
 //            double d4;
-//            int n;
-//            if (j > this._activity.team_t.get_50()) {
+            int n;
+            if (j > 2) {
 //                f3 = -6 + (this._width - this._width / 12);
 //                f4 = 15 + (this._height / 2 - this._height / 20);
 //                k = 1;
@@ -246,6 +239,7 @@ public class SchieberBoard extends View {
 //            this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(0.0F));
 //            this.rectangles_num = (1 + this.rectangles_num);
 //        }
+            }
     }
 
     private void calculateZonePlacements() {
@@ -288,18 +282,24 @@ public class SchieberBoard extends View {
         this._paint.setTextSize(this.scoreTextSize);
         this._canvas.save();
         this._canvas.rotate(180.0F, this._width / 2, this._height / 2 - this.scoreTextSize);
-//        this._canvas.drawText(Integer.toString(this._activity.team_t.get_total()), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
+        // draw current score of team a
+        // TODO: Dynamically get Points!!!
+        this._canvas.drawText(Integer.toString(50), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
         this._canvas.restore();
-//        this._canvas.drawText(Integer.toString(this._activity.team_b.get_total()), this._width / 2, this._height / 2 + this.scoreTextSize, this._paint);
+        // draw current score of team b
+        // TODO: Dynamically get Points!!!
+        this._canvas.drawText(Integer.toString(50), this._width / 2, this._height / 2 + this.scoreTextSize, this._paint);
         this._paint.setTextSize(this.scoreTextSize);
         this._canvas.save();
         this._canvas.rotate(180.0F, this._width / 4, 2 * this._height / 10);
-//        this._canvas.drawText(Integer.toString(this._activity.team_t.get_additional()), this._width / 4, 2 * this._height / 10, this._paint);
+        // TODO: Dynamically get Points!!!
+        this._canvas.drawText(Integer.toString(50), this._width / 4, 2 * this._height / 10, this._paint);
         this._canvas.restore();
-//        this._canvas.drawText(Integer.toString(this._activity.team_b.get_additional()), 3 * this._width / 4, 8 * this._height / 10, this._paint);
+        // TODO: Dynamically get Points!!!
+        this._canvas.drawText(Integer.toString(50), 3 * this._width / 4, 8 * this._height / 10, this._paint);
         calculateLinePlacements();
         calculateZonePlacements();
-        //calculatePoints();
+        calculatePoints();
         drawBoard();
     }
 
@@ -328,54 +328,6 @@ public class SchieberBoard extends View {
         draw();
     }
 
-    private void showScoreDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(paramContext);
-        final CharSequence[] calcEnemy = {"Gegner berechnen"};
-        final boolean[] states = {false};
-        builder.setTitle("Trumpf wählen");
-
-        LayoutInflater li = (LayoutInflater) (paramContext).getSystemService((paramContext).LAYOUT_INFLATER_SERVICE);
-        View trumpView = li.inflate(R.layout.viewcategory, null);
-        final EditText input = new EditText(paramContext);
-        input.setFilters(new InputFilter[]{
-                // Maximum 4 characters.
-                new InputFilter.LengthFilter(4),
-                // Digits only.
-                DigitsKeyListener.getInstance(),  // Not strictly needed, IMHO.
-        });
-
-        // Digits only & use numeric soft-keyboard.
-        input.setKeyListener(DigitsKeyListener.getInstance());
-
-
-
-//        Spinner trumpSpinner = (Spinner) trumpView.findViewById(R.id.viewSpin);
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-//                (paramContext), R.array.category, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        trumpSpinner.setAdapter(adapter);
-//
-//        trumpSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//
-//            public void onItemSelected(AdapterView<?> parent, View arg1, int arg2, long arg3) {
-//                String selItem = parent.getSelectedItem().toString();
-//            }
-//
-//            public void onNothingSelected(AdapterView<?> arg0) {
-//                // TODO Auto-generated method stub
-//            }
-//        });
-//        builder.setView(trumpView);
-////
-        builder.setView(input);
-        builder.setMultiChoiceItems(calcEnemy, states, new DialogInterface.OnMultiChoiceClickListener() {
-            public void onClick(DialogInterface dialogInterface, int item, boolean state) {
-            }
-        });
-
-        builder.show();
-    }
-
     public boolean onTouchEvent(MotionEvent paramMotionEvent) {
 //        if (paramMotionEvent.getAction() == 0) {
 //            if (this.zone_t_100.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
@@ -390,10 +342,11 @@ public class SchieberBoard extends View {
 //                this._activity.team_t.add_score(20);
 //                this._activity.team_b.add_score(0);
 //            }
-            if (this.zone_t_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
-            {
+            if (this.zone_t_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
 //                this._activity.showCustomDialog(0);
-                showScoreDialog();
+//                showScoreDialog();
+
+                new AndroidCustomAlertDialog(paramContext).displayDialog();
             }
 //            if (this.zone_t_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
 //            {
