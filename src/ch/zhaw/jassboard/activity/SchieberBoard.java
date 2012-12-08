@@ -10,7 +10,7 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.view.View;
-import ch.zhaw.jassboard.view.BasicViewsExample;
+import ch.zhaw.jassboard.view.ScoreDialog;
 
 import java.util.ArrayList;
 
@@ -97,171 +97,172 @@ public class SchieberBoard extends View {
     }
 
     private void calculatePoints() {
-        this.rectangles_num = 0;
-        this.rectangles.clear();
-        this.rectangles_rotation.clear();
-        // TODO: what are the floats?
-        float f1 = 6 + this._width / 12;
-        float f2 = -15 + this._height / 20;
-        int i = 1;
-        // TODO: Count Points of Team T by 20
-//        if (i > this._activity.team_t.get_20()) ;
-
-        // TODO: wtf is that?
-        if (i > 5) {
-//        label59:
-//        label101:
-        }
-        float f7 = 0;
-//        label157:
-//        label211:
-        float f8 = 0;
-        int i1 = 1;
-//        label302:
-//        label971:
-//            break label302;
-            double d1 = 3 * this._width / 4;
-            double d2 = 13 * this._height / 100;
-            int j = 100;
-            // TODO: what are the floats?
-            float f3 = 0;
-            float f4 = 0;
-            int k = 1;
-            float f5 = 0;
-            float f6 = 0;
-            int m = 1;
-            double d3 = 0;
-            double d4 = 0;
-            int n = 1;
-            if (j > 1) {
-                f3 = -6 + (this._width - this._width / 12);
-                f4 = 15 + (this._height / 2 - this._height / 20);
-                k = 1;
-                // TODO: Count Points of Team T by 20
-                // if (k <= this._activity.team_t.get_100())
-                if (k <= 2) {
-//                    break label645;
-                }
-                    f5 = -6 + (this._width - this._width / 12);
-                f6 = 15 + (this._height - this._height / 20);
-                m = 1;
-                // TODO: Count Points of Team T by 20
-//                if (m <= this._activity.team_b.get_20())
-                if (m <= 3) {
-//                    break label808;
-                }
-                    d3 = this._width / 4;
-                d4 = 87 * this._height / 100;
-                n = 5;
-                // TODO: Count Points of Team T by 20
-//                if (n <= this._activity.team_b.get_50())
-                if (n <= 4) {
-//                    break label971;
-                }
-            }
-            while (n < getMax50()) {
-                f7 = 6 + this._width / 12;
-                f8 = -15 + (this._height / 2 + this._height / 20);
-                i1 = 1;
-                // TODO: Count Points of Team T by 100
-//                if (i1 <= this._activity.team_b.get_100())
-                if (i1 <= 3) {
-//                    break label1164;
-//                    return;
-                }
-                if (i > getMax20()){
-//                    break label59;}
-                    if (i % 5 == 0) {
-                        this.rectangles.add(this.rectangles_num, new RectF(f1 - 17.0F, f2 - 7.0F, 4.0F + f1 - 17.0F, 37.0F + f2));
-                        this.rectangles_rotation.add(this.rectangles_num, 55.0F);
-                        this.rectangles_num = (1 + this.rectangles_num);
-                    }
-                    // TODO: fix infinite loop
-//                for (f1 += 14.0F; ; f1 += 7.0F) {
-//                    i++;
-////                    break;
-//                    this.rectangles.add(this.rectangles_num, new RectF(f1, f2, 4.0F + f1, 30.0F + f2));
-//                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(0.0F));
-//                    this.rectangles_num = (1 + this.rectangles_num);
+//        this.rectangles_num = 0;
+//        this.rectangles.clear();
+//        this.rectangles_rotation.clear();
+//        // TODO: what are the floats?
+//        float f1 = 6 + this._width / 12;
+//        float f2 = -15 + this._height / 20;
+//        int i = 1;
+//        // TODO: Count Points of Team T by 20
+////        if (i > this._activity.team_t.get_20()) ;
+//
+//        // TODO: wtf is that?
+//        if (i > 5) {
+////        label59:
+////        label101:
+//        }
+//        float f7 = 0;
+////        label157:
+////        label211:
+//        float f8 = 0;
+//        int i1 = 1;
+////        label302:
+////        label971:
+////            break label302;
+//            double d1 = 3 * this._width / 4;
+//            double d2 = 13 * this._height / 100;
+//            int j = 100;
+//            // TODO: what are the floats?
+//            float f3 = 0;
+//            float f4 = 0;
+//            int k = 1;
+//            float f5 = 0;
+//            float f6 = 0;
+//            int m = 1;
+//            double d3 = 0;
+//            double d4 = 0;
+//            int n = 1;
+//            if (j > 1) {
+//                f3 = -6 + (this._width - this._width / 12);
+//                f4 = 15 + (this._height / 2 - this._height / 20);
+//                k = 1;
+//                // TODO: Count Points of Team T by 20
+//                // if (k <= this._activity.team_t.get_100())
+//                if (k <= 2) {
+////                    break label645;
 //                }
-//                if (j > getMax50()){
-////                    break label101;
+//                    f5 = -6 + (this._width - this._width / 12);
+//                f6 = 15 + (this._height - this._height / 20);
+//                m = 1;
+//                // TODO: Count Points of Team T by 20
+////                if (m <= this._activity.team_b.get_20())
+//                if (m <= 3) {
+////                    break label808;
 //                }
-                if (j % 2 == 0) {
-                    this.rectangles.add(this.rectangles_num, new RectF((float) d1 - 2.0F, (float) d2 - 15.0F, 2.0F + (float) d1, 15.0F + (float) d2));
-                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(-70.0F));
-                    this.rectangles_num = (1 + this.rectangles_num);
-                    d1 -= 20.0D;
-                    d2 += 20.0D * (485.0D * this._height) / (1000.0D * this._width);
-                }
-                while (true) {
-                    j++;
-                    this.rectangles.add(this.rectangles_num, new RectF((float) d1 - 2.0F, (float) d2 - 15.0F, 2.0F + (float) d1, 15.0F + (float) d2));
-                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(-10.0F));
-                    this.rectangles_num = (1 + this.rectangles_num);
-                    break; //TODO: break not here orignially
-                }
-//                if (k > getMax100())
-////                    break label157;
-                    if (k % 5 == 0) {
-                        this.rectangles.add(this.rectangles_num, new RectF(17.0F + f3, f4 - 37.0F, 4.0F + (17.0F + f3), 7.0F + f4));
-                        this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(55.0F));
-                        this.rectangles_num = (1 + this.rectangles_num);
-                    }
-//                for (f3 -= 14.0F; ; f3 -= 7.0F) {
-//                    k++;
-//                    break;
-//                    this.rectangles.add(this.rectangles_num, new RectF(f3 - 4.0F, f4 - 30.0F, f3, f4));
-//                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(0.0F));
-//                    this.rectangles_num = (1 + this.rectangles_num);
-//                }
-//                if (m > getMax20())
-////                    break label211;
-                    if (m % 5 == 0) {
-                        this.rectangles.add(this.rectangles_num, new RectF(14.0F + f5, f6 - 37.0F, 4.0F + (14.0F + f5), 7.0F + f6));
-                        this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(55.0F));
-                        this.rectangles_num = (1 + this.rectangles_num);
-                    }
-//                for (f5 -= 14.0F; ; f5 -= 7.0F) {
-//                    m++;
-//                    break;
-//                    this.rectangles.add(this.rectangles_num, new RectF(f5 - 4.0F, f6 - 30.0F, f5, f6));
-//                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(0.0F));
-//                    this.rectangles_num = (1 + this.rectangles_num);
+//                    d3 = this._width / 4;
+//                d4 = 87 * this._height / 100;
+//                n = 5;
+//                // TODO: Count Points of Team T by 20
+////                if (n <= this._activity.team_b.get_50())
+//                if (n <= 4) {
+////                    break label971;
 //                }
 //            }
-            if (n % 2 == 0) {
-                this.rectangles.add(this.rectangles_num, new RectF((float) d3 - 2.0F, (float) d4 - 15.0F, 2.0F + (float) d3, 15.0F + (float) d4));
-                this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(-10.0F));
-                this.rectangles_num = (1 + this.rectangles_num);
-                d3 += 20.0D;
-                d4 -= 20.0D * (485.0D * this._height) / (1000.0D * this._width);
-            }
-            while (true) {
-                n++;
-                this.rectangles.add(this.rectangles_num, new RectF((float) d3 - 2.0F, (float) d4 - 15.0F, 2.0F + (float) d3, 15.0F + (float) d4));
-                this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(-70.0F));
-                this.rectangles_num = (1 + this.rectangles_num);
-                break;//TODO break not originally here
-            }
-        }
-//        while (i1 > getMax100());
-//        label645:
-//        label808:
-        if (i1 % 5 == 0) {
-            this.rectangles.add(this.rectangles_num, new RectF(f7 - 14.0F, f8 - 7.0F, 4.0F + f7 - 14.0F, 37.0F + f8));
-            this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(55.0F));
-            this.rectangles_num = (1 + this.rectangles_num);
-        }
-//        label1164:
-//        for (f7 += 14.0F; ; f7 += 7.0F) {
-//            i1++;
-//            break;
-//            this.rectangles.add(this.rectangles_num, new RectF(f7, f8, 4.0F + f7, 30.0F + f8));
-//            this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(0.0F));
+//            while (n < getMax50()) {
+//                f7 = 6 + this._width / 12;
+//                f8 = -15 + (this._height / 2 + this._height / 20);
+//                i1 = 1;
+//                // TODO: Count Points of Team T by 100
+////                if (i1 <= this._activity.team_b.get_100())
+//                if (i1 <= 3) {
+////                    break label1164;
+////                    return;
+//                }
+//                if (i > getMax20()){
+////                    break label59;}
+//                    if (i % 5 == 0) {
+//                        this.rectangles.add(this.rectangles_num, new RectF(f1 - 17.0F, f2 - 7.0F, 4.0F + f1 - 17.0F, 37.0F + f2));
+//                        this.rectangles_rotation.add(this.rectangles_num, 55.0F);
+//                        this.rectangles_num = (1 + this.rectangles_num);
+//                    }
+//                    // TODO: fix infinite loop
+////                for (f1 += 14.0F; ; f1 += 7.0F) {
+////                    i++;
+//////                    break;
+////                    this.rectangles.add(this.rectangles_num, new RectF(f1, f2, 4.0F + f1, 30.0F + f2));
+////                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(0.0F));
+////                    this.rectangles_num = (1 + this.rectangles_num);
+////                }
+////                if (j > getMax50()){
+//////                    break label101;
+////                }
+//                if (j % 2 == 0) {
+//                    this.rectangles.add(this.rectangles_num, new RectF((float) d1 - 2.0F, (float) d2 - 15.0F, 2.0F + (float) d1, 15.0F + (float) d2));
+//                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(-70.0F));
+//                    this.rectangles_num = (1 + this.rectangles_num);
+//                    d1 -= 20.0D;
+//                    d2 += 20.0D * (485.0D * this._height) / (1000.0D * this._width);
+//                }
+//                while (true) {
+//                    j++;
+//                    this.rectangles.add(this.rectangles_num, new RectF((float) d1 - 2.0F, (float) d2 - 15.0F, 2.0F + (float) d1, 15.0F + (float) d2));
+//                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(-10.0F));
+//                    this.rectangles_num = (1 + this.rectangles_num);
+//                    break; //TODO: break not here orignially
+//                }
+////                if (k > getMax100())
+//////                    break label157;
+//                    if (k % 5 == 0) {
+//                        this.rectangles.add(this.rectangles_num, new RectF(17.0F + f3, f4 - 37.0F, 4.0F + (17.0F + f3), 7.0F + f4));
+//                        this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(55.0F));
+//                        this.rectangles_num = (1 + this.rectangles_num);
+//                    }
+////                for (f3 -= 14.0F; ; f3 -= 7.0F) {
+////                    k++;
+////                    break;
+////                    this.rectangles.add(this.rectangles_num, new RectF(f3 - 4.0F, f4 - 30.0F, f3, f4));
+////                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(0.0F));
+////                    this.rectangles_num = (1 + this.rectangles_num);
+////                }
+////                if (m > getMax20())
+//////                    break label211;
+//                    if (m % 5 == 0) {
+//                        this.rectangles.add(this.rectangles_num, new RectF(14.0F + f5, f6 - 37.0F, 4.0F + (14.0F + f5), 7.0F + f6));
+//                        this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(55.0F));
+//                        this.rectangles_num = (1 + this.rectangles_num);
+//                    }
+////                for (f5 -= 14.0F; ; f5 -= 7.0F) {
+////                    m++;
+////                    break;
+////                    this.rectangles.add(this.rectangles_num, new RectF(f5 - 4.0F, f6 - 30.0F, f5, f6));
+////                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(0.0F));
+////                    this.rectangles_num = (1 + this.rectangles_num);
+////                }
+////            }
+//            if (n % 2 == 0) {
+//                this.rectangles.add(this.rectangles_num, new RectF((float) d3 - 2.0F, (float) d4 - 15.0F, 2.0F + (float) d3, 15.0F + (float) d4));
+//                this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(-10.0F));
+//                this.rectangles_num = (1 + this.rectangles_num);
+//                d3 += 20.0D;
+//                d4 -= 20.0D * (485.0D * this._height) / (1000.0D * this._width);
+//            }
+//            while (true) {
+//                n++;
+//                this.rectangles.add(this.rectangles_num, new RectF((float) d3 - 2.0F, (float) d4 - 15.0F, 2.0F + (float) d3, 15.0F + (float) d4));
+//                this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(-70.0F));
+//                this.rectangles_num = (1 + this.rectangles_num);
+//                break;//TODO break not originally here
+//            }
+//        }
+////        while (i1 > getMax100());
+////        label645:
+////        label808:
+//        if (i1 % 5 == 0) {
+//            this.rectangles.add(this.rectangles_num, new RectF(f7 - 14.0F, f8 - 7.0F, 4.0F + f7 - 14.0F, 37.0F + f8));
+//            this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(55.0F));
 //            this.rectangles_num = (1 + this.rectangles_num);
 //        }
-        }}
+////        label1164:
+////        for (f7 += 14.0F; ; f7 += 7.0F) {
+////            i1++;
+////            break;
+////            this.rectangles.add(this.rectangles_num, new RectF(f7, f8, 4.0F + f7, 30.0F + f8));
+////            this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(0.0F));
+////            this.rectangles_num = (1 + this.rectangles_num);
+////        }
+//        }
+}
 
 
     private void calculateZonePlacements() {
@@ -366,12 +367,12 @@ public class SchieberBoard extends View {
 //            }
             // Team on the top
             if (this.zone_t_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-                paramContext.startActivity(new Intent(paramContext, BasicViewsExample.class));
+                paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
             }
             // Team on the bottom
             if (this.zone_b_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
             {
-                paramContext.startActivity(new Intent(paramContext, BasicViewsExample.class));
+                paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
             }
 
 //            if (this.zone_b_100.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {

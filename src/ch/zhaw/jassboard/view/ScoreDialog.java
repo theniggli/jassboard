@@ -10,11 +10,11 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 import ch.zhaw.R;
 
-public class BasicViewsExample extends Activity
+public class ScoreDialog extends Activity
 {
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.basicsviews);
+        setContentView(R.layout.scoredialog);
         super.onCreate(savedInstanceState);
 //        Button btnOpen = (Button) findViewById(R.id.btnOpen);
 //        btnOpen.setOnClickListener(new View.OnClickListener() {
