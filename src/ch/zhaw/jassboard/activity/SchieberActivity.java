@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-import ch.zhaw.jassboard.view.SchieberBoard;
+import ch.zhaw.jassboard.view.SchieberView;
 
 /**
  * TODO describe class
@@ -23,7 +23,7 @@ public class SchieberActivity extends JasstafelActivity {
     public static final int DIALOG_TOTAL_B = 3;
     public static final int DIALOG_TOTAL_T = 2;
     static final String TAG = "Jasstafel";
-    public SchieberBoard _board;
+    public SchieberView _board;
     protected CheckBox checkbox_complete_b;
     protected CheckBox checkbox_complete_t;
     protected EditText input_custom_b;
@@ -63,7 +63,7 @@ public class SchieberActivity extends JasstafelActivity {
 
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        this._board = new SchieberBoard(this);
+        this._board = new SchieberView(this);
         setContentView(this._board);
 //    try
 //    {
@@ -303,7 +303,7 @@ public class SchieberActivity extends JasstafelActivity {
         localBundle.putInt("dialog_type", paramInt);
         localBundle.putBoolean("rotate_dialogs", this.rotateDialogs);
         if ((paramInt == 1) || (paramInt == 0)) {
-            new SchieberAddScoreDialog(getApplicationContext(), localBundle).show(localFragmentTransaction, "dialog");
+//            new <SchieberAddScoreDialog(getApplicationContext(), localBundle).show(localFragmentTransaction, "dialog");
         }
 //        SchieberTeam localSchieberTeam;
 //        if ((paramInt == 3) || (paramInt == 2)) {

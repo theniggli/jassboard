@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * @since 12/1/12 8:50 AM
  */
 
-public class SchieberBoard extends View {
+public class SchieberView extends View {
     private static final float scoreTextSizeDp = 16.0F;
     SchieberActivity _activity;
     Bitmap _bitmap;
@@ -47,7 +47,7 @@ public class SchieberBoard extends View {
     RectF zone_t_total;
     private Context paramContext;
 
-    public SchieberBoard(Context paramContext) {
+    public SchieberView(Context paramContext) {
         super(paramContext);
         this._activity = ((SchieberActivity) paramContext);
         this.paramContext = paramContext;
