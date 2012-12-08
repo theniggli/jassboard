@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import ch.zhaw.jassboard.view.SchieberBoard;
 
 /**
  * TODO describe class

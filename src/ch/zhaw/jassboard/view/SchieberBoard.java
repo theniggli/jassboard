@@ -1,4 +1,4 @@
-package ch.zhaw.jassboard.activity;
+package ch.zhaw.jassboard.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.view.View;
-import ch.zhaw.jassboard.view.ScoreDialog;
+import ch.zhaw.jassboard.activity.SchieberActivity;
 
 import java.util.ArrayList;
 
@@ -286,15 +286,18 @@ public class SchieberBoard extends View {
             invalidate();
             return;
         }
-        if (this.rectangles_rotation.get(i) == 0.0F)
-            this._canvas.drawRoundRect((RectF) this.rectangles.get(i), 2.0F, 2.0F, this._paint);
-        while (true) {
-            i++;
-            this._canvas.save();
-            this._canvas.rotate(this.rectangles_rotation.get(i), (this.rectangles.get(i)).centerX(), ((RectF) this.rectangles.get(i)).centerY());
-            this._canvas.drawRoundRect(this.rectangles.get(i), 2.0F, 2.0F, this._paint);
-            this._canvas.restore();
-        }
+        //TODO: this code is unreachable and does not work, what is it's function? ;)
+//        if (this.rectangles_rotation.get(i) == 0.0F) {
+//            this._canvas.drawRoundRect(this.rectangles.get(i), 2.0F, 2.0F, this._paint);
+//            while (true) {
+//                i++;
+//                this._canvas.save();
+//                this._canvas.rotate(this.rectangles_rotation.get(i), (this.rectangles.get(i)).centerX(), this.rectangles.get(i).centerY());
+//                this._canvas.drawRoundRect(this.rectangles.get(i), 2.0F, 2.0F, this._paint);
+//                this._canvas.restore();
+//                break;
+//            }
+//        }
     }
 
     public void draw() {
@@ -351,6 +354,9 @@ public class SchieberBoard extends View {
         draw();
     }
 
+    /*
+    Handle touch events and show dialogs
+     */
     public boolean onTouchEvent(MotionEvent paramMotionEvent) {
 //        if (paramMotionEvent.getAction() == 0) {
 //            if (this.zone_t_100.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
