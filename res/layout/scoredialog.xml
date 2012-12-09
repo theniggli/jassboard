@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+
+    <!--<Button android:id="@+id/btnOpen"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Open"-->
+            <!--/>-->
+
+    <EditText android:id="@+id/txtName"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:inputType="numberDecimal"/>
+    <!-- TODO: separate textressource -->
+    <CheckBox android:id="@+id/chkAutosave"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:checked="true"
+              android:text="Gegner berechnen?"
+            />
+    <!--<CheckBox android:id="@+id/star"-->
+              <!--style="?android:attr/starStyle"-->
+              <!--android:layout_width="wrap_content"-->
+              <!--android:layout_height="wrap_content"-->
+            <!--/>-->
+
+    <RadioGroup android:id="@+id/rdbGp1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+            >
+        <RadioButton android:id="@+id/rdb1"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Rose"
+                />
+        <RadioButton android:id="@+id/rdb2"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Eichle"
+                />
+        <RadioButton android:id="@+id/rdb3"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Schäle"
+                />
+        <RadioButton android:id="@+id/rdb4"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Schilte"
+                />
+        <RadioButton android:id="@+id/rdb5"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Obenabe"
+                />
+        <RadioButton android:id="@+id/rdb6"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Uneufe"
+                />
+    </RadioGroup>
+    <Button android:id="@+id/btnSave"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Resultat eintragen"
+            />
+
+</LinearLayout>

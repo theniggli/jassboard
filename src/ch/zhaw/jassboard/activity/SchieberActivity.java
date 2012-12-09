@@ -1,25 +1,13 @@
 package ch.zhaw.jassboard.activity;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
+import android.app.FragmentTransaction;
 import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OptionalDataException;
+import ch.zhaw.jassboard.view.SchieberView;
 
 /**
  * TODO describe class
@@ -28,14 +16,14 @@ import java.io.OptionalDataException;
  * @since 12/1/12 8:50 AM
  */
 
-public class SchieberTafel extends JasstafelActivity {
+public class SchieberActivity extends JasstafelActivity {
     public static final int DIALOG_CUSTOM_B = 1;
     public static final int DIALOG_CUSTOM_T = 0;
     public static final int DIALOG_EXPLANATION = 4;
     public static final int DIALOG_TOTAL_B = 3;
     public static final int DIALOG_TOTAL_T = 2;
     static final String TAG = "Jasstafel";
-    public SchieberBoard _board;
+    public SchieberView _board;
     protected CheckBox checkbox_complete_b;
     protected CheckBox checkbox_complete_t;
     protected EditText input_custom_b;
@@ -48,7 +36,7 @@ public class SchieberTafel extends JasstafelActivity {
 //  public SchieberTeam team_b = new SchieberTeam();
 //  public SchieberTeam team_t = new SchieberTeam();
 
-    public SchieberTafel() {
+    public SchieberActivity() {
 //    setActivityId(Dispatcher.schieberTafelId);
     }
 
@@ -75,7 +63,7 @@ public class SchieberTafel extends JasstafelActivity {
 
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-        this._board = new SchieberBoard(this);
+        this._board = new SchieberView(this);
         setContentView(this._board);
 //    try
 //    {
@@ -118,12 +106,13 @@ public class SchieberTafel extends JasstafelActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu paramMenu) {
-        getMenuInflater().inflate(2131165185, paramMenu);
-        updateRotateDialogsMenuItem(paramMenu.findItem(2131230759), this.rotateDialogs);
+//        getMenuInflater().inflate(2131165185, paramMenu);
+//        updateRotateDialogsMenuItem(paramMenu.findItem(2131230759), this.rotateDialogs);
         return true;
     }
 
     public void onDialogClosed(int paramInt, Bundle paramBundle) {
+        System.out.println("dialog closed");
 //        int i = paramBundle.getInt("dialog_type");
 //        SchieberTeam localSchieberTeam1;
 //        SchieberTeam localSchieberTeam2;
@@ -133,7 +122,7 @@ public class SchieberTafel extends JasstafelActivity {
 //            localSchieberTeam2 = null;
 //            int j = paramBundle.getInt("score");
 //            k = paramBundle.getInt("multiplicator");
-//            boolean bool = paramBundle.getBoolean("complete_opponents_score");
+            boolean bool = paramBundle.getBoolean("complete_opponents_score");
 //            if (i == 1) {
 //                localSchieberTeam1 = this.team_b;
 //                localSchieberTeam2 = this.team_t;
@@ -278,7 +267,7 @@ public class SchieberTafel extends JasstafelActivity {
 //            localObjectOutputStream2.writeObject(this.team_b);
 //            localObjectOutputStream2.close();
 //            localFileOutputStream2.close();
-//            super.onPause();
+            super.onPause();
 //            return;
 //        } catch (FileNotFoundException localFileNotFoundException) {
 //            while (true)
@@ -289,15 +278,33 @@ public class SchieberTafel extends JasstafelActivity {
 //        }
     }
 
+    @Override
+    protected void onStop() {
+        System.out.println("App stopped");
+
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        System.out.println("App destoryed");
+
+        super.onDestroy();
+    }
+
+    protected void onResume() {
+        super.onResume();
+//    this.jasstafelActivityNavigation.onResume();
+    }
+
     public void showCustomDialog(int paramInt) {
-//        FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-//        Bundle localBundle = new Bundle();
-//        localBundle.putInt("dialog_type", paramInt);
-//        localBundle.putBoolean("rotate_dialogs", this.rotateDialogs);
-//        if ((paramInt == 1) || (paramInt == 0)) {
-//            new SchieberAddScoreDialog(localBundle).show(localFragmentTransaction, "dialog");
-//            return;
-//        }
+        FragmentTransaction localFragmentTransaction = getFragmentManager().beginTransaction();
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("dialog_type", paramInt);
+        localBundle.putBoolean("rotate_dialogs", this.rotateDialogs);
+        if ((paramInt == 1) || (paramInt == 0)) {
+//            new <SchieberAddScoreDialog(getApplicationContext(), localBundle).show(localFragmentTransaction, "dialog");
+        }
 //        SchieberTeam localSchieberTeam;
 //        if ((paramInt == 3) || (paramInt == 2)) {
 //            localSchieberTeam = null;
@@ -316,3 +323,4 @@ public class SchieberTafel extends JasstafelActivity {
 //        }
 //    }
 }}
+
