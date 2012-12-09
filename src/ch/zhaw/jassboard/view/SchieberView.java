@@ -15,7 +15,7 @@ import ch.zhaw.jassboard.activity.SchieberActivity;
 import java.util.ArrayList;
 
 /**
- * Draw Schieberboard and add ontouch-functions
+ * Draw Board and add ontouch-functions
  *
  * @author <a href=mailto:stjepton@students.zhaw.ch>toni</a>
  * @since 12/1/12 8:50 AM

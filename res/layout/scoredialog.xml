@@ -4,13 +4,6 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
         >
-
-    <!--<Button android:id="@+id/btnOpen"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Open"-->
-            <!--/>-->
-
     <EditText android:id="@+id/txtName"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
@@ -22,12 +15,6 @@
               android:checked="true"
               android:text="Gegner berechnen?"
             />
-    <!--<CheckBox android:id="@+id/star"-->
-              <!--style="?android:attr/starStyle"-->
-              <!--android:layout_width="wrap_content"-->
-              <!--android:layout_height="wrap_content"-->
-            <!--/>-->
-
     <RadioGroup android:id="@+id/rdbGp1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

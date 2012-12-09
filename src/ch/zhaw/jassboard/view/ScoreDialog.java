@@ -10,22 +10,23 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 import ch.zhaw.R;
 
+
+/**
+ * Dialog to add the score after each round
+ *
+ * @author <a href=mailto:stjepton@students.zhaw.ch>toni</a>
+ * @since 12/1/12 8:50 AM
+ */
+
 public class ScoreDialog extends Activity
 {
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        //set xml-layout
         setContentView(R.layout.scoredialog);
         super.onCreate(savedInstanceState);
-//        Button btnOpen = (Button) findViewById(R.id.btnOpen);
-//        btnOpen.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Toast.makeText(getBaseContext(),
-//                        "You have clicked the Open button",
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
-        //---CheckBox---
+        // Checkbox wheter to autocomplete enemy score
         CheckBox checkBox = (CheckBox) findViewById(R.id.chkAutosave);
 
         checkBox.setOnClickListener(new View.OnClickListener()
@@ -38,13 +39,13 @@ public class ScoreDialog extends Activity
             }
         });
 
-        //---RadioButton---
+        // Single select Radio button to choose trump
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rdbGp1);
         radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener()
         {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                //---displays the ID of the RadioButton that is checked---
-                DisplayToast(Integer.toString(checkedId));
+//                ---displays the ID of the RadioButton that is checked---
+//                DisplayToast(Integer.toString(checkedId));
             }
         });
         Button btnSave = (Button) findViewById(R.id.btnSave);
