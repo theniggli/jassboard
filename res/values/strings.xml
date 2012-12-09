@@ -47,6 +47,7 @@
     <string name="schieber">Schieber</string>
     <string name="coiffeur">Coiffeur</string>
     <string name="differenzler">Differenzler</string>
+    <string name="playersusedtwice">Some Players are use Twice.. maybe in each team</string>
     <string-array name="game_modes">
         <item>Schieber</item>
         <item>Coiffeur</item>

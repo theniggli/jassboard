@@ -66,7 +66,7 @@ public class PlayerView extends LinearLayout {
         TextView schieber = new TextView(context);
         schieber.setText(context.getString(ch.zhaw.R.string.schieber));
         schieber.setTextSize(14);
-        schieber.setTextColor(Color.BLUE);
+        schieber.setTextColor(Color.GREEN);
         schieber.setTypeface(Typeface.SANS_SERIF);
         addView(schieber, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
@@ -95,7 +95,7 @@ public class PlayerView extends LinearLayout {
         TextView coiffeur = new TextView(context);
         coiffeur.setText(context.getString(ch.zhaw.R.string.coiffeur));
         coiffeur.setTextSize(14);
-        coiffeur.setTextColor(Color.BLUE);
+        coiffeur.setTextColor(Color.GREEN);
         coiffeur.setTypeface(Typeface.SANS_SERIF);
         addView(coiffeur, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
@@ -124,7 +124,7 @@ public class PlayerView extends LinearLayout {
         TextView differenzler = new TextView(context);
         differenzler.setText(context.getString(ch.zhaw.R.string.differenzler));
         differenzler.setTextSize(14);
-        differenzler.setTextColor(Color.BLUE);
+        differenzler.setTextColor(Color.GREEN);
         differenzler.setTypeface(Typeface.SANS_SERIF);
         addView(differenzler, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 

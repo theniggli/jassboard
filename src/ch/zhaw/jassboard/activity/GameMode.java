@@ -6,14 +6,18 @@ import android.view.View;
 import android.widget.*;
 import ch.zhaw.R;
 import ch.zhaw.jassboard.persist.Player;
+import ch.zhaw.jassboard.persist.PlayerTeam;
 import ch.zhaw.jassboard.persist.Team;
 import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.view.PlayerListAdapter;
+import ch.zhaw.jassboard.view.PlayerListView;
 import ch.zhaw.jassboard.view.TeamListAdapter;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 
 /**
@@ -129,21 +133,71 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
         Spinner player3Spinner = (Spinner) findViewById(R.id.player3);
         Spinner player4Spinner = (Spinner) findViewById(R.id.player4);
 
+        Team team1 = null;
+        Team team2 = null;
+        Player player1 = null;
+        Player player2 = null;
+        Player player3 = null;
+        Player player4 = null;
+
         int gamemode = gameModeSpinner.getSelectedItemPosition();
 
-        Player player1 = (Player) player1Spinner.getSelectedItem();
-        Player player2 = (Player) player2Spinner.getSelectedItem();
-        Player player3 = (Player) player3Spinner.getSelectedItem();
-        Player player4 = (Player) player4Spinner.getSelectedItem();
+        RadioButton radioButton = (RadioButton) findViewById(R.id.radio_players);
+        if (radioButton.isChecked()) {
+            player1 = (Player) player1Spinner.getSelectedItem();
+            player2 = (Player) player2Spinner.getSelectedItem();
+            player3 = (Player) player3Spinner.getSelectedItem();
+            player4 = (Player) player4Spinner.getSelectedItem();
+        } else {
+            team1 = (Team) team1Spinner.getSelectedItem();
+            team2 = (Team) team2Spinner.getSelectedItem();
 
-        Team team1 = (Team) team1Spinner.getSelectedItem();
-        Team team2 = (Team) team2Spinner.getSelectedItem();
+            RuntimeExceptionDao<PlayerTeam, Integer> playerTeamDAO = getHelper().getPlayerTeamDao();
+            List<PlayerTeam> playerTeamList1 = playerTeamDAO.queryForEq("teamID", team1.getTeamID());
+            List<PlayerTeam> playerTeamList2 = playerTeamDAO.queryForEq("teamID", team2.getTeamID());
+
+            RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
+            Player player = new Player();
+            ArrayList<Player> playerArrayList = new ArrayList<Player>();
+
+            int l = 0;
+            for (PlayerTeam i : playerTeamList1) {
+                l++;
+                if (l == 1) {
+                    player1 = playerDAO.queryForId(i.getPlayerID());
+                } else if (l == 2) {
+                    player2 = playerDAO.queryForId(i.getPlayerID());
+                }
+                playerArrayList.add(player);
+            }
+            l = 0;
+            for (PlayerTeam i : playerTeamList2) {
+                l++;
+                if (l == 1) {
+                    player3 = playerDAO.queryForId(i.getPlayerID());
+                } else if (l == 2) {
+                    player4 = playerDAO.queryForId(i.getPlayerID());
+                }
+            }
+        }
+
 
         if (gamemode == 0) {
             //Schieber
             Intent myIntent = new Intent(this, SchieberActivity.class);
-            this.startActivity(myIntent);
 
+            if ((team1.getTeamID() != team2.getTeamID()) && (player1.getPlayerID() != player2.getPlayerID()) && (player1.getPlayerID() != player3.getPlayerID()) && (player1.getPlayerID() != player4.getPlayerID()) && (player2.getPlayerID() != player3.getPlayerID()) && (player3.getPlayerID() != player4.getPlayerID())) {
+                myIntent.putExtra("player1ID", player1.getPlayerID());
+                myIntent.putExtra("player2ID", player2.getPlayerID());
+                myIntent.putExtra("player3ID", player3.getPlayerID());
+                myIntent.putExtra("player4ID", player4.getPlayerID());
+
+                myIntent.putExtra("team1ID", team1.getTeamID());
+                myIntent.putExtra("team2ID", team2.getTeamID());
+                this.startActivity(myIntent);
+            } else {
+                Toast.makeText(getApplicationContext(), this.getString(R.string.playersusedtwice), Toast.LENGTH_SHORT).show();
+            }
         } else if (gamemode == 1) {
             //Coiffeur
 

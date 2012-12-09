@@ -65,15 +65,15 @@ public class AddTeam extends OrmLiteBaseActivity<DatabaseHelper> {
                 //player2
                 playerteam = new PlayerTeam(player2.getPlayerID(), team.getTeamID());
                 playerTeamDAO.create(playerteam);
-                Toast.makeText(getApplicationContext(), R.string.team + " " + team.getTeamName() + " " + R.string.created + ".", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), this.getString(R.string.team) + " " + team.getTeamName() + " " + this.getString(R.string.created) + ".", Toast.LENGTH_SHORT).show();
 
                 this.finish();
 
             } else {
-                Toast.makeText(getApplicationContext(), R.string.sameplayerselectedtwice, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), this.getString(R.string.sameplayerselectedtwice), Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(getApplicationContext(), R.string.blankteamname, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), this.getString(R.string.blankteamname), Toast.LENGTH_SHORT).show();
         }
     }
 
