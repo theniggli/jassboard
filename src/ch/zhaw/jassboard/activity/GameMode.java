@@ -185,23 +185,40 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
         if (gamemode == 0) {
             //Schieber
             Intent myIntent = new Intent(this, SchieberActivity.class);
+            if (radioButton.isChecked()) {
+                if (((player1.getPlayerID() != player2.getPlayerID()) && (player1.getPlayerID() != player3.getPlayerID()) && (player1.getPlayerID() != player4.getPlayerID()) && (player2.getPlayerID() != player3.getPlayerID()) && (player3.getPlayerID() != player4.getPlayerID()))) {
+                    myIntent.putExtra("player1ID", "" + player1.getPlayerID());
+                    myIntent.putExtra("player2ID", "" + player2.getPlayerID());
+                    myIntent.putExtra("player3ID", "" + player3.getPlayerID());
+                    myIntent.putExtra("player4ID", "" + player4.getPlayerID());
 
-            if ((team1.getTeamID() != team2.getTeamID()) && (player1.getPlayerID() != player2.getPlayerID()) && (player1.getPlayerID() != player3.getPlayerID()) && (player1.getPlayerID() != player4.getPlayerID()) && (player2.getPlayerID() != player3.getPlayerID()) && (player3.getPlayerID() != player4.getPlayerID())) {
-                myIntent.putExtra("player1ID", player1.getPlayerID());
-                myIntent.putExtra("player2ID", player2.getPlayerID());
-                myIntent.putExtra("player3ID", player3.getPlayerID());
-                myIntent.putExtra("player4ID", player4.getPlayerID());
-
-                myIntent.putExtra("team1ID", team1.getTeamID());
-                myIntent.putExtra("team2ID", team2.getTeamID());
-                this.startActivity(myIntent);
+                    myIntent.putExtra("team1ID", "-1");
+                    myIntent.putExtra("team2ID", "-1");
+                } else {
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.playersusedtwice), Toast.LENGTH_SHORT).show();
+                }
             } else {
-                Toast.makeText(getApplicationContext(), this.getString(R.string.playersusedtwice), Toast.LENGTH_SHORT).show();
+                if ((team1.getTeamID() != team2.getTeamID()) && (player1.getPlayerID() != player2.getPlayerID()) && (player1.getPlayerID() != player3.getPlayerID()) && (player1.getPlayerID() != player4.getPlayerID()) && (player2.getPlayerID() != player3.getPlayerID()) && (player3.getPlayerID() != player4.getPlayerID())) {
+                    myIntent.putExtra("player1ID", "" + player1.getPlayerID());
+                    myIntent.putExtra("player2ID", "" + player2.getPlayerID());
+                    myIntent.putExtra("player3ID", "" + player3.getPlayerID());
+                    myIntent.putExtra("player4ID", "" + player4.getPlayerID());
+
+                    myIntent.putExtra("team1ID", "" + team1.getTeamID());
+                    myIntent.putExtra("team2ID", "" + team2.getTeamID());
+                } else {
+                    Toast.makeText(getApplicationContext(), this.getString(R.string.playersusedtwice), Toast.LENGTH_SHORT).show();
+                }
             }
-        } else if (gamemode == 1) {
+            this.startActivity(myIntent);
+        } else if (gamemode == 1)
+
+        {
             //Coiffeur
 
-        } else if (gamemode == 2) {
+        } else if (gamemode == 2)
+
+        {
             //Differenzler
 
         }
