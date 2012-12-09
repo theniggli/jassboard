@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import ch.zhaw.jassboard.util.DatabaseHelper;
+import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import junit.framework.Assert;
 
 /**
@@ -13,7 +15,7 @@ import junit.framework.Assert;
  * @since 12/1/12 8:50 AM
  */
 
-public class JasstafelActivity extends Activity {
+public class JasstafelActivity extends OrmLiteBaseActivity<DatabaseHelper> {
     private int activityId = -1;
 //  JasstafelActivityNavigation jasstafelActivityNavigation;
 

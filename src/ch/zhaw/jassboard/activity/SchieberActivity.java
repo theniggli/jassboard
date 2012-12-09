@@ -1,13 +1,17 @@
 package ch.zhaw.jassboard.activity;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import ch.zhaw.jassboard.persist.Player;
+import ch.zhaw.jassboard.persist.Team;
 import ch.zhaw.jassboard.view.SchieberView;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 /**
  * TODO describe class
@@ -65,6 +69,26 @@ public class SchieberActivity extends JasstafelActivity {
         super.onCreate(paramBundle);
         this._board = new SchieberView(this);
         setContentView(this._board);
+        Intent intent = getIntent();
+        Integer player1ID = Integer.parseInt(intent.getStringExtra("player1ID")); //if it's a string you stored.
+        Integer player2ID = Integer.parseInt(intent.getStringExtra("player2ID"));
+        Integer player3ID = Integer.parseInt(intent.getStringExtra("player3ID"));
+        Integer player4ID = Integer.parseInt(intent.getStringExtra("player4ID"));
+        Integer team1ID = Integer.parseInt(intent.getStringExtra("team1ID"));
+        Integer team2ID = Integer.parseInt(intent.getStringExtra("team2ID"));
+
+        RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
+        Player player1 = playerDAO.queryForId(player1ID);
+        Player player2 = playerDAO.queryForId(player2ID);
+        Player player3 = playerDAO.queryForId(player3ID);
+        Player player4 = playerDAO.queryForId(player4ID);
+
+        if (team1ID != -1 ){
+            RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
+            Team team1 = teamDAO.queryForId(team1ID);
+            Team team2 = teamDAO.queryForId(team2ID);
+        }
+
 //    try
 //    {
 //      FileInputStream localFileInputStream1 = openFileInput("team_t.data");
