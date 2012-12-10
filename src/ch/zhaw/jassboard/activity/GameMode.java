@@ -7,6 +7,7 @@ import android.widget.*;
 import ch.zhaw.R;
 import ch.zhaw.jassboard.persist.Player;
 import ch.zhaw.jassboard.persist.PlayerTeam;
+import ch.zhaw.jassboard.persist.SchieberActivity;
 import ch.zhaw.jassboard.persist.Team;
 import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.view.PlayerListAdapter;

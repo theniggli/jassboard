@@ -8,11 +8,8 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Paint.Style;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
-import ch.zhaw.jassboard.activity.SchieberActivity;
+import ch.zhaw.jassboard.persist.SchieberActivity;
 import ch.zhaw.jassboard.activity.SchieberScore;
-
-import java.util.ArrayList;
 
 /**
  * This view draws the SchieberBoard and adds ontouch-functions
@@ -39,6 +36,9 @@ public class SchieberView extends View {
     RectF zone_b_total;
     RectF zone_t_total;
     private Context paramContext;
+
+    SchieberScore team_b = new SchieberScore(0,0,0,0);
+    SchieberScore team_t = new SchieberScore(0,0,0,0);
 
     /*
     Constructor

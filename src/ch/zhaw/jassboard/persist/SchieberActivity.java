@@ -1,4 +1,4 @@
-package ch.zhaw.jassboard.activity;
+package ch.zhaw.jassboard.persist;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import ch.zhaw.jassboard.activity.JassboardActivity;
 import ch.zhaw.jassboard.persist.Player;
 import ch.zhaw.jassboard.persist.SchieberScore;
 import ch.zhaw.jassboard.persist.Team;
