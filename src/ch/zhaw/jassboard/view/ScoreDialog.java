@@ -52,7 +52,7 @@ public class ScoreDialog extends Activity
                 DisplayToast("You have clicked the Save button");
                 //277457
                 EditText inText   = (EditText) findViewById(R.id.txtName);
-                Intent resInt = new Intent();
+                Intent resInt = getIntent();
                 int resultatA = Integer.valueOf(inText.getText().toString());
                 resInt.putExtra("Result1",resultatA);
                 setResult(Activity.RESULT_OK, resInt);
