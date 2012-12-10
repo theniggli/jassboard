@@ -14,7 +14,7 @@ import ch.zhaw.jassboard.activity.SchieberActivity;
 import java.util.ArrayList;
 
 /**
- * Draw Board and add ontouch-functions
+ * This view draws the SchieberBoard and adds ontouch-functions
  *
  * @author <a href=mailto:stjepton@students.zhaw.ch>toni</a>
  * @since 12/1/12 8:50 AM
@@ -117,6 +117,9 @@ public class SchieberView extends View {
 
     }
 
+    /*
+    Calculate line placements to draw the lines of the current points
+     */
     public void calculatePoints() {
         float width = this._width;
         float height = this._height;
@@ -323,55 +326,23 @@ public class SchieberView extends View {
     Handle touch events and show dialogs
      */
     public boolean onTouchEvent(MotionEvent paramMotionEvent) {
-//        if (paramMotionEvent.getAction() == 0) {
-//            if (this.zone_t_100.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-//                this._activity.team_t.add_score(100);
-//                this._activity.team_b.add_score(0);
-//            }
-//            if (this.zone_t_50.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-//                this._activity.team_t.add_score(50);
-//                this._activity.team_b.add_score(0);
-//            }
-//            if (this.zone_t_20.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-//                this._activity.team_t.add_score(20);
-//                this._activity.team_b.add_score(0);
-//            }
-            // Team on the top
-            if (this.zone_t_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-                //paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
-                //277457
-                //((Activity)getContext()).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 0);
-                ((Activity)paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 1);
-                int abc = 1;
+        // Team on the top
+        if (this.zone_t_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+            //paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
+            //277457
+            //((Activity)getContext()).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 0);
+            ((Activity) paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 1);
+            int abc = 1;
 
-            }
-            // Team on the bottom
-            if (this.zone_b_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
-            {
-                //paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
-                //277457
-                //((Activity)getContext()).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 0);
-                ((Activity)paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 1);
-                int abc = 1;
-            }
-
-//            if (this.zone_b_100.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-//                this._activity.team_b.add_score(100);
-//                this._activity.team_t.add_score(0);
-//            }
-//            if (this.zone_b_50.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-//                this._activity.team_b.add_score(50);
-//                this._activity.team_t.add_score(0);
-//            }
-//            if (this.zone_b_20.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-//                this._activity.team_b.add_score(20);
-//                this._activity.team_t.add_score(0);
-//            }
-//            if (this.zone_b_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
-//                this._activity.showCustomDialog(1);
-//            if (this.zone_b_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
-//                this._activity.showCustomDialog(3);
-//        }
+        }
+        // Team on the bottom
+        if (this.zone_b_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+            //paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
+            //277457
+            //((Activity)getContext()).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 0);
+            ((Activity) paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 1);
+            int abc = 1;
+        }
         draw();
         return true;
     }

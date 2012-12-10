@@ -44,7 +44,6 @@ public class JassboardActivity extends OrmLiteBaseActivity<DatabaseHelper> {
     @Override
     protected void onStop() {
         System.out.println("App stopped");
-
         super.onStop();
     }
 

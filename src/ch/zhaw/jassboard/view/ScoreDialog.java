@@ -23,7 +23,7 @@ public class ScoreDialog extends Activity
         setContentView(R.layout.scoredialog);
         super.onCreate(savedInstanceState);
 
-        // Checkbox wheter to autocomplete enemy score
+        // Checkbox whether to autocomplete enemy score
         CheckBox checkBox = (CheckBox) findViewById(R.id.chkAutosave);
 
         checkBox.setOnClickListener(new View.OnClickListener()

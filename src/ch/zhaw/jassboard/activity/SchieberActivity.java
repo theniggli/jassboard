@@ -88,51 +88,6 @@ public class SchieberActivity extends JassboardActivity {
 //            Team team1 = teamDAO.queryForId(team1ID);
 //            Team team2 = teamDAO.queryForId(team2ID);
 //        }
-
-//    try
-//    {
-//      FileInputStream localFileInputStream1 = openFileInput("team_t.data");
-//      ObjectInputStream localObjectInputStream1 = new ObjectInputStream(localFileInputStream1);
-//      this.team_t = ((SchieberTeam)localObjectInputStream1.readObject());
-//      localObjectInputStream1.close();
-//      localFileInputStream1.close();
-//      FileInputStream localFileInputStream2 = openFileInput("team_b.data");
-//      ObjectInputStream localObjectInputStream2 = new ObjectInputStream(localFileInputStream2);
-//      this.team_b = ((SchieberTeam)localObjectInputStream2.readObject());
-//      localObjectInputStream2.close();
-//      localFileInputStream2.close();
-//      SharedPreferences localSharedPreferences = getPreferences(0);
-//      this.rotateDialogs = localSharedPreferences.getBoolean("rotate_dialogs", true);
-//      if (localSharedPreferences.getBoolean("show_explanation", true))
-//      {
-//        showExplanationDialog();
-//        Editor localEditor = localSharedPreferences.edit();
-//        localEditor.putBoolean("show_explanation", false);
-//        localEditor.commit();
-//      }
-//      return;
-//    }
-//    catch (OptionalDataException localOptionalDataException)
-//    {
-//      while (true)
-//        localOptionalDataException.printStackTrace();
-//    }
-//    catch (ClassNotFoundException localClassNotFoundException)
-//    {
-//      while (true)
-//        localClassNotFoundException.printStackTrace();
-//    }
-//    catch (IOException localIOException)
-//    {
-//      while (true)
-//        localIOException.printStackTrace();
-//    }
-    }
-
-    public boolean onCreateOptionsMenu(Menu paramMenu) {
-//        getMenuInflater().inflate(2131165185, paramMenu);
-//        updateRotateDialogsMenuItem(paramMenu.findItem(2131230759), this.rotateDialogs);
-        return true;
     }
 
     public void onDialogClosed(int paramInt, Bundle paramBundle) {
