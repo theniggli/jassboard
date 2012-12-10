@@ -10,8 +10,8 @@ import android.widget.TextView;
 import ch.zhaw.R;
 import ch.zhaw.jassboard.persist.Player;
 import ch.zhaw.jassboard.persist.PlayerTeam;
-import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.persist.Team;
+import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.view.PlayerListAdapter;
 import ch.zhaw.jassboard.view.TeamView;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
@@ -62,6 +62,9 @@ public class ViewTeam extends OrmLiteBaseActivity<DatabaseHelper> {
         //insert dummytext before the world ends
         TextView dummy = new TextView(this);
         dummy.setText(R.string.players_of_team);
+        dummy.setTextSize(14);
+        dummy.setTextColor(Color.GREEN);
+        dummy.setTypeface(Typeface.SANS_SERIF);
         layout.addView(dummy);
 
         ListView playerList = new ListView(this);
