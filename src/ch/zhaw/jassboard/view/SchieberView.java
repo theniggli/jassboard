@@ -161,9 +161,9 @@ public class SchieberView extends View {
             } else {
                 //"normal"
                 points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
-                points[(1 + 4 * this.points_num)] = 2 * height / 20 + height / 80 - j * height / 80;
+                points[(1 + 4 * this.points_num)] = 2 * height / 20 + height / 80 + j * height / 80;
                 points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
-                points[(3 + 4 * this.points_num)] = 1 * height / 20 + height / 80 - j * height / 80;
+                points[(3 + 4 * this.points_num)] = 1 * height / 20 + height / 80 + j * height / 80;
                 this.points_num++;
             }
         }
