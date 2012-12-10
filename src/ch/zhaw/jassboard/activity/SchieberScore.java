@@ -2,26 +2,42 @@ package ch.zhaw.jassboard.activity;
 
 import java.io.Serializable;
 
-public class SchieberScore
-  implements Serializable
-{
-  private static final long serialVersionUID = 3012200037853092700L;
-  public int add_score = 0;
-  public int count_100 = 0;
-  public int count_20 = 0;
-  public int count_50 = 0;
-  public int score = 0;
+/*
+TODO: doc
+ */
+public class SchieberScore implements Serializable {
+    public int count_100 = 0;
+    public int count_20 = 0;
+    public int count_50 = 0;
+    public int score = 0;
 
-  public SchieberScore()
-  {
-  }
+    public SchieberScore() {
+    }
 
-  public SchieberScore(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    this.score = paramInt1;
-    this.count_20 = paramInt2;
-    this.count_50 = paramInt3;
-    this.count_100 = paramInt4;
-    this.add_score = paramInt5;
-  }
+    public SchieberScore(int scoreTotal, int score_20, int score_50, int score_100) {
+        this.score = scoreTotal;
+        this.count_20 = score_20;
+        this.count_50 = score_50;
+        this.count_100 = score_100;
+    }
+
+    public int calc20(int scoreTotal) {
+        int tmp = scoreTotal % 50;
+        return tmp / 20;
+    }
+
+    public int calc50(int scoreTotal) {
+        int tmp = scoreTotal % 100;
+        return tmp / 50;
+    }
+
+    public int calc100(int scoreTotal) {
+        return scoreTotal / 100;
+    }
+
+    public int calcRest(int scoreTotal) {
+        int tmp = scoreTotal % 50;
+        return tmp % 20;
+    }
+
 }

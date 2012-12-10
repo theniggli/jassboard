@@ -11,8 +11,10 @@ import android.view.View;
 import android.widget.Toast;
 import ch.zhaw.jassboard.activity.SchieberActivity;
 
+import java.util.ArrayList;
+
 /**
- * Draw Board and add ontouch-functions
+ * This view draws the SchieberBoard and adds ontouch-functions
  *
  * @author <a href=mailto:stjepton@students.zhaw.ch>toni</a>
  * @since 12/1/12 8:50 AM
