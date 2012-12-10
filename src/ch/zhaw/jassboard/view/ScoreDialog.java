@@ -1,14 +1,12 @@
 package ch.zhaw.jassboard.view;
 
 import android.app.Activity;
-import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import ch.zhaw.R;
-import ch.zhaw.jassboard.persist.GlobalContext;
 
 /**
  * Dialog to add the score after each round
@@ -79,10 +77,6 @@ public class ScoreDialog extends Activity
                 DisplayToast("You have clicked the Save button");
                 //277457
                 EditText inText   = (EditText) findViewById(R.id.txtName);
-               /* GlobalContext gc = (GlobalContext) getApplication();
-                gc.setResult(Integer.valueOf(inText.getText().toString()));
-                gc.setMultiplier(multi);
-                */
                 Intent resInt = new Intent();
                 resInt.putExtra("multi",multi);
                 resInt.putExtra("result",Integer.valueOf(inText.getText().toString()));

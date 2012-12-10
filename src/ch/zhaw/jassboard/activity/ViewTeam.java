@@ -10,8 +10,8 @@ import android.widget.TextView;
 import ch.zhaw.R;
 import ch.zhaw.jassboard.persist.Player;
 import ch.zhaw.jassboard.persist.PlayerTeam;
-import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.persist.Team;
+import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.view.PlayerListAdapter;
 import ch.zhaw.jassboard.view.TeamView;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
@@ -21,11 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: niggli
- * Date: 11/5/12
- * Time: 10:24 AM
- * To change this template use File | Settings | File Templates.
+ * View Team which was selected in ViewTeamList
+ *
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 
 public class ViewTeam extends OrmLiteBaseActivity<DatabaseHelper> {
@@ -62,6 +60,9 @@ public class ViewTeam extends OrmLiteBaseActivity<DatabaseHelper> {
         //insert dummytext before the world ends
         TextView dummy = new TextView(this);
         dummy.setText(R.string.players_of_team);
+        dummy.setTextSize(14);
+        dummy.setTextColor(Color.GREEN);
+        dummy.setTypeface(Typeface.SANS_SERIF);
         layout.addView(dummy);
 
         ListView playerList = new ListView(this);

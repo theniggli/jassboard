@@ -1,6 +1,5 @@
 package ch.zhaw.jassboard.view;
 
-import android.R;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -8,14 +7,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import ch.zhaw.jassboard.persist.Player;
 
-import java.util.jar.Attributes;
-
 /**
- * Created with IntelliJ IDEA.
- * User: niggli
- * Date: 28.10.12
- * Time: 20:42
- * To change this template use File | Settings | File Templates.
+ * Viewclass PlayerView
+ * Shows infos about the Player
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 public class PlayerView extends LinearLayout {
     private int playerID;

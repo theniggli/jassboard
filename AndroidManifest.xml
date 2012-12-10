@@ -4,8 +4,7 @@
           android:versionCode="1"
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="16"/>
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher"
-                 android:name=".jassboard.persist.GlobalContext">
+    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
         <activity android:name=".jassboard.activity.Menu"
                   android:label="@string/app_name">
             <intent-filter>

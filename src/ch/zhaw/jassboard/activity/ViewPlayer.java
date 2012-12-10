@@ -4,18 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import ch.zhaw.R;
-import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.persist.Player;
+import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.view.PlayerView;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 /**
- * Created with IntelliJ IDEA.
- * User: niggli
- * Date: 11/5/12
- * Time: 10:24 AM
- * To change this template use File | Settings | File Templates.
+ * View Player which was selected in ViewPlayerList
+ *
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 
 public class ViewPlayer extends OrmLiteBaseActivity<DatabaseHelper> {

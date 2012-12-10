@@ -10,22 +10,18 @@ import ch.zhaw.jassboard.persist.PlayerTeam;
 import ch.zhaw.jassboard.persist.Team;
 import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.view.PlayerListAdapter;
-import ch.zhaw.jassboard.view.PlayerListView;
 import ch.zhaw.jassboard.view.TeamListAdapter;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
 /**
- * Created with IntelliJ IDEA.
- * User: niggli
- * Date: 11/5/12
- * Time: 10:24 AM
- * To change this template use File | Settings | File Templates.
+ * Activity in which the gamemode can be selected and the game will be started
+ *
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 
 public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
@@ -97,6 +93,9 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
         });
     }
 
+    /*
+    *  changes visibility of the LinearLayout team/player
+    */
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
 
@@ -122,6 +121,9 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
         }
     }
 
+    /*
+    *  Starts the selected game if possible
+    */
     public void startGame(View view) {
         //goto game here ^^
         Spinner gameModeSpinner = (Spinner) findViewById(R.id.gamemodespinner);
@@ -194,6 +196,7 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
 
                     myIntent.putExtra("team1ID", "-1");
                     myIntent.putExtra("team2ID", "-1");
+                    this.startActivity(myIntent);
                 } else {
                     Toast.makeText(getApplicationContext(), this.getString(R.string.playersusedtwice), Toast.LENGTH_SHORT).show();
                 }
@@ -206,11 +209,11 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
 
                     myIntent.putExtra("team1ID", "" + team1.getTeamID());
                     myIntent.putExtra("team2ID", "" + team2.getTeamID());
+                    this.startActivity(myIntent);
                 } else {
                     Toast.makeText(getApplicationContext(), this.getString(R.string.playersusedtwice), Toast.LENGTH_SHORT).show();
                 }
             }
-            this.startActivity(myIntent);
         } else if (gamemode == 1)
 
         {

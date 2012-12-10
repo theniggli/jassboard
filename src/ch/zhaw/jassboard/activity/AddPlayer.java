@@ -5,17 +5,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import ch.zhaw.R;
-import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.persist.Player;
+import ch.zhaw.jassboard.util.DatabaseHelper;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 /**
- * Created with IntelliJ IDEA.
- * User: niggli
- * Date: 11/5/12
- * Time: 10:20 AM
- * To change this template use File | Settings | File Templates.
+ *  Activity to add a new player into the Database
+ *
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 
 public class AddPlayer extends OrmLiteBaseActivity<DatabaseHelper> {
@@ -25,6 +23,9 @@ public class AddPlayer extends OrmLiteBaseActivity<DatabaseHelper> {
         setContentView(R.layout.addplayer);
     }
 
+    /*
+    *  this function ist called on click on the button addNewPlayer. It checks the player and if everything is ok it adds the player into the DB
+    */
     public void addNewPlayer(View view) {
         EditText edit = (EditText) findViewById(R.id.playerName);
         String playerName = edit.getText().toString();

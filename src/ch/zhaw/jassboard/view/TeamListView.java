@@ -8,11 +8,9 @@ import android.widget.TextView;
 import ch.zhaw.jassboard.persist.Team;
 
 /**
- * Created with IntelliJ IDEA.
- * User: niggli
- * Date: 28.10.12
- * Time: 20:42
- * To change this template use File | Settings | File Templates.
+ * Viewclass TeamList
+ *
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 public class TeamListView extends LinearLayout {
     private TextView nameTextView;
@@ -43,6 +41,9 @@ public class TeamListView extends LinearLayout {
 //        addView(idTextView, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
     }
 
+    /*
+    * return playerID
+    */
     public Integer getTeamId() {
         return teamID;
     }
