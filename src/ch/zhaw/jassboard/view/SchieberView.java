@@ -11,8 +11,6 @@ import android.view.View;
 import android.widget.Toast;
 import ch.zhaw.jassboard.activity.SchieberActivity;
 
-import java.util.ArrayList;
-
 /**
  * Draw Board and add ontouch-functions
  *
@@ -34,19 +32,8 @@ public class SchieberView extends View {
     float[] points = new float[1000];
     int points_num = 0;
 
-    ArrayList<RectF> rectangles = new ArrayList();
-    int rectangles_num = 0;
-    ArrayList<Float> rectangles_rotation = new ArrayList();
     private int scoreTextSize = 18;
-    RectF zone_b_100;
-    RectF zone_b_20;
-    RectF zone_b_50;
-    RectF zone_b_custom;
     RectF zone_b_total;
-    RectF zone_t_100;
-    RectF zone_t_20;
-    RectF zone_t_50;
-    RectF zone_t_custom;
     RectF zone_t_total;
     int resultA = 0;
     private Context paramContext;
@@ -101,20 +88,13 @@ public class SchieberView extends View {
     }
 
     private void drawBoard() {
+        //draw baselines
+        this._paint.setColor(Color.WHITE);
         this._canvas.drawLines(this.lines, 0, 4 * this.lines_num, this._paint);
         this._paint.setStyle(Style.FILL);
-
-        float width = this._width;
-        float height = this._height;
-
-        this._paint.setColor(Color.GREEN);
-        this._canvas.drawLine(0, (height / 2), width, (height / 2), this._paint);
+        //draw pointlines
         this._paint.setColor(Color.YELLOW);
-
         this._canvas.drawLines(this.points, 0, 4 * this.points_num, this._paint);
-
-        this._paint.setColor(Color.WHITE);
-
     }
 
     /*
@@ -152,23 +132,22 @@ public class SchieberView extends View {
         }
 
         //50
-        //50
         for (int j = 1; j < 10; j++) {
-            if (j % 5 == 0) {
+//            if (j % 5 == 0) {
                 //schief
 //                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40 + 5 * width / 40;
 //                points[(1 + 4 * this.points_num)] = height / 40;
 //                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
 //                points[(3 + 4 * this.points_num)] = height / 20 + height / 40;
 //                this.points_num++;
-            } else {
+//            } else {
                 //"normal"
                 points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
                 points[(1 + 4 * this.points_num)] = 2 * height / 20 + height / 80 + j * height / 80;
                 points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
                 points[(3 + 4 * this.points_num)] = 1 * height / 20 + height / 80 + j * height / 80;
                 this.points_num++;
-            }
+//            }
         }
         //100
         for (int j = 1; j < 10; j++) {
@@ -210,21 +189,21 @@ public class SchieberView extends View {
         }
         //50
         for (int j = 1; j < 12; j++) {
-            if (j % 5 == 0) {
+//            if (j % 5 == 0) {
                 //schief
 //                points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
 //                points[(1 + 4 * this.points_num)] = height / 2 + height / 40;
 //                points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40 - (5 * width / 40);
 //                points[(3 + 4 * this.points_num)] = height / 2 + height / 20 + height / 40;
 //                this.points_num++;
-            } else {
+//            } else {
                 //"normal"
                 points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
                 points[(1 + 4 * this.points_num)] = height - 2 * height / 20 - height / 80 - j * height / 80;
                 points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
                 points[(3 + 4 * this.points_num)] = height - 1 * height / 20 - height / 80 - j * height / 80;
                 this.points_num++;
-            }
+//            }
         }
         //20
         for (int j = 1; j < 10; j++) {
@@ -249,28 +228,23 @@ public class SchieberView extends View {
 
 
     private void calculateZonePlacements() {
-        this.zone_t_100 = new RectF(this._width / 2, 2 * this._height / 6, this._width, 3 * this._height / 6);
-        this.zone_t_50 = new RectF(this._width / 3, 1 * this._height / 6, 2 * this._width / 3, 2 * this._height / 6);
-        this.zone_t_20 = new RectF(0.0F, 0.0F, this._width / 2, this._height / 6);
-        this.zone_t_custom = new RectF(0.0F, 1 * this._height / 6, 1 * this._width / 3, 2 * this._height / 6);
-        this.zone_t_total = new RectF(2 * this._width / 3, 1 * this._height / 6, this._width, 2 * this._height / 6);
-        this.zone_b_100 = new RectF(0.0F, 3 * this._height / 6, this._width / 2, 4 * this._height / 6);
-        this.zone_b_50 = new RectF(this._width / 3, 4 * this._height / 6, 2 * this._width / 3, 5 * this._height / 6);
-        this.zone_b_20 = new RectF(this._width / 2, 5 * this._height / 6, this._width, this._height);
-        this.zone_b_custom = new RectF(2 * this._width / 3, 4 * this._height / 6, this._width, 5 * this._height / 6);
-        this.zone_b_total = new RectF(0.0F, 4 * this._height / 6, this._width / 3, 5 * this._height / 6);
+//        this.zone_t_custom = new RectF(0.0F, 1 * this._height / 6, 1 * this._width / 3, 2 * this._height / 6);
+        this.zone_t_total = new RectF(0.0F, 0.0F, this._width, this._height / 2);
+//        this.zone_b_custom = new RectF(2 * this._width / 3, 4 * this._height / 6, this._width, 5 * this._height / 6);
+        this.zone_b_total = new RectF(0.0F, this._height / 2, this._width, this._height);
+        //float left, float top, float right, float bottom)
     }
 
     //277457
-    public void onActivityResult(int reqCode, int resCode, Intent data){
-        Toast.makeText(getContext(),data.getIntExtra("Result1",0) ,Toast.LENGTH_LONG).show();
-        resultA = data.getIntExtra("Result1",10);
+    public void onActivityResult(int reqCode, int resCode, Intent data) {
+        Toast.makeText(getContext(), data.getIntExtra("Result1", 0), Toast.LENGTH_LONG).show();
+        resultA = data.getIntExtra("Result1", 10);
         draw();
     }
 
     public void draw() {
-       // this._activity.team_t.realignScore(getMax20(), getMax50());
-       // this._activity.team_b.realignScore(getMax20(), getMax50());
+        // this._activity.team_t.realignScore(getMax20(), getMax50());
+        // this._activity.team_b.realignScore(getMax20(), getMax50());
         this._bitmap.eraseColor(-16777216);
         this._paint.setAntiAlias(true);
         this._paint.setTextSize(this.scoreTextSize);
@@ -326,55 +300,14 @@ public class SchieberView extends View {
     Handle touch events and show dialogs
      */
     public boolean onTouchEvent(MotionEvent paramMotionEvent) {
-//        if (paramMotionEvent.getAction() == 0) {
-//            if (this.zone_t_100.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-//                this._activity.team_t.add_score(100);
-//                this._activity.team_b.add_score(0);
-//            }
-//            if (this.zone_t_50.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-//                this._activity.team_t.add_score(50);
-//                this._activity.team_b.add_score(0);
-//            }
-//            if (this.zone_t_20.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-//                this._activity.team_t.add_score(20);
-//                this._activity.team_b.add_score(0);
-//            }
-            // Team on the top
-            if (this.zone_t_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-                //paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
-                //277457
-                //((Activity)getContext()).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 0);
-                ((Activity)paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 1);
-                int abc = 1;
-
-            }
-            // Team on the bottom
-            if (this.zone_b_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
-            {
-                //paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
-                //277457
-                //((Activity)getContext()).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 0);
-                ((Activity)paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 1);
-                int abc = 1;
-            }
-
-//            if (this.zone_b_100.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-//                this._activity.team_b.add_score(100);
-//                this._activity.team_t.add_score(0);
-//            }
-//            if (this.zone_b_50.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-//                this._activity.team_b.add_score(50);
-//                this._activity.team_t.add_score(0);
-//            }
-//            if (this.zone_b_20.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-//                this._activity.team_b.add_score(20);
-//                this._activity.team_t.add_score(0);
-//            }
-//            if (this.zone_b_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
-//                this._activity.showCustomDialog(1);
-//            if (this.zone_b_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
-//                this._activity.showCustomDialog(3);
-//        }
+        // Team on the top
+        if (this.zone_t_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+            ((Activity) paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 1);
+        }
+        // Team on the bottom
+        if (this.zone_b_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+            ((Activity) paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 2);
+        }
         draw();
         return true;
     }
