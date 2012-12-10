@@ -15,11 +15,10 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 /**
- * Created with IntelliJ IDEA.
- * User: niggli
- * Date: 11/13/12
- * Time: 10:16 AM
- * To change this template use File | Settings | File Templates.
+ * Utilityclass
+ * This class provides the connection to the Database
+ *
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
@@ -29,11 +28,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     // any time you make changes to your database objects, you may have to increase the database version
     private static final int DATABASE_VERSION = 3;
 
-
     private RuntimeExceptionDao<Player, Integer> playerRuntimeDao = null;
     private RuntimeExceptionDao<Team, Integer> teamRuntimeDao = null;
     private RuntimeExceptionDao<PlayerTeam, Integer> playerTeamRuntimeDao = null;
-
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
@@ -82,6 +79,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         //--------------------------------------------------------------------------------------
     }
 
+    /*
+    *  Called on Upgrade
+    */
     @Override
     public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
@@ -95,6 +95,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
     }
 
+    /*
+    *  RuntimeExceptionDao for Player
+    */
     public RuntimeExceptionDao<Player, Integer> getPlayerDao() {
         if (playerRuntimeDao == null) {
             playerRuntimeDao = getRuntimeExceptionDao(Player.class);
@@ -102,6 +105,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return playerRuntimeDao;
     }
 
+    /*
+    *  RuntimeExceptionDao for Team
+    */
     public RuntimeExceptionDao<Team, Integer> getTeamDao() {
         if (teamRuntimeDao == null) {
             teamRuntimeDao = getRuntimeExceptionDao(Team.class);
@@ -109,6 +115,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return teamRuntimeDao;
     }
 
+    /*
+    *  RuntimeExceptionDao for PlayerTeam
+    */
     public RuntimeExceptionDao<PlayerTeam, Integer> getPlayerTeamDao() {
         if (playerTeamRuntimeDao == null) {
             playerTeamRuntimeDao = getRuntimeExceptionDao(PlayerTeam.class);
@@ -116,6 +125,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return playerTeamRuntimeDao;
     }
 
+    /*
+    *  close everything
+    */
     @Override
     public void close() {
         super.close();
