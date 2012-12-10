@@ -10,13 +10,11 @@ import ch.zhaw.jassboard.persist.PlayerTeam;
 import ch.zhaw.jassboard.persist.Team;
 import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.view.PlayerListAdapter;
-import ch.zhaw.jassboard.view.PlayerListView;
 import ch.zhaw.jassboard.view.TeamListAdapter;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -194,6 +192,7 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
 
                     myIntent.putExtra("team1ID", "-1");
                     myIntent.putExtra("team2ID", "-1");
+                    this.startActivity(myIntent);
                 } else {
                     Toast.makeText(getApplicationContext(), this.getString(R.string.playersusedtwice), Toast.LENGTH_SHORT).show();
                 }
@@ -206,11 +205,11 @@ public class GameMode extends OrmLiteBaseActivity<DatabaseHelper> {
 
                     myIntent.putExtra("team1ID", "" + team1.getTeamID());
                     myIntent.putExtra("team2ID", "" + team2.getTeamID());
+                    this.startActivity(myIntent);
                 } else {
                     Toast.makeText(getApplicationContext(), this.getString(R.string.playersusedtwice), Toast.LENGTH_SHORT).show();
                 }
             }
-            this.startActivity(myIntent);
         } else if (gamemode == 1)
 
         {
