@@ -68,6 +68,7 @@ public class SchieberActivity extends JasstafelActivity {
     public void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         this._board = new SchieberView(this);
+        // set the schieberview view to draw the board
         setContentView(this._board);
         Intent intent = getIntent();
         Integer player1ID = Integer.parseInt(intent.getStringExtra("player1ID")); //if it's a string you stored.
