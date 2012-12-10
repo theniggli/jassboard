@@ -8,8 +8,8 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Paint.Style;
 import android.view.MotionEvent;
 import android.view.View;
-import ch.zhaw.jassboard.persist.SchieberActivity;
-import ch.zhaw.jassboard.activity.SchieberScore;
+import ch.zhaw.jassboard.activity.SchieberActivity;
+import ch.zhaw.jassboard.persist.SchieberScore;
 
 /**
  * This view draws the SchieberBoard and adds ontouch-functions

@@ -1,4 +1,4 @@
-package ch.zhaw.jassboard.activity;
+package ch.zhaw.jassboard.persist;
 
 import java.io.Serializable;
 
