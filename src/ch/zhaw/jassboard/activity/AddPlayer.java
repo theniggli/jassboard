@@ -30,7 +30,7 @@ public class AddPlayer extends OrmLiteBaseActivity<DatabaseHelper> {
         EditText edit = (EditText) findViewById(R.id.playerName);
         String playerName = edit.getText().toString();
 
-        if (playerName != "") {
+        if (!playerName.equals("")) {
             RuntimeExceptionDao<Player, Integer> playerDao = getHelper().getPlayerDao();
             Player player = new Player(playerName);
             playerDao.create(player);
