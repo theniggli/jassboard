@@ -9,16 +9,22 @@ public class SchieberScore implements Serializable {
     public int count_100 = 0;
     public int count_20 = 0;
     public int count_50 = 0;
+    public int rest = 0;
     public int score = 0;
-
-    public SchieberScore() {
-    }
 
     public SchieberScore(int scoreTotal, int score_20, int score_50, int score_100) {
         this.score = scoreTotal;
         this.count_20 = score_20;
         this.count_50 = score_50;
         this.count_100 = score_100;
+    }
+
+    public void setPoints(int scoreTotal){
+        this.count_100 = calc100(scoreTotal);
+        this.count_50 = calc50(scoreTotal);
+        this.count_20 = calc20(scoreTotal);
+        this.rest = calcRest(scoreTotal);
+
     }
 
     public int calc20(int scoreTotal) {

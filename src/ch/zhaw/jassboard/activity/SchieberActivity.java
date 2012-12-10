@@ -36,8 +36,6 @@ public class SchieberActivity extends JassboardActivity {
     protected NumberPicker multiplication_b;
     protected NumberPicker multiplication_t;
     private boolean rotateDialogs = true;
-//  public SchieberTeam team_b = new SchieberTeam();
-//  public SchieberTeam team_t = new SchieberTeam();
 
     public SchieberActivity() {
 //    setActivityId(Dispatcher.schieberTafelId);
@@ -324,6 +322,19 @@ public class SchieberActivity extends JassboardActivity {
     @Override
     protected void onActivityResult(int reqCode, int resCode, Intent data){
         //super.onActivityResult(reqCode, resCode, data);
+        SchieberScore score_t = new SchieberScore(0,0,0,0);
+        SchieberScore score_b = new SchieberScore(0,0,0,0);
+        if(data.getStringExtra("team").equals("t")){
+            score_t.setPoints(data.getIntExtra("resultEntered",0));
+            _board.setTeam_t(score_t);
+            score_t.setPoints(data.getIntExtra("resultCalculated",0));
+            _board.setTeam_b(score_b);
+        }else{
+            score_t.setPoints(data.getIntExtra("resultCalculated",0));
+            _board.setTeam_t(score_t);
+            score_t.setPoints(data.getIntExtra("resultEntered",0));
+            _board.setTeam_b(score_b);
+        }
         _board.draw();
     }
 

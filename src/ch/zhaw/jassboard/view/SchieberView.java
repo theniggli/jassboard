@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 import ch.zhaw.jassboard.activity.SchieberActivity;
+import ch.zhaw.jassboard.activity.SchieberScore;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,19 @@ public class SchieberView extends View {
     RectF zone_t_total;
     int resultA = 0;
     private Context paramContext;
+
+
+    private SchieberScore team_b = new SchieberScore(0,0,0,0);
+    private SchieberScore team_t = new SchieberScore(0,0,0,0);
+
+    public void setTeam_b(SchieberScore team_b) {
+        this.team_b = team_b;
+    }
+
+    public void setTeam_t(SchieberScore team_t) {
+        this.team_t = team_t;
+    }
+
 
     public SchieberView(Context paramContext) {
         super(paramContext);
@@ -304,11 +318,15 @@ public class SchieberView extends View {
     public boolean onTouchEvent(MotionEvent paramMotionEvent) {
         // Team on the top
         if (this.zone_t_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-            ((Activity) paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 1);
+            Intent intT = new Intent(paramContext, ScoreDialog.class);
+            intT.putExtra("team","t");
+            ((Activity) paramContext).startActivityForResult(intT, 1);
         }
         // Team on the bottom
         if (this.zone_b_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-            ((Activity) paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 2);
+            Intent intT = new Intent(paramContext, ScoreDialog.class);
+            intT.putExtra("team","b");
+            ((Activity) paramContext).startActivityForResult(intT, 2);
         }
         draw();
         return true;
