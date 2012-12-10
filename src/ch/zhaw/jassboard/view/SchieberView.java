@@ -9,12 +9,9 @@ import android.graphics.Paint.Style;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
-import ch.zhaw.jassboard.activity.JasstafelActivity;
 import ch.zhaw.jassboard.activity.SchieberActivity;
 
 import java.util.ArrayList;
-
-import static android.widget.Toast.*;
 
 /**
  * Draw Board and add ontouch-functions
@@ -33,7 +30,6 @@ public class SchieberView extends View {
     private int _width;
     float[] lines = new float[28];
     int lines_num = 0;
-    int resultA = 0;
 
     float[] points = new float[1000];
     int points_num = 0;
@@ -52,6 +48,7 @@ public class SchieberView extends View {
     RectF zone_t_50;
     RectF zone_t_custom;
     RectF zone_t_total;
+    int resultA = 0;
     private Context paramContext;
 
     public SchieberView(Context paramContext) {
@@ -103,6 +100,23 @@ public class SchieberView extends View {
         this.lines_num = (1 + this.lines_num);
     }
 
+    private void drawBoard() {
+        this._canvas.drawLines(this.lines, 0, 4 * this.lines_num, this._paint);
+        this._paint.setStyle(Style.FILL);
+
+        float width = this._width;
+        float height = this._height;
+
+        this._paint.setColor(Color.GREEN);
+        this._canvas.drawLine(0, (height / 2), width, (height / 2), this._paint);
+        this._paint.setColor(Color.YELLOW);
+
+        this._canvas.drawLines(this.points, 0, 4 * this.points_num, this._paint);
+
+        this._paint.setColor(Color.WHITE);
+
+    }
+
     public void calculatePoints() {
         float width = this._width;
         float height = this._height;
@@ -135,6 +149,7 @@ public class SchieberView extends View {
         }
 
         //50
+        //50
         for (int j = 1; j < 10; j++) {
             if (j % 5 == 0) {
                 //schief
@@ -145,10 +160,10 @@ public class SchieberView extends View {
 //                this.points_num++;
             } else {
                 //"normal"
-//                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 80;
-//                points[(1 + 4 * this.points_num)] = height / 20 + j * height / 80;
-//                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) -  2 * j * width / 80;
-//                points[(3 + 4 * this.points_num)] = height / 20 + 2 * j * height / 80;
+                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
+                points[(1 + 4 * this.points_num)] = 2 * height / 20 + height / 80 - j * height / 80;
+                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
+                points[(3 + 4 * this.points_num)] = 1 * height / 20 + height / 80 - j * height / 80;
                 this.points_num++;
             }
         }
@@ -191,6 +206,23 @@ public class SchieberView extends View {
             }
         }
         //50
+        for (int j = 1; j < 12; j++) {
+            if (j % 5 == 0) {
+                //schief
+//                points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
+//                points[(1 + 4 * this.points_num)] = height / 2 + height / 40;
+//                points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40 - (5 * width / 40);
+//                points[(3 + 4 * this.points_num)] = height / 2 + height / 20 + height / 40;
+//                this.points_num++;
+            } else {
+                //"normal"
+                points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
+                points[(1 + 4 * this.points_num)] = height - 2 * height / 20 - height / 80 - j * height / 80;
+                points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
+                points[(3 + 4 * this.points_num)] = height - 1 * height / 20 - height / 80 - j * height / 80;
+                this.points_num++;
+            }
+        }
         //20
         for (int j = 1; j < 10; j++) {
             if (j % 5 == 0) {
@@ -226,28 +258,7 @@ public class SchieberView extends View {
         this.zone_b_total = new RectF(0.0F, 4 * this._height / 6, this._width / 3, 5 * this._height / 6);
     }
 
-    private void drawBoard() {
-        this._canvas.drawLines(this.lines, 0, 4 * this.lines_num, this._paint);
-        this._paint.setStyle(Style.FILL);
-//        int i = 0;
-//        if (i >= this.rectangles_num) {
-//            invalidate();
-//            return;
-//        }
-        //TODO: this code is unreachable and does not work, what is it's function? ;)
-//        if (this.rectangles_rotation.get(i) == 0.0F) {
-//            this._canvas.drawRoundRect(this.rectangles.get(i), 2.0F, 2.0F, this._paint);
-//            while (true) {
-//                i++;
-//                this._canvas.save();
-//                this._canvas.rotate(this.rectangles_rotation.get(i), (this.rectangles.get(i)).centerX(), this.rectangles.get(i).centerY());
-//                this._canvas.drawRoundRect(this.rectangles.get(i), 2.0F, 2.0F, this._paint);
-//                this._canvas.restore();
-//                break;
-//            }
-//        }
-    }
-
+    //277457
     public void onActivityResult(int reqCode, int resCode, Intent data){
         Toast.makeText(getContext(),data.getIntExtra("Result1",0) ,Toast.LENGTH_LONG).show();
         resultA = data.getIntExtra("Result1",10);
@@ -264,19 +275,18 @@ public class SchieberView extends View {
         this._canvas.rotate(180.0F, this._width / 2, this._height / 2 - this.scoreTextSize);
         // draw current score of team a
         // TODO: Dynamically get Points!!!
-//        this._canvas.drawText(Integer.toString(50), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
+        this._canvas.drawText(Integer.toString(resultA), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
         this._canvas.restore();
         // draw current score of team b
         // TODO: Dynamically get Points!!!
-//        this._canvas.drawText(Integer.toString(50), this._width / 2, this._height / 2 + this.scoreTextSize, this._paint);
+        this._canvas.drawText(Integer.toString(50), this._width / 2, this._height / 2 + this.scoreTextSize, this._paint);
         this._paint.setTextSize(this.scoreTextSize);
         this._canvas.save();
         this._canvas.rotate(180.0F, this._width / 4, 2 * this._height / 10);
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(50), this._width / 4, 2 * this._height / 10, this._paint);
+        this._canvas.drawText(Integer.toString(resultA), this._width / 4, 2 * this._height / 10, this._paint);
         this._canvas.restore();
         // TODO: Dynamically get Points!!!
-        // draw points of bottom team
         this._canvas.drawText(Integer.toString(50), 3 * this._width / 4, 8 * this._height / 10, this._paint);
         calculateLinePlacements();
         calculateZonePlacements();
