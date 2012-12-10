@@ -284,4 +284,28 @@ public class Player {
             return 0;
         }
     }
+
+    public void setGamesPlayedSchieber(Integer gamesPlayedSchieber) {
+        this.gamesPlayedSchieber = gamesPlayedSchieber;
+    }
+
+    public void setGamesWonSchieber(Integer gamesWonSchieber) {
+        this.gamesWonSchieber = gamesWonSchieber;
+    }
+
+    public void setRoundsPlayedSchieber(Integer roundsPlayedSchieber) {
+        this.roundsPlayedSchieber = roundsPlayedSchieber;
+    }
+
+    public void setRoundsWonSchieber(Integer roundsWonSchieber) {
+        this.roundsWonSchieber = roundsWonSchieber;
+    }
+
+    public void setPointsMadeSchieber(Integer pointsMadeSchieber) {
+        this.pointsMadeSchieber = pointsMadeSchieber;
+    }
+
+    public void setPointsMaxSchieber(Integer pointsMaxSchieber) {
+        this.pointsMaxSchieber = pointsMaxSchieber;
+    }
 }
