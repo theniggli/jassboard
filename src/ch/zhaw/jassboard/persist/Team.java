@@ -222,7 +222,7 @@ public class Team {
     }
 
     public int getSchieberRoundsWonPercent() {
-        if (gamesPlayedSchieber != 0) {
+        if (roundsPlayedSchieber != 0) {
             return (100 * roundsWonSchieber / roundsPlayedSchieber);
         } else {
             return 0;
@@ -230,7 +230,7 @@ public class Team {
     }
 
     public int getSchieberPointsMadePercent() {
-        if (gamesPlayedSchieber != 0) {
+        if (pointsMaxSchieber != 0) {
             return (100 * pointsMadeSchieber / pointsMaxSchieber);
         } else {
             return 0;
@@ -238,7 +238,7 @@ public class Team {
     }
 
     public int getCoiffeurGamesWonPercent() {
-        if (gamesPlayedSchieber != 0) {
+        if (gamesPlayedCoiffeur != 0) {
             return (100 * gamesWonCoiffeur / gamesPlayedCoiffeur);
         } else {
             return 0;
@@ -246,7 +246,7 @@ public class Team {
     }
 
     public int getCoiffeurRoundsWonPercent() {
-        if (gamesPlayedSchieber != 0) {
+        if (roundsPlayedCoiffeur != 0) {
             return (100 * roundsWonCoiffeur / roundsPlayedCoiffeur);
         } else {
             return 0;
@@ -254,7 +254,7 @@ public class Team {
     }
 
     public int getCoiffeurPointsMadePercent() {
-        if (gamesPlayedSchieber != 0) {
+        if (pointsMaxCoiffeur != 0) {
             return (100 * pointsMadeCoiffeur / pointsMaxCoiffeur);
         } else {
             return 0;
@@ -262,7 +262,7 @@ public class Team {
     }
 
     public int getDifferenzlerGamesWonPercent() {
-        if (gamesPlayedSchieber != 0) {
+        if (gamesPlayedDifferenzler != 0) {
             return (100 * gamesWonDifferenzler / gamesPlayedDifferenzler);
         } else {
             return 0;
@@ -270,7 +270,7 @@ public class Team {
     }
 
     public int getDifferenzlerRoundsWonPercent() {
-        if (gamesPlayedSchieber != 0) {
+        if (roundsPlayedDifferenzler != 0) {
             return (100 * roundsWonDifferenzler / roundsPlayedDifferenzler);
         } else {
             return 0;
@@ -278,7 +278,7 @@ public class Team {
     }
 
     public int getDifferenzlerPointsMadePercent() {
-        if (gamesPlayedSchieber != 0) {
+        if (pointsMaxDifferenzler != 0) {
             return (100 * pointsMadeDifferenzler / pointsMaxDifferenzler);
         } else {
             return 0;
