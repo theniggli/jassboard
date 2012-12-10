@@ -3,11 +3,10 @@ package ch.zhaw.jassboard.persist;
 import com.j256.ormlite.field.DatabaseField;
 
 /**
- * Created with IntelliJ IDEA.
- * User: nigglrog
- * Date: 10/23/12
- * Time: 10:03 AM
- * To change this template use File | Settings | File Templates.
+ * Playerclass
+ *  Won't explain getters and setters
+ *
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 public class Player {
     @DatabaseField(generatedId = true)

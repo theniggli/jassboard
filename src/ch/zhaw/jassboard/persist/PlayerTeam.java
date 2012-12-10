@@ -3,11 +3,9 @@ package ch.zhaw.jassboard.persist;
 import com.j256.ormlite.field.DatabaseField;
 
 /**
- * Created with IntelliJ IDEA.
- * User: niggli
- * Date: 22.11.12
- * Time: 18:36
- * To change this template use File | Settings | File Templates.
+ * Class used for connection between Player and Teams
+ *
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 public class PlayerTeam {
     @DatabaseField(generatedId = true)
