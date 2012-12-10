@@ -315,9 +315,7 @@ public class SchieberView extends View {
             Intent intT = new Intent(paramContext, ScoreDialog.class);
             intT.putExtra("team","t");
             ((Activity) paramContext).startActivityForResult(intT, 1);
-        }
-        // Team on the bottom
-        if (this.zone_b_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+        } else if (this.zone_b_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
             Intent intT = new Intent(paramContext, ScoreDialog.class);
             intT.putExtra("team","b");
             ((Activity) paramContext).startActivityForResult(intT, 2);

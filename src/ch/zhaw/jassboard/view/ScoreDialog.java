@@ -15,8 +15,7 @@ import ch.zhaw.R;
  * @since 12/1/12 8:50 AM
  */
 
-public class ScoreDialog extends Activity
-{
+public class ScoreDialog extends Activity {
     int multi = 0;
     boolean calcOpp = false;
 
@@ -29,14 +28,12 @@ public class ScoreDialog extends Activity
         // Checkbox wheter to autocomplete enemy score
         CheckBox checkBox = (CheckBox) findViewById(R.id.chkAutosave);
 
-        checkBox.setOnClickListener(new View.OnClickListener()
-        {
+        checkBox.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (((CheckBox)v).isChecked()){
+                if (((CheckBox) v).isChecked()) {
                     DisplayToast("Gegner wird berechnet.");
                     calcOpp = true;
-                }
-                else{
+                } else {
                     DisplayToast("Gegner wird nicht berechnet.");
                     calcOpp = false;
                 }
@@ -45,12 +42,11 @@ public class ScoreDialog extends Activity
 
         // Single select Radio button to choose trump
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rdbGp1);
-        radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener()
-        {
+        radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 //                ---displays the ID of the RadioButton that is checked---
 //                DisplayToast(Integer.toString(checkedId));
-                switch (checkedId){
+                switch (checkedId) {
                     case 2131165209:
                         multi = 1;
                         break;
@@ -77,29 +73,30 @@ public class ScoreDialog extends Activity
             }
         });
         Button btnSave = (Button) findViewById(R.id.btnSave);
-        btnSave.setOnClickListener(new View.OnClickListener()
-        {
+        btnSave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //get the entered value from the text field
-                EditText inText   = (EditText) findViewById(R.id.txtName);
+                EditText inText = (EditText) findViewById(R.id.txtName);
                 calcOpp = true;
                 int resultat = Integer.valueOf(inText.getText().toString());
                 Intent resInt = new Intent();
-                resInt.putExtra("multi",multi);
-                if (resultat > 257 && calcOpp){
+                resInt.putExtra("multi", multi);
+                if (resultat > 257 && calcOpp) {
                     resultat = 0;
                     calcOpp = false;
                 } else {
                     resInt.putExtra("resultEntered", resultat);
                 }
                 // check if the points of the opposing team should be calculated
-                if (calcOpp){
-                    resInt.putExtra("resultCalculated",257 - resultat);
-                }else{
-                    resInt.putExtra("resultCalculated",0);
+                if (calcOpp) {
+                    resInt.putExtra("resultCalculated", 257 - resultat);
+                } else {
+                    resInt.putExtra("resultCalculated", 0);
                 }
-                resInt.putExtra("team",getIntent().getStringExtra("team"));
-                setResult(Activity.RESULT_OK,resInt);
+
+               // resInt.putExtra("team", getIntent().getStringExtra("team"));
+
+                setResult(RESULT_OK, resInt);
                 finish();
             }
         });
@@ -107,10 +104,10 @@ public class ScoreDialog extends Activity
 
     /**
      * Displays a small Message to the user
+     *
      * @param msg Message to display
      */
-    private void DisplayToast(String msg)
-    {
+    private void DisplayToast(String msg) {
         Toast.makeText(getBaseContext(), msg,
                 Toast.LENGTH_SHORT).show();
     }
