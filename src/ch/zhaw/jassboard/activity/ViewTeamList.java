@@ -9,11 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import ch.zhaw.R;
-import ch.zhaw.jassboard.persist.Player;
 import ch.zhaw.jassboard.persist.PlayerTeam;
-import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.persist.Team;
-import ch.zhaw.jassboard.view.PlayerListView;
+import ch.zhaw.jassboard.util.DatabaseHelper;
 import ch.zhaw.jassboard.view.TeamListAdapter;
 import ch.zhaw.jassboard.view.TeamListView;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
@@ -23,11 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: niggli
- * Date: 05.11.12
- * Time: 18:52
- * To change this template use File | Settings | File Templates.
+ * Activity who view The TeamList and add new Teams
+ *
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 public class ViewTeamList extends OrmLiteBaseActivity<DatabaseHelper> {
 
@@ -89,17 +85,26 @@ public class ViewTeamList extends OrmLiteBaseActivity<DatabaseHelper> {
         });
     }
 
+    /*
+    *  Start activity AddTeam.class
+    */
     public void addTeam(View view) {
         Intent myIntent = new Intent(ViewTeamList.this, AddTeam.class);
         ViewTeamList.this.startActivity(myIntent);
     }
 
+    /*
+    *  when coming back to activity
+    */
     @Override
     protected void onResume() {
         super.onResume();
         reloadData();
     }
 
+    /*
+    *  reload Data
+    */
     public void reloadData() {
         ListView teamList = (ListView) findViewById(R.id.teamList);
         RuntimeExceptionDao<Team, Integer> dao = getHelper().getTeamDao();

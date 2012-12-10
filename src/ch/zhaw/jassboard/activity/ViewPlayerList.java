@@ -9,9 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import ch.zhaw.R;
+import ch.zhaw.jassboard.persist.Player;
 import ch.zhaw.jassboard.persist.PlayerTeam;
 import ch.zhaw.jassboard.util.DatabaseHelper;
-import ch.zhaw.jassboard.persist.Player;
 import ch.zhaw.jassboard.view.PlayerListAdapter;
 import ch.zhaw.jassboard.view.PlayerListView;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
@@ -21,11 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: niggli
- * Date: 11/5/12
- * Time: 10:08 AM
- * To change this template use File | Settings | File Templates.
+ *  Activity ViewPlayerList shows list of all players
+ *
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 public class ViewPlayerList extends OrmLiteBaseActivity<DatabaseHelper> {
 
@@ -81,18 +79,26 @@ public class ViewPlayerList extends OrmLiteBaseActivity<DatabaseHelper> {
         });
     }
 
-    //layout setplayer
+    /*
+    *  Start activity AddPlayer.class
+    */
     public void addPlayer(View view) {
         Intent myIntent = new Intent(ViewPlayerList.this, AddPlayer.class);
         ViewPlayerList.this.startActivity(myIntent);
     }
 
+    /*
+    *  when coming back to activity
+    */
     @Override
     protected void onResume() {
         super.onResume();
         reloadData();
     }
 
+    /*
+    *  reload Data
+    */
     public void reloadData() {
         ListView playerList = (ListView) findViewById(R.id.playerList);
         RuntimeExceptionDao<Player, Integer> dao = getHelper().getPlayerDao();

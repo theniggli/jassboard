@@ -20,11 +20,9 @@ import java.util.Comparator;
 
 
 /**
- * Created with IntelliJ IDEA.
- * User: niggli
- * Date: 11/5/12
- * Time: 10:08 AM
- * To change this template use File | Settings | File Templates.
+ *  Activity which shows the RankingList
+ *
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 public class ViewRanks extends OrmLiteBaseActivity<DatabaseHelper> {
     LinearLayout rankingListLayout;
@@ -41,6 +39,9 @@ public class ViewRanks extends OrmLiteBaseActivity<DatabaseHelper> {
         radioPointsmade = (RadioButton) findViewById(R.id.radio_pointsmade);
     }
 
+    /*
+    *  Thist shows the desired Rankinglist based on selected Ratiobutton
+    */
     public void onRadioButtonClicked(View view) {
         if ((radioPlayers.isChecked() || radioTeams.isChecked()) && (radioGameswon.isChecked() || radioRoundswon.isChecked() || radioPointsmade.isChecked())) {
             //one off the radiobuttons player or team and one off the radiobuttons gameswon,roundswon or pointsmade is selected
