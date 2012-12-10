@@ -3,12 +3,9 @@ package ch.zhaw.jassboard.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.graphics.*;
 import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Paint.Style;
-import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -36,6 +33,10 @@ public class SchieberView extends View {
     private int _width;
     float[] lines = new float[28];
     int lines_num = 0;
+
+    float[] points = new float[1000];
+    int points_num = 0;
+
     ArrayList<RectF> rectangles = new ArrayList();
     int rectangles_num = 0;
     ArrayList<Float> rectangles_rotation = new ArrayList();
@@ -102,173 +103,131 @@ public class SchieberView extends View {
         this.lines_num = (1 + this.lines_num);
     }
 
-    private void calculatePoints() {
-//        this.rectangles_num = 0;
-//        this.rectangles.clear();
-//        this.rectangles_rotation.clear();
-//        // TODO: what are the floats?
-//        float f1 = 6 + this._width / 12;
-//        float f2 = -15 + this._height / 20;
-//        int i = 1;
-//        // TODO: Count Points of Team T by 20
-////        if (i > this._activity.team_t.get_20()) ;
-//
-//        // TODO: wtf is that?
-//        if (i > 5) {
-////        label59:
-////        label101:
-//        }
-//        float f7 = 0;
-////        label157:
-////        label211:
-//        float f8 = 0;
-//        int i1 = 1;
-////        label302:
-////        label971:
-////            break label302;
-//            double d1 = 3 * this._width / 4;
-//            double d2 = 13 * this._height / 100;
-//            int j = 100;
-//            // TODO: what are the floats?
-//            float f3 = 0;
-//            float f4 = 0;
-//            int k = 1;
-//            float f5 = 0;
-//            float f6 = 0;
-//            int m = 1;
-//            double d3 = 0;
-//            double d4 = 0;
-//            int n = 1;
-//            if (j > 1) {
-//                f3 = -6 + (this._width - this._width / 12);
-//                f4 = 15 + (this._height / 2 - this._height / 20);
-//                k = 1;
-//                // TODO: Count Points of Team T by 20
-//                // if (k <= this._activity.team_t.get_100())
-//                if (k <= 2) {
-////                    break label645;
-//                }
-//                    f5 = -6 + (this._width - this._width / 12);
-//                f6 = 15 + (this._height - this._height / 20);
-//                m = 1;
-//                // TODO: Count Points of Team T by 20
-////                if (m <= this._activity.team_b.get_20())
-//                if (m <= 3) {
-////                    break label808;
-//                }
-//                    d3 = this._width / 4;
-//                d4 = 87 * this._height / 100;
-//                n = 5;
-//                // TODO: Count Points of Team T by 20
-////                if (n <= this._activity.team_b.get_50())
-//                if (n <= 4) {
-////                    break label971;
-//                }
-//            }
-//            while (n < getMax50()) {
-//                f7 = 6 + this._width / 12;
-//                f8 = -15 + (this._height / 2 + this._height / 20);
-//                i1 = 1;
-//                // TODO: Count Points of Team T by 100
-////                if (i1 <= this._activity.team_b.get_100())
-//                if (i1 <= 3) {
-////                    break label1164;
-////                    return;
-//                }
-//                if (i > getMax20()){
-////                    break label59;}
-//                    if (i % 5 == 0) {
-//                        this.rectangles.add(this.rectangles_num, new RectF(f1 - 17.0F, f2 - 7.0F, 4.0F + f1 - 17.0F, 37.0F + f2));
-//                        this.rectangles_rotation.add(this.rectangles_num, 55.0F);
-//                        this.rectangles_num = (1 + this.rectangles_num);
-//                    }
-//                    // TODO: fix infinite loop
-////                for (f1 += 14.0F; ; f1 += 7.0F) {
-////                    i++;
-//////                    break;
-////                    this.rectangles.add(this.rectangles_num, new RectF(f1, f2, 4.0F + f1, 30.0F + f2));
-////                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(0.0F));
-////                    this.rectangles_num = (1 + this.rectangles_num);
-////                }
-////                if (j > getMax50()){
-//////                    break label101;
-////                }
-//                if (j % 2 == 0) {
-//                    this.rectangles.add(this.rectangles_num, new RectF((float) d1 - 2.0F, (float) d2 - 15.0F, 2.0F + (float) d1, 15.0F + (float) d2));
-//                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(-70.0F));
-//                    this.rectangles_num = (1 + this.rectangles_num);
-//                    d1 -= 20.0D;
-//                    d2 += 20.0D * (485.0D * this._height) / (1000.0D * this._width);
-//                }
-//                while (true) {
-//                    j++;
-//                    this.rectangles.add(this.rectangles_num, new RectF((float) d1 - 2.0F, (float) d2 - 15.0F, 2.0F + (float) d1, 15.0F + (float) d2));
-//                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(-10.0F));
-//                    this.rectangles_num = (1 + this.rectangles_num);
-//                    break; //TODO: break not here orignially
-//                }
-////                if (k > getMax100())
-//////                    break label157;
-//                    if (k % 5 == 0) {
-//                        this.rectangles.add(this.rectangles_num, new RectF(17.0F + f3, f4 - 37.0F, 4.0F + (17.0F + f3), 7.0F + f4));
-//                        this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(55.0F));
-//                        this.rectangles_num = (1 + this.rectangles_num);
-//                    }
-////                for (f3 -= 14.0F; ; f3 -= 7.0F) {
-////                    k++;
-////                    break;
-////                    this.rectangles.add(this.rectangles_num, new RectF(f3 - 4.0F, f4 - 30.0F, f3, f4));
-////                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(0.0F));
-////                    this.rectangles_num = (1 + this.rectangles_num);
-////                }
-////                if (m > getMax20())
-//////                    break label211;
-//                    if (m % 5 == 0) {
-//                        this.rectangles.add(this.rectangles_num, new RectF(14.0F + f5, f6 - 37.0F, 4.0F + (14.0F + f5), 7.0F + f6));
-//                        this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(55.0F));
-//                        this.rectangles_num = (1 + this.rectangles_num);
-//                    }
-////                for (f5 -= 14.0F; ; f5 -= 7.0F) {
-////                    m++;
-////                    break;
-////                    this.rectangles.add(this.rectangles_num, new RectF(f5 - 4.0F, f6 - 30.0F, f5, f6));
-////                    this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(0.0F));
-////                    this.rectangles_num = (1 + this.rectangles_num);
-////                }
-////            }
-//            if (n % 2 == 0) {
-//                this.rectangles.add(this.rectangles_num, new RectF((float) d3 - 2.0F, (float) d4 - 15.0F, 2.0F + (float) d3, 15.0F + (float) d4));
-//                this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(-10.0F));
-//                this.rectangles_num = (1 + this.rectangles_num);
-//                d3 += 20.0D;
-//                d4 -= 20.0D * (485.0D * this._height) / (1000.0D * this._width);
-//            }
-//            while (true) {
-//                n++;
-//                this.rectangles.add(this.rectangles_num, new RectF((float) d3 - 2.0F, (float) d4 - 15.0F, 2.0F + (float) d3, 15.0F + (float) d4));
-//                this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(-70.0F));
-//                this.rectangles_num = (1 + this.rectangles_num);
-//                break;//TODO break not originally here
-//            }
-//        }
-////        while (i1 > getMax100());
-////        label645:
-////        label808:
-//        if (i1 % 5 == 0) {
-//            this.rectangles.add(this.rectangles_num, new RectF(f7 - 14.0F, f8 - 7.0F, 4.0F + f7 - 14.0F, 37.0F + f8));
-//            this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(55.0F));
-//            this.rectangles_num = (1 + this.rectangles_num);
-//        }
-////        label1164:
-////        for (f7 += 14.0F; ; f7 += 7.0F) {
-////            i1++;
-////            break;
-////            this.rectangles.add(this.rectangles_num, new RectF(f7, f8, 4.0F + f7, 30.0F + f8));
-////            this.rectangles_rotation.add(this.rectangles_num, Float.valueOf(0.0F));
-////            this.rectangles_num = (1 + this.rectangles_num);
-////        }
-//        }
-}
+    private void drawBoard() {
+        this._canvas.drawLines(this.lines, 0, 4 * this.lines_num, this._paint);
+        this._paint.setStyle(Style.FILL);
+
+        float width = this._width;
+        float height = this._height;
+
+        this._paint.setColor(Color.GREEN);
+        this._canvas.drawLine(0, (height / 2), width, (height / 2), this._paint);
+        this._paint.setColor(Color.YELLOW);
+
+        this._canvas.drawLines(this.points, 0, 4 * this.points_num, this._paint);
+
+        this._paint.setColor(Color.WHITE);
+
+    }
+
+    public void calculatePoints() {
+        float width = this._width;
+        float height = this._height;
+        this.points_num = 0;
+
+//        startX
+//        startY
+//        stopX
+//        stopY
+
+        //team top
+        //20
+//          for (int j = 1; j == this._activity.team_b.get_20(); j++) {
+        for (int j = 1; j < 10; j++) {
+            if (j % 5 == 0) {
+                //schief
+                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40 + 5 * width / 40;
+                points[(1 + 4 * this.points_num)] = height / 40;
+                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
+                points[(3 + 4 * this.points_num)] = height / 20 + height / 40;
+                this.points_num++;
+            } else {
+                //"normal"
+                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
+                points[(1 + 4 * this.points_num)] = height / 40;
+                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
+                points[(3 + 4 * this.points_num)] = height / 20 + height / 40;
+                this.points_num++;
+            }
+        }
+
+        //50
+        for (int j = 1; j < 10; j++) {
+            if (j % 5 == 0) {
+                //schief
+//                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40 + 5 * width / 40;
+//                points[(1 + 4 * this.points_num)] = height / 40;
+//                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
+//                points[(3 + 4 * this.points_num)] = height / 20 + height / 40;
+//                this.points_num++;
+            } else {
+                //"normal"
+//                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 80;
+//                points[(1 + 4 * this.points_num)] = height / 20 + j * height / 80;
+//                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) -  2 * j * width / 80;
+//                points[(3 + 4 * this.points_num)] = height / 20 + 2 * j * height / 80;
+                this.points_num++;
+            }
+        }
+        //100
+        for (int j = 1; j < 10; j++) {
+            if (j % 5 == 0) {
+                //schief
+                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40 + 5 * width / 40;
+                points[(1 + 4 * this.points_num)] = (height / 2) - height / 20 - height / 40;
+                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
+                points[(3 + 4 * this.points_num)] = (height / 2) - height / 40;
+                this.points_num++;
+            } else {
+                //"normal"
+                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
+                points[(1 + 4 * this.points_num)] = (height / 2) - height / 20 - height / 40;
+                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
+                points[(3 + 4 * this.points_num)] = (height / 2) - height / 40;
+                this.points_num++;
+            }
+        }
+
+        //team bottom
+        //100
+        for (int j = 1; j < 12; j++) {
+            if (j % 5 == 0) {
+                //schief
+                points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
+                points[(1 + 4 * this.points_num)] = height / 2 + height / 40;
+                points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40 - (5 * width / 40);
+                points[(3 + 4 * this.points_num)] = height / 2 + height / 20 + height / 40;
+                this.points_num++;
+            } else {
+                //"normal"
+                points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
+                points[(1 + 4 * this.points_num)] = height / 2 + height / 40;
+                points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
+                points[(3 + 4 * this.points_num)] = height / 2 + height / 20 + height / 40;
+                this.points_num++;
+            }
+        }
+        //50
+        //20
+        for (int j = 1; j < 10; j++) {
+            if (j % 5 == 0) {
+                //schief
+                points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
+                points[(1 + 4 * this.points_num)] = height - height / 40;
+                points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40 - (5 * width / 40);
+                points[(3 + 4 * this.points_num)] = height - height / 20 - height / 40;
+                this.points_num++;
+            } else {
+                //"normal"
+                points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
+                points[(1 + 4 * this.points_num)] = height - height / 40;
+                points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
+                points[(3 + 4 * this.points_num)] = height - height / 20 - height / 40;
+                this.points_num++;
+            }
+        }
+
+    }
 
 
     private void calculateZonePlacements() {
@@ -284,27 +243,6 @@ public class SchieberView extends View {
         this.zone_b_total = new RectF(0.0F, 4 * this._height / 6, this._width / 3, 5 * this._height / 6);
     }
 
-    private void drawBoard() {
-        this._canvas.drawLines(this.lines, 0, 4 * this.lines_num, this._paint);
-        this._paint.setStyle(Style.FILL);
-        int i = 0;
-        if (i >= this.rectangles_num) {
-            invalidate();
-            return;
-        }
-        //TODO: this code is unreachable and does not work, what is it's function? ;)
-//        if (this.rectangles_rotation.get(i) == 0.0F) {
-//            this._canvas.drawRoundRect(this.rectangles.get(i), 2.0F, 2.0F, this._paint);
-//            while (true) {
-//                i++;
-//                this._canvas.save();
-//                this._canvas.rotate(this.rectangles_rotation.get(i), (this.rectangles.get(i)).centerX(), this.rectangles.get(i).centerY());
-//                this._canvas.drawRoundRect(this.rectangles.get(i), 2.0F, 2.0F, this._paint);
-//                this._canvas.restore();
-//                break;
-//            }
-//        }
-    }
     //277457
     public void onActivityResult(int reqCode, int resCode, Intent data){
         Toast.makeText(getContext(),data.getIntExtra("Result1",0) ,Toast.LENGTH_LONG).show();
