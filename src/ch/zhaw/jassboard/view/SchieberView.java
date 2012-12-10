@@ -37,8 +37,8 @@ public class SchieberView extends View {
     RectF zone_t_total;
     private Context paramContext;
 
-    SchieberScore team_b = new SchieberScore(0,0,0,0);
-    SchieberScore team_t = new SchieberScore(0,0,0,0);
+    SchieberScore team_b = new SchieberScore(0, 0, 0, 0);
+    SchieberScore team_t = new SchieberScore(0, 0, 0, 0);
 
     /*
     Constructor
@@ -311,16 +311,19 @@ public class SchieberView extends View {
      */
     public boolean onTouchEvent(MotionEvent paramMotionEvent) {
         // Team on the top
-        if (this.zone_t_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-            Intent intT = new Intent(paramContext, ScoreDialog.class);
-            intT.putExtra("team","t");
-            ((Activity) paramContext).startActivityForResult(intT, 1);
-        } else if (this.zone_b_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-            Intent intT = new Intent(paramContext, ScoreDialog.class);
-            intT.putExtra("team","b");
-            ((Activity) paramContext).startActivityForResult(intT, 2);
+        if (paramMotionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+            if (this.zone_t_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+                Intent intT = new Intent(paramContext, ScoreDialog.class);
+                intT.putExtra("team", "t");
+                ((Activity) paramContext).startActivityForResult(intT, 1);
+            } else if (this.zone_b_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+                Intent intT = new Intent(paramContext, ScoreDialog.class);
+                intT.putExtra("team", "b");
+                ((Activity) paramContext).startActivityForResult(intT, 2);
+            }
+            draw();
+            return true;
         }
-        draw();
-        return true;
+       return true;
     }
 }
