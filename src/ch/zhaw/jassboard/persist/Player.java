@@ -308,4 +308,52 @@ public class Player {
     public void setPointsMaxSchieber(Integer pointsMaxSchieber) {
         this.pointsMaxSchieber = pointsMaxSchieber;
     }
+
+    public void setGamesPlayedDifferenzler(Integer gamesPlayedDifferenzler) {
+        this.gamesPlayedDifferenzler = gamesPlayedDifferenzler;
+    }
+
+    public void setGamesWonDifferenzler(Integer gamesWonDifferenzler) {
+        this.gamesWonDifferenzler = gamesWonDifferenzler;
+    }
+
+    public void setRoundsPlayedDifferenzler(Integer roundsPlayedDifferenzler) {
+        this.roundsPlayedDifferenzler = roundsPlayedDifferenzler;
+    }
+
+    public void setRoundsWonDifferenzler(Integer roundsWonDifferenzler) {
+        this.roundsWonDifferenzler = roundsWonDifferenzler;
+    }
+
+    public void setPointsMadeDifferenzler(Integer pointsMadeDifferenzler) {
+        this.pointsMadeDifferenzler = pointsMadeDifferenzler;
+    }
+
+    public void setPointsMaxDifferenzler(Integer pointsMaxDifferenzler) {
+        this.pointsMaxDifferenzler = pointsMaxDifferenzler;
+    }
+
+    public void setGamesPlayedCoiffeur(Integer gamesPlayedCoiffeur) {
+        this.gamesPlayedCoiffeur = gamesPlayedCoiffeur;
+    }
+
+    public void setGamesWonCoiffeur(Integer gamesWonCoiffeur) {
+        this.gamesWonCoiffeur = gamesWonCoiffeur;
+    }
+
+    public void setRoundsPlayedCoiffeur(Integer roundsPlayedCoiffeur) {
+        this.roundsPlayedCoiffeur = roundsPlayedCoiffeur;
+    }
+
+    public void setRoundsWonCoiffeur(Integer roundsWonCoiffeur) {
+        this.roundsWonCoiffeur = roundsWonCoiffeur;
+    }
+
+    public void setPointsMadeCoiffeur(Integer pointsMadeCoiffeur) {
+        this.pointsMadeCoiffeur = pointsMadeCoiffeur;
+    }
+
+    public void setPointsMaxCoiffeur(Integer pointsMaxCoiffeur) {
+        this.pointsMaxCoiffeur = pointsMaxCoiffeur;
+    }
 }

@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/libs/ormlite-core-4.42.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/ormlite-android-4.42.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/junit-4.11.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
