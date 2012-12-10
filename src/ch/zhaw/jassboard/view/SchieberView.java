@@ -38,7 +38,6 @@ public class SchieberView extends View {
     private int scoreTextSize = 18;
     RectF zone_b_total;
     RectF zone_t_total;
-    int resultA = 0;
     private Context paramContext;
 
 
@@ -251,13 +250,6 @@ public class SchieberView extends View {
         //float left, float top, float right, float bottom)
     }
 
-    //277457
-    public void onActivityResult(int reqCode, int resCode, Intent data) {
-        Toast.makeText(getContext(), data.getIntExtra("Result1", 0), Toast.LENGTH_LONG).show();
-        resultA = data.getIntExtra("Result1", 10);
-        draw();
-    }
-
     public void draw() {
         // this._activity.team_t.realignScore(getMax20(), getMax50());
         // this._activity.team_b.realignScore(getMax20(), getMax50());
@@ -268,7 +260,7 @@ public class SchieberView extends View {
         this._canvas.rotate(180.0F, this._width / 2, this._height / 2 - this.scoreTextSize);
         // draw current score of team a
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(resultA), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
+        this._canvas.drawText(Integer.toString(10), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
         this._canvas.restore();
         // draw current score of team b
         // TODO: Dynamically get Points!!!
@@ -277,7 +269,7 @@ public class SchieberView extends View {
         this._canvas.save();
         this._canvas.rotate(180.0F, this._width / 4, 2 * this._height / 10);
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(resultA), this._width / 4, 2 * this._height / 10, this._paint);
+        this._canvas.drawText(Integer.toString(10), this._width / 4, 2 * this._height / 10, this._paint);
         this._canvas.restore();
         // TODO: Dynamically get Points!!!
         this._canvas.drawText(Integer.toString(50), 3 * this._width / 4, 8 * this._height / 10, this._paint);
