@@ -321,6 +321,11 @@ public class SchieberActivity extends JasstafelActivity {
 //    this.jasstafelActivityNavigation.onResume();
     }
 
+    @Override
+    protected void onActivityResult(int reqCode, int resCode, Intent data){
+        super.onActivityResult(reqCode, resCode, data);
+    }
+
     public void showCustomDialog(int paramInt) {
         FragmentTransaction localFragmentTransaction = getFragmentManager().beginTransaction();
         Bundle localBundle = new Bundle();

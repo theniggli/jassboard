@@ -1,13 +1,11 @@
 package ch.zhaw.jassboard.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.RadioGroup;
+import android.widget.*;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.Toast;
 import ch.zhaw.R;
 
 
@@ -17,6 +15,7 @@ import ch.zhaw.R;
  * @author <a href=mailto:stjepton@students.zhaw.ch>toni</a>
  * @since 12/1/12 8:50 AM
  */
+
 
 public class ScoreDialog extends Activity
 {
@@ -53,6 +52,13 @@ public class ScoreDialog extends Activity
         {
             public void onClick(View v) {
                 DisplayToast("You have clicked the Save button");
+                //277457
+                EditText inText   = (EditText) findViewById(R.id.txtName);
+                Intent resInt = new Intent();
+                int resultatA = Integer.valueOf(inText.getText().toString());
+                resInt.putExtra("Result1",resultatA);
+                setResult(Activity.RESULT_OK, resInt);
+                finish();
             }
         });
     }

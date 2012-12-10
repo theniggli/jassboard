@@ -1,5 +1,6 @@
 package ch.zhaw.jassboard.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,9 +11,13 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
+import ch.zhaw.jassboard.activity.JasstafelActivity;
 import ch.zhaw.jassboard.activity.SchieberActivity;
 
 import java.util.ArrayList;
+
+import static android.widget.Toast.*;
 
 /**
  * Draw Board and add ontouch-functions
@@ -45,6 +50,7 @@ public class SchieberView extends View {
     RectF zone_t_50;
     RectF zone_t_custom;
     RectF zone_t_total;
+    int resultA = 0;
     private Context paramContext;
 
     public SchieberView(Context paramContext) {
@@ -299,6 +305,12 @@ public class SchieberView extends View {
 //            }
 //        }
     }
+    //277457
+    public void onActivityResult(int reqCode, int resCode, Intent data){
+        Toast.makeText(getContext(),data.getIntExtra("Result1",0) ,Toast.LENGTH_LONG).show();
+        resultA = data.getIntExtra("Result1",10);
+        draw();
+    }
 
     public void draw() {
        // this._activity.team_t.realignScore(getMax20(), getMax50());
@@ -310,7 +322,7 @@ public class SchieberView extends View {
         this._canvas.rotate(180.0F, this._width / 2, this._height / 2 - this.scoreTextSize);
         // draw current score of team a
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(50), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
+        this._canvas.drawText(Integer.toString(resultA), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
         this._canvas.restore();
         // draw current score of team b
         // TODO: Dynamically get Points!!!
@@ -319,7 +331,7 @@ public class SchieberView extends View {
         this._canvas.save();
         this._canvas.rotate(180.0F, this._width / 4, 2 * this._height / 10);
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(50), this._width / 4, 2 * this._height / 10, this._paint);
+        this._canvas.drawText(Integer.toString(resultA), this._width / 4, 2 * this._height / 10, this._paint);
         this._canvas.restore();
         // TODO: Dynamically get Points!!!
         this._canvas.drawText(Integer.toString(50), 3 * this._width / 4, 8 * this._height / 10, this._paint);
@@ -373,12 +385,21 @@ public class SchieberView extends View {
 //            }
             // Team on the top
             if (this.zone_t_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-                paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
+                //paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
+                //277457
+                //((Activity)getContext()).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 0);
+                ((Activity)paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 1);
+                int abc = 1;
+
             }
             // Team on the bottom
             if (this.zone_b_custom.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
             {
-                paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
+                //paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
+                //277457
+                //((Activity)getContext()).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 0);
+                ((Activity)paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 1);
+                int abc = 1;
             }
 
 //            if (this.zone_b_100.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
