@@ -93,7 +93,7 @@ public class ScoreDialog extends Activity {
                 } else {
                     resInt.putExtra("resultCalculated", 0);
                 }
-
+                // TODO: if input not valid not finish bring toast
                // resInt.putExtra("team", getIntent().getStringExtra("team"));
 
                 setResult(RESULT_OK, resInt);

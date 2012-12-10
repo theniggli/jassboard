@@ -56,21 +56,24 @@ public class ViewRanks extends OrmLiteBaseActivity<DatabaseHelper> {
                     //gameswon
                     Collections.sort(playerArrayList, new Comparator<Player>() {
                         public int compare(Player player1, Player player2) {
-                            return player1.getGamesWon() - player2.getGamesWon();
+//                            return player1.getGamesWon() - player2.getGamesWon();
+                            return player2.getGamesWon() - player1.getGamesWon();
                         }
                     });
                 } else if (radioRoundswon.isChecked()) {
                     //roundswon
                     Collections.sort(playerArrayList, new Comparator<Player>() {
                         public int compare(Player player1, Player player2) {
-                            return player1.getRoundsWon() - player2.getRoundsWon();
+//                            return player1.getRoundsWon() - player2.getRoundsWon();
+                            return player2.getRoundsWon() - player1.getRoundsWon();
                         }
                     });
                 } else {
                     //pointsmade
                     Collections.sort(playerArrayList, new Comparator<Player>() {
                         public int compare(Player player1, Player player2) {
-                            return player1.getPointsMade() - player2.getPointsMade();
+//                            return player1.getPointsMade() - player2.getPointsMade();
+                            return player2.getPointsMade() - player1.getPointsMade();
                         }
                     });
                 }
@@ -89,21 +92,27 @@ public class ViewRanks extends OrmLiteBaseActivity<DatabaseHelper> {
                     //gameswon
                     Collections.sort(teamArrayList, new Comparator<Team>() {
                         public int compare(Team team1, Team team2) {
-                            return team1.getGamesWon() - team2.getGamesWon();
+//                            return team1.getGamesWon() - team2.getGamesWon();
+                            return team2.getGamesWon() - team1.getGamesWon();
+
                         }
                     });
                 } else if (radioRoundswon.isChecked()) {
                     //roundswon
                     Collections.sort(teamArrayList, new Comparator<Team>() {
                         public int compare(Team team1, Team team2) {
-                            return team1.getRoundsWon() - team2.getRoundsWon();
+//                            return team1.getRoundsWon() - team2.getRoundsWon();
+                            return team2.getRoundsWon() - team1.getRoundsWon();
+
                         }
                     });
                 } else {
                     //pointsmade
                     Collections.sort(teamArrayList, new Comparator<Team>() {
                         public int compare(Team team1, Team team2) {
-                            return team1.getPointsMade() - team2.getPointsMade();
+//                            return team1.getPointsMade() - team2.getPointsMade();
+                            return team2.getPointsMade() - team1.getPointsMade();
+
                         }
                     });
                 }

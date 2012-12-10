@@ -118,6 +118,7 @@ public class SchieberActivity extends JassboardActivity {
 
         //fill out statistics
         //could be bether made but may works
+        // TODO: not use resultCalculated use something like rounddone
         if (data.getIntExtra("resultCalculated", 0) != 0) {
             //round done
             if (reqCode == 1) {
