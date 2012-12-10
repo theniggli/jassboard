@@ -3,6 +3,8 @@ package ch.zhaw.jassboard.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
+import ch.zhaw.R;
 import ch.zhaw.jassboard.persist.Player;
 import ch.zhaw.jassboard.persist.SchieberScore;
 import ch.zhaw.jassboard.persist.Team;
@@ -206,6 +208,53 @@ public class SchieberActivity extends JassboardActivity {
             }
         }
 
+        //if maxpoints reached
+        if (score_t.getScore() >= 2500) {
+            //top team has won :-)
+            if ((team1 != null) && (team2 != null)) {
+                team1.setGamesPlayedSchieber(team1.getGamesPlayedSchieber() + 1);
+                team2.setGamesPlayedSchieber(team2.getGamesPlayedSchieber() + 1);
+                team1.setGamesWonSchieber(team1.getGamesWonSchieber() + 1);
+                RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
+                teamDAO.update(team1);
+                teamDAO.update(team2);
+            }
+            player1.setGamesPlayedSchieber(player1.getGamesPlayedSchieber() + 1);
+            player2.setGamesPlayedSchieber(player2.getGamesPlayedSchieber() + 1);
+            player3.setGamesPlayedSchieber(player3.getGamesPlayedSchieber() + 1);
+            player4.setGamesPlayedSchieber(player4.getGamesPlayedSchieber() + 1);
+            player1.setGamesWonSchieber(player1.getGamesWonSchieber() + 1);
+            player2.setGamesWonSchieber(player2.getGamesWonSchieber() + 1);
+            RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
+            playerDAO.update(player1);
+            playerDAO.update(player2);
+            playerDAO.update(player3);
+            playerDAO.update(player4);
+            Toast.makeText(getApplicationContext(), "Team 1 hat das Spiel gewonnen.", Toast.LENGTH_SHORT).show();
+            finish();
+        } else if (score_b.getScore() >= 2500) {
+            if ((team1 != null) && (team2 != null)) {
+                team1.setGamesPlayedSchieber(team1.getGamesPlayedSchieber() + 1);
+                team2.setGamesPlayedSchieber(team2.getGamesPlayedSchieber() + 1);
+                team2.setGamesWonSchieber(team2.getGamesWonSchieber() + 1);
+                RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
+                teamDAO.update(team1);
+                teamDAO.update(team2);
+            }
+            player1.setGamesPlayedSchieber(player1.getGamesPlayedSchieber() + 1);
+            player2.setGamesPlayedSchieber(player2.getGamesPlayedSchieber() + 1);
+            player3.setGamesPlayedSchieber(player3.getGamesPlayedSchieber() + 1);
+            player4.setGamesPlayedSchieber(player4.getGamesPlayedSchieber() + 1);
+            player3.setGamesWonSchieber(player3.getGamesWonSchieber() + 1);
+            player4.setGamesWonSchieber(player4.getGamesWonSchieber() + 1);
+            RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
+            playerDAO.update(player1);
+            playerDAO.update(player2);
+            playerDAO.update(player3);
+            playerDAO.update(player4);
+            Toast.makeText(getApplicationContext(), "Team 2 hat das Spiel gewonnen.", Toast.LENGTH_SHORT).show();
+            finish();
+        }
     }
 }
 
