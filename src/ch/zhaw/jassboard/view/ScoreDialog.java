@@ -51,19 +51,19 @@ public class ScoreDialog extends Activity {
                         multi = 1;
                         break;
                     case 2131165210:
-                        multi = 2;
+                        multi = 1;
                         break;
                     case 2131165211:
-                        multi = 3;
+                        multi = 2;
                         break;
                     case 2131165212:
-                        multi = 4;
+                        multi = 2;
                         break;
                     case 2131165213:
-                        multi = 5;
+                        multi = 3;
                         break;
                     case 2131165214:
-                        multi = 6;
+                        multi = 3;
                         break;
                     default:
                         multi = 0;
@@ -81,7 +81,7 @@ public class ScoreDialog extends Activity {
                 int resultat = Integer.valueOf(inText.getText().toString());
                 Intent resInt = new Intent();
                 resInt.putExtra("multi", multi);
-                if (resultat > 257 && calcOpp) {
+                if (resultat > 157 && calcOpp) {
                     resultat = 0;
                     calcOpp = false;
                 } else {
@@ -89,7 +89,7 @@ public class ScoreDialog extends Activity {
                 }
                 // check if the points of the opposing team should be calculated
                 if (calcOpp) {
-                    resInt.putExtra("resultCalculated", 257 - resultat);
+                    resInt.putExtra("resultCalculated", 157 - resultat);
                 } else {
                     resInt.putExtra("resultCalculated", 0);
                 }
