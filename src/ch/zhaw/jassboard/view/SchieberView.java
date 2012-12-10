@@ -260,19 +260,19 @@ public class SchieberView extends View {
         this._canvas.rotate(180.0F, this._width / 2, this._height / 2 - this.scoreTextSize);
         // draw current score of team a
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(10), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
+        this._canvas.drawText(String.valueOf(team_t.getScore()), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
         this._canvas.restore();
         // draw current score of team b
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(50), this._width / 2, this._height / 2 + this.scoreTextSize, this._paint);
+        this._canvas.drawText(String.valueOf(team_b.getScore()), this._width / 2, this._height / 2 + this.scoreTextSize, this._paint);
         this._paint.setTextSize(this.scoreTextSize);
         this._canvas.save();
         this._canvas.rotate(180.0F, this._width / 4, 2 * this._height / 10);
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(10), this._width / 4, 2 * this._height / 10, this._paint);
+        this._canvas.drawText("11", this._width / 4, 2 * this._height / 10, this._paint);
         this._canvas.restore();
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(50), 3 * this._width / 4, 8 * this._height / 10, this._paint);
+        this._canvas.drawText("12", 3 * this._width / 4, 8 * this._height / 10, this._paint);
         calculateLinePlacements();
         calculateZonePlacements();
         calculatePoints();

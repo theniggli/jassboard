@@ -82,6 +82,7 @@ public class ScoreDialog extends Activity
             public void onClick(View v) {
                 //get the entered value from the text field
                 EditText inText   = (EditText) findViewById(R.id.txtName);
+                calcOpp = true;
                 int resultat = Integer.valueOf(inText.getText().toString());
                 Intent resInt = new Intent();
                 resInt.putExtra("multi",multi);
@@ -98,7 +99,7 @@ public class ScoreDialog extends Activity
                     resInt.putExtra("resultCalculated",0);
                 }
                 resInt.putExtra("team",getIntent().getStringExtra("team"));
-                setResult(0,resInt);
+                setResult(Activity.RESULT_OK,resInt);
                 finish();
             }
         });
