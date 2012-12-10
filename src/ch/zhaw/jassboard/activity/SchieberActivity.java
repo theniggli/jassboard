@@ -8,19 +8,18 @@ import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-import ch.zhaw.jassboard.persist.Player;
-import ch.zhaw.jassboard.persist.Team;
 import ch.zhaw.jassboard.view.SchieberView;
-import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 /**
- * TODO describe class
+ * Base Activity for the Board
+ * - Extends generic JassboardActivity
+ * - Starts the View for the Board
  *
  * @author <a href=mailto:stjepton@students.zhaw.ch>toni</a>
  * @since 12/1/12 8:50 AM
  */
 
-public class SchieberActivity extends JasstafelActivity {
+public class SchieberActivity extends JassboardActivity {
     public static final int DIALOG_CUSTOM_B = 1;
     public static final int DIALOG_CUSTOM_T = 0;
     public static final int DIALOG_EXPLANATION = 4;
