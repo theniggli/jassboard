@@ -53,7 +53,7 @@ public class AddTeam extends OrmLiteBaseActivity<DatabaseHelper> {
         EditText edit = (EditText) findViewById(R.id.teamName);
         String teamName = edit.getText().toString();
 
-        if (teamName != "") {
+        if (!teamName.equals("")) {
             if (player1.getPlayerID() != player2.getPlayerID()) {
                 //create team
                 RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
