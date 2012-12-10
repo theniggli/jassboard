@@ -26,6 +26,8 @@ public class SchieberActivity extends JassboardActivity {
     Player player4;
     Team team1;
     Team team2;
+    SchieberScore score_t = new SchieberScore(0, 0, 0, 0);
+    SchieberScore score_b = new SchieberScore(0, 0, 0, 0);
 
     public SchieberActivity() {
     }
@@ -44,15 +46,15 @@ public class SchieberActivity extends JassboardActivity {
         Integer team2ID = Integer.parseInt(intent.getStringExtra("team2ID"));
 
         RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
-        Player player1 = playerDAO.queryForId(player1ID);
-        Player player2 = playerDAO.queryForId(player2ID);
-        Player player3 = playerDAO.queryForId(player3ID);
-        Player player4 = playerDAO.queryForId(player4ID);
+        player1 = playerDAO.queryForId(player1ID);
+        player2 = playerDAO.queryForId(player2ID);
+        player3 = playerDAO.queryForId(player3ID);
+        player4 = playerDAO.queryForId(player4ID);
 
         if (team1ID != -1) {
             RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
-            Team team1 = teamDAO.queryForId(team1ID);
-            Team team2 = teamDAO.queryForId(team2ID);
+            team1 = teamDAO.queryForId(team1ID);
+            team2 = teamDAO.queryForId(team2ID);
         }
     }
 
@@ -97,8 +99,6 @@ public class SchieberActivity extends JassboardActivity {
     @Override
     protected void onActivityResult(int reqCode, int resCode, Intent data) {
         //super.onActivityResult(reqCode, resCode, data);
-        SchieberScore score_t = new SchieberScore(0, 0, 0, 0);
-        SchieberScore score_b = new SchieberScore(0, 0, 0, 0);
         int multi = data.getIntExtra("multi", 0);
 //        if(data.getStringExtra("team").equals("t")){
         if (reqCode == 1) {
@@ -112,7 +112,11 @@ public class SchieberActivity extends JassboardActivity {
             score_b.setPoints(data.getIntExtra("resultEntered", 0), multi);
             _board.setTeam_b(score_b);
         }
-        if (data.getIntExtra("resultCalculated",0) != 0) {
+        _board.draw();
+
+        //fill out statistics
+        //could be bether made but may works
+        if (data.getIntExtra("resultCalculated", 0) != 0) {
             //round done
             if (reqCode == 1) {
                 if (data.getIntExtra("resultEntered", 0) * multi > data.getIntExtra("resultCalculated", 0) * multi) {
@@ -131,23 +135,30 @@ public class SchieberActivity extends JassboardActivity {
                 player2.setPointsMadeSchieber(player2.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
                 player3.setPointsMadeSchieber(player3.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
                 player4.setPointsMadeSchieber(player4.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
-                player1.setPointsMaxSchieber(player1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi );
-                player2.setPointsMaxSchieber(player2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi );
-                player3.setPointsMaxSchieber(player3.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi );
-                player4.setPointsMaxSchieber(player4.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi );
-
+                player1.setPointsMaxSchieber(player1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                player2.setPointsMaxSchieber(player2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                player3.setPointsMaxSchieber(player3.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                player4.setPointsMaxSchieber(player4.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
+                playerDAO.update(player1);
+                playerDAO.update(player2);
+                playerDAO.update(player3);
+                playerDAO.update(player4);
                 if ((team1 != null) && (team2 != null)) {
                     if (data.getIntExtra("resultEntered", 0) * multi > data.getIntExtra("resultCalculated", 0) * multi) {
                         team1.setRoundsWonSchieber(team1.getRoundsWon() + 1);
-                    }else {
+                    } else {
                         team2.setRoundsWonSchieber(team2.getRoundsWon() + 1);
                     }
                     team1.setPointsMadeSchieber(team1.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
                     team2.setPointsMadeSchieber(team2.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
                     team1.setRoundsPlayedSchieber(team1.getRoundsPlayedSchieber() + 1);
                     team2.setRoundsPlayedSchieber(team2.getRoundsPlayedSchieber() + 1);
-                    team1.setPointsMaxSchieber(team1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi );
-                    team2.setPointsMaxSchieber(team2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi );
+                    team1.setPointsMaxSchieber(team1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                    team2.setPointsMaxSchieber(team2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                    RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
+                    teamDAO.update(team1);
+                    teamDAO.update(team2);
                 }
 
             } else {
@@ -158,7 +169,6 @@ public class SchieberActivity extends JassboardActivity {
                 } else {
                     player1.setRoundsWonSchieber(player1.getRoundsWon() + 1);
                     player2.setRoundsWonSchieber(player2.getRoundsWon() + 1);
-
                 }
                 player1.setRoundsPlayedSchieber(player1.getRoundsPlayedSchieber() + 1);
                 player2.setRoundsPlayedSchieber(player2.getRoundsPlayedSchieber() + 1);
@@ -168,26 +178,34 @@ public class SchieberActivity extends JassboardActivity {
                 player2.setPointsMadeSchieber(player2.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
                 player3.setPointsMadeSchieber(player3.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
                 player4.setPointsMadeSchieber(player4.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
-                player1.setPointsMaxSchieber(player1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi );
-                player2.setPointsMaxSchieber(player2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi );
-                player3.setPointsMaxSchieber(player3.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi );
-                player4.setPointsMaxSchieber(player4.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi );
+                player1.setPointsMaxSchieber(player1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                player2.setPointsMaxSchieber(player2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                player3.setPointsMaxSchieber(player3.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                player4.setPointsMaxSchieber(player4.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
+                playerDAO.update(player1);
+                playerDAO.update(player2);
+                playerDAO.update(player3);
+                playerDAO.update(player4);
                 if ((team1 != null) && (team2 != null)) {
                     if (data.getIntExtra("resultEntered", 0) * multi > data.getIntExtra("resultCalculated", 0) * multi) {
                         team2.setRoundsWonSchieber(team2.getRoundsWon() + 1);
-                    }else {
+                    } else {
                         team1.setRoundsWonSchieber(team1.getRoundsWon() + 1);
                     }
                     team1.setPointsMadeSchieber(team1.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
                     team2.setPointsMadeSchieber(team2.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
                     team1.setRoundsPlayedSchieber(team1.getRoundsPlayedSchieber() + 1);
                     team2.setRoundsPlayedSchieber(team2.getRoundsPlayedSchieber() + 1);
-                    team1.setPointsMaxSchieber(team1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi );
-                    team2.setPointsMaxSchieber(team2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi );
+                    team1.setPointsMaxSchieber(team1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                    team2.setPointsMaxSchieber(team2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                    RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
+                    teamDAO.update(team1);
+                    teamDAO.update(team2);
                 }
             }
         }
-        _board.draw();
+
     }
 }
 

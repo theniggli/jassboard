@@ -66,7 +66,7 @@ public class ScoreDialog extends Activity {
                         multi = 3;
                         break;
                     default:
-                        multi = 0;
+                        multi = 1;
                         break;
 
                 }

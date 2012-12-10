@@ -23,21 +23,26 @@ public class SchieberScore implements Serializable {
         this.count_50 = score_50;
         this.count_100 = score_100;
     }
-    
+
     public int getScore() {
         return score;
     }
-    
+
     /*
-    public setter to update the different score types
-     */
-    public void setPoints(int scoreTotal, int multi){
+   public setter to update the different score types
+    */
+    public void setPoints(int scoreTotal, int multi) {
         this.score = this.score + (scoreTotal * multi);
-        int scoreWrite = scoreTotal * multi;
-        this.count_100 = calc100(scoreWrite);
-        this.count_50 = calc50(scoreWrite);
-        this.count_20 = calc20(scoreWrite);
-        this.rest = calcRest(scoreWrite);
+        this.count_100 = calc100(this.score);
+        this.count_50 = calc50(this.score);
+        this.count_20 = calc20(this.score);
+        this.rest = calcRest(this.score);
+
+//        int scoreWrite = scoreTotal * multi;
+//        this.count_100 = calc100(scoreWrite);
+//        this.count_50 = calc50(scoreWrite);
+//        this.count_20 = calc20(scoreWrite);
+//        this.rest = calcRest(scoreWrite);
 
     }
 
