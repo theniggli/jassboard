@@ -37,19 +37,12 @@ public class SchieberView extends View {
     RectF zone_t_total;
     private Context paramContext;
 
-
     private SchieberScore team_b = new SchieberScore(0,0,0,0);
     private SchieberScore team_t = new SchieberScore(0,0,0,0);
 
-    public void setTeam_b(SchieberScore team_b) {
-        this.team_b = team_b;
-    }
-
-    public void setTeam_t(SchieberScore team_t) {
-        this.team_t = team_t;
-    }
-
-
+    /*
+    Constructor
+     */
     public SchieberView(Context paramContext) {
         super(paramContext);
         this._activity = ((SchieberActivity) paramContext);
@@ -60,6 +53,23 @@ public class SchieberView extends View {
         this.scoreTextSize = (int) (0.5F + 16.0F * getResources().getDisplayMetrics().density);
     }
 
+    /*
+    Set bottom Team
+     */
+    public void setTeam_b(SchieberScore team_b) {
+        this.team_b = team_b;
+    }
+
+    /*
+    Set top Team
+     */
+    public void setTeam_t(SchieberScore team_t) {
+        this.team_t = team_t;
+    }
+
+    /*
+    Calculate coordinates for the ontouch-events (including future implementation for drawing the points when touching the lines of the board)
+     */
     private void calculateLinePlacements() {
         this.lines_num = 0;
         this.lines[(0 + 4 * this.lines_num)] = 0.0F;
@@ -99,6 +109,9 @@ public class SchieberView extends View {
         this.lines_num = (1 + this.lines_num);
     }
 
+    /*
+    Draw the "Z" and set the colours
+     */
     private void drawBoard() {
         //draw baselines
         this._paint.setColor(Color.WHITE);
@@ -247,6 +260,9 @@ public class SchieberView extends View {
         //float left, float top, float right, float bottom)
     }
 
+    /*
+    Draw the points
+     */
     public void draw() {
         // this._activity.team_t.realignScore(getMax20(), getMax50());
         // this._activity.team_b.realignScore(getMax20(), getMax50());
@@ -276,18 +292,6 @@ public class SchieberView extends View {
         drawBoard();
     }
 
-    public int getMax100() {
-        return 5 * (int) ((10.0D * this._width / 12.0D - 12.0D) / 42.0D);
-    }
-
-    public int getMax20() {
-        return 5 * (int) ((10.0D * this._width / 12.0D - 12.0D) / 42.0D);
-    }
-
-    public int getMax50() {
-        return 2 * (int) (this._width / 2.0D / 20.0D);
-    }
-
     protected void onDraw(Canvas paramCanvas) {
         paramCanvas.drawBitmap(this._bitmap, 0.0F, 0.0F, this._paint);
     }
@@ -302,7 +306,7 @@ public class SchieberView extends View {
     }
 
     /*
-    Handle touch events and show dialogs
+    Handle touch events and show score dialog
      */
     public boolean onTouchEvent(MotionEvent paramMotionEvent) {
         // Team on the top
