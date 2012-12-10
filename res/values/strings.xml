@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">jassboard</string>
-    <string name="set_team">Team anschauen/bearbeiten</string>
-    <string name="set_player">Spieler anschauen/bearbeiten</string>
-    <string name="start_game">Starte Spiel</string>
+    <string name="set_team">Teamverwaltung</string>
+    <string name="set_player">Spielerverwaltung</string>
+    <string name="start_game">neues Spiel</string>
     <string name="add_player">neuer Spieler erstellen</string>
     <string name="add_team">neues Team erstellen</string>
     <string name="create_player">neuer Spieler erstellen</string>
@@ -34,7 +34,7 @@
     <string name="player4">Spieler 4</string>
     <string name="team1">Team 1</string>
     <string name="team2">Team 2</string>
-    <string name="viewranks">Rangliste anzeigen</string>
+    <string name="viewranks">Rangliste</string>
     <string name="rankswelcome">Bitte von den Ratiobuttons unten auswählen welche Rangliste angzeigt werden soll.
     </string>
     <string name="welcome">Willkomen in Jassboard</string>
