@@ -105,15 +105,16 @@ public class SchieberActivity extends JassboardActivity {
         //super.onActivityResult(reqCode, resCode, data);
         SchieberScore score_t = new SchieberScore(0,0,0,0);
         SchieberScore score_b = new SchieberScore(0,0,0,0);
-        if(data.getStringExtra("team").equals("t")){
+//        if(data.getStringExtra("team").equals("t")){
+        if(reqCode == 1){
             score_t.setPoints(data.getIntExtra("resultEntered",0));
             _board.setTeam_t(score_t);
-            score_t.setPoints(data.getIntExtra("resultCalculated",0));
+            score_b.setPoints(data.getIntExtra("resultCalculated",0));
             _board.setTeam_b(score_b);
         }else{
             score_t.setPoints(data.getIntExtra("resultCalculated",0));
             _board.setTeam_t(score_t);
-            score_t.setPoints(data.getIntExtra("resultEntered",0));
+            score_b.setPoints(data.getIntExtra("resultEntered",0));
             _board.setTeam_b(score_b);
         }
         _board.draw();
