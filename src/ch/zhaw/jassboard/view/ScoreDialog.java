@@ -105,6 +105,10 @@ public class ScoreDialog extends Activity
         });
     }
 
+    /**
+     * Displays a small Message to the user
+     * @param msg Message to display
+     */
     private void DisplayToast(String msg)
     {
         Toast.makeText(getBaseContext(), msg,
