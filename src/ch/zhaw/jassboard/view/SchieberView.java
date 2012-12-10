@@ -37,8 +37,8 @@ public class SchieberView extends View {
     RectF zone_t_total;
     private Context paramContext;
 
-    private SchieberScore team_b = new SchieberScore(0,0,0,0);
-    private SchieberScore team_t = new SchieberScore(0,0,0,0);
+    private SchieberScore team_b = new SchieberScore(0, 0, 0, 0);
+    private SchieberScore team_t = new SchieberScore(0, 0, 0, 0);
 
     /*
     Constructor
@@ -157,22 +157,22 @@ public class SchieberView extends View {
         }
 
         //50
-        for (int j = 1; j < 10; j++) {
-//            if (j % 5 == 0) {
-                //schief
-//                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40 + 5 * width / 40;
-//                points[(1 + 4 * this.points_num)] = height / 40;
-//                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
-//                points[(3 + 4 * this.points_num)] = height / 20 + height / 40;
-//                this.points_num++;
-//            } else {
+        for (int j = 1; j < 12; j++) {
+            if (j % 5 == 0) {
+//                schief
+                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
+                points[(1 + 4 * this.points_num)] = 2 * height / 20 + height / 80 + j * height / 80;
+                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40 + 5 * width / 40;
+                points[(3 + 4 * this.points_num)] = 1 * height / 20 + height / 80 + j * height / 80 - 5 * height / 80;
+                this.points_num++;
+            } else {
                 //"normal"
                 points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
                 points[(1 + 4 * this.points_num)] = 2 * height / 20 + height / 80 + j * height / 80;
                 points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
                 points[(3 + 4 * this.points_num)] = 1 * height / 20 + height / 80 + j * height / 80;
                 this.points_num++;
-//            }
+            }
         }
         //100
         for (int j = 1; j < 10; j++) {
@@ -214,30 +214,31 @@ public class SchieberView extends View {
         }
         //50
         for (int j = 1; j < 12; j++) {
-//            if (j % 5 == 0) {
+            if (j % 5 == 0) {
                 //schief
-//                points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
-//                points[(1 + 4 * this.points_num)] = height / 2 + height / 40;
-//                points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40 - (5 * width / 40);
-//                points[(3 + 4 * this.points_num)] = height / 2 + height / 20 + height / 40;
-//                this.points_num++;
-//            } else {
+                points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
+                points[(1 + 4 * this.points_num)] = height - 2 * height / 20 - height / 80 - j * height / 80;
+                points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40 - 5 * width / 40;
+                points[(3 + 4 * this.points_num)] = height - 1 * height / 20 - height / 80 - j * height / 80 + 5 * height / 80;
+
+                this.points_num++;
+            } else {
                 //"normal"
                 points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
                 points[(1 + 4 * this.points_num)] = height - 2 * height / 20 - height / 80 - j * height / 80;
                 points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
                 points[(3 + 4 * this.points_num)] = height - 1 * height / 20 - height / 80 - j * height / 80;
                 this.points_num++;
-//            }
+            }
         }
         //20
         for (int j = 1; j < 10; j++) {
             if (j % 5 == 0) {
                 //schief
                 points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
-                points[(1 + 4 * this.points_num)] = height - height / 40;
+                points[(1 + 4 * this.points_num)] = height - height / 20 - height / 40;
                 points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40 - (5 * width / 40);
-                points[(3 + 4 * this.points_num)] = height - height / 20 - height / 40;
+                points[(3 + 4 * this.points_num)] = height - height / 40;
                 this.points_num++;
             } else {
                 //"normal"
@@ -312,13 +313,13 @@ public class SchieberView extends View {
         // Team on the top
         if (this.zone_t_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
             Intent intT = new Intent(paramContext, ScoreDialog.class);
-            intT.putExtra("team","t");
+            intT.putExtra("team", "t");
             ((Activity) paramContext).startActivityForResult(intT, 1);
         }
         // Team on the bottom
         if (this.zone_b_total.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
             Intent intT = new Intent(paramContext, ScoreDialog.class);
-            intT.putExtra("team","b");
+            intT.putExtra("team", "b");
             ((Activity) paramContext).startActivityForResult(intT, 2);
         }
         draw();
