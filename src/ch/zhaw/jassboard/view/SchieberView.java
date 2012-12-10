@@ -138,7 +138,7 @@ public class SchieberView extends View {
         //team top
         //20
 //          for (int j = 1; j == this._activity.team_b.get_20(); j++) {
-        for (int j = 1; j < 10; j++) {
+        for (int j = 1; j <= team_t.count_20; j++) {
             if (j % 5 == 0) {
                 //schief
                 points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40 + 5 * width / 40;
@@ -157,7 +157,7 @@ public class SchieberView extends View {
         }
 
         //50
-        for (int j = 1; j < 12; j++) {
+        for (int j = 1; j <= team_t.count_50; j++) {
             if (j % 5 == 0) {
 //                schief
                 points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
@@ -175,7 +175,7 @@ public class SchieberView extends View {
             }
         }
         //100
-        for (int j = 1; j < 10; j++) {
+        for (int j = 1; j <= team_t.count_100; j++) {
             if (j % 5 == 0) {
                 //schief
                 points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40 + 5 * width / 40;
@@ -195,7 +195,7 @@ public class SchieberView extends View {
 
         //team bottom
         //100
-        for (int j = 1; j < 12; j++) {
+        for (int j = 1; j <= team_b.count_100; j++) {
             if (j % 5 == 0) {
                 //schief
                 points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
@@ -213,7 +213,7 @@ public class SchieberView extends View {
             }
         }
         //50
-        for (int j = 1; j < 12; j++) {
+        for (int j = 1; j <= team_b.count_50; j++) {
             if (j % 5 == 0) {
                 //schief
                 points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
@@ -232,7 +232,7 @@ public class SchieberView extends View {
             }
         }
         //20
-        for (int j = 1; j < 10; j++) {
+        for (int j = 1; j <= team_b.count_20; j++) {
             if (j % 5 == 0) {
                 //schief
                 points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
@@ -274,19 +274,19 @@ public class SchieberView extends View {
         this._canvas.rotate(180.0F, this._width / 2, this._height / 2 - this.scoreTextSize);
         // draw current score of team a
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(10), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
+//        this._canvas.drawText(Integer.toString(11), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
         this._canvas.restore();
         // draw current score of team b
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(50), this._width / 2, this._height / 2 + this.scoreTextSize, this._paint);
+//        this._canvas.drawText(Integer.toString(50), this._width / 2, this._height / 2 + this.scoreTextSize, this._paint);
         this._paint.setTextSize(this.scoreTextSize);
         this._canvas.save();
         this._canvas.rotate(180.0F, this._width / 4, 2 * this._height / 10);
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(10), this._width / 4, 2 * this._height / 10, this._paint);
+        this._canvas.drawText(Integer.toString(team_t.rest), this._width / 4, 2 * this._height / 10, this._paint);
         this._canvas.restore();
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(50), 3 * this._width / 4, 8 * this._height / 10, this._paint);
+        this._canvas.drawText(Integer.toString(team_b.rest), 3 * this._width / 4, 8 * this._height / 10, this._paint);
         calculateLinePlacements();
         calculateZonePlacements();
         calculatePoints();
