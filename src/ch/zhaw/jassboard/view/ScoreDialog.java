@@ -18,6 +18,8 @@ import ch.zhaw.R;
 public class ScoreDialog extends Activity
 {
     int multi = 0;
+    boolean calcOpp = false;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         //set xml-layout
@@ -30,10 +32,14 @@ public class ScoreDialog extends Activity
         checkBox.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {
-                if (((CheckBox)v).isChecked())
+                if (((CheckBox)v).isChecked()){
                     DisplayToast("Gegner wird berechnet.");
-                else
+                    calcOpp = true;
+                }
+                else{
                     DisplayToast("Gegner wird nicht berechnet.");
+                    calcOpp = false;
+                }
             }
         });
 
@@ -74,17 +80,25 @@ public class ScoreDialog extends Activity
         btnSave.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {
-                DisplayToast("You have clicked the Save button");
-                //277457
+                //get the entered value from the text field
                 EditText inText   = (EditText) findViewById(R.id.txtName);
+                int resultat = Integer.valueOf(inText.getText().toString());
                 Intent resInt = new Intent();
                 resInt.putExtra("multi",multi);
-                resInt.putExtra("result",Integer.valueOf(inText.getText().toString()));
+                if (resultat > 257 && calcOpp){
+                    resultat = 0;
+                    calcOpp = false;
+                } else {
+                    resInt.putExtra("resultEntered", resultat);
+                }
+                // check if the points of the opposing team should be calculated
+                if (calcOpp){
+                    resInt.putExtra("resultCalculated",257 - resultat);
+                }else{
+                    resInt.putExtra("resultCalculated",0);
+                }
                 resInt.putExtra("team",getIntent().getStringExtra("team"));
                 setResult(0,resInt);
-
-
-
                 finish();
             }
         });
