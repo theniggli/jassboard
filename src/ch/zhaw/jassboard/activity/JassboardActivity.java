@@ -13,16 +13,11 @@ import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
  */
 
 public class JassboardActivity extends OrmLiteBaseActivity<DatabaseHelper> {
-    private int activityId = -1;
-
     public JassboardActivity() {
     }
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
-    }
-
-    public void onDialogClosed(int paramInt, Bundle paramBundle) {
     }
 
     public boolean onOptionsItemSelected(MenuItem paramMenuItem) {
@@ -35,10 +30,6 @@ public class JassboardActivity extends OrmLiteBaseActivity<DatabaseHelper> {
 
     protected void onResume() {
         super.onResume();
-    }
-
-    protected void setActivityId(int paramInt) {
-        this.activityId = paramInt;
     }
 
     @Override

@@ -3,11 +3,9 @@ package ch.zhaw.jassboard.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.NumberPicker;
-import ch.zhaw.jassboard.activity.JassboardActivity;
-import ch.zhaw.jassboard.persist.*;
+import ch.zhaw.jassboard.persist.Player;
+import ch.zhaw.jassboard.persist.SchieberScore;
+import ch.zhaw.jassboard.persist.Team;
 import ch.zhaw.jassboard.view.SchieberView;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
@@ -21,25 +19,9 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
  */
 
 public class SchieberActivity extends JassboardActivity {
-    public static final int DIALOG_CUSTOM_B = 1;
-    public static final int DIALOG_CUSTOM_T = 0;
-    public static final int DIALOG_EXPLANATION = 4;
-    public static final int DIALOG_TOTAL_B = 3;
-    public static final int DIALOG_TOTAL_T = 2;
-    static final String TAG = "Jasstafel";
     public SchieberView _board;
-    protected CheckBox checkbox_complete_b;
-    protected CheckBox checkbox_complete_t;
-    protected EditText input_custom_b;
-    protected EditText input_custom_t;
-    protected EditText input_total_b;
-    protected EditText input_total_t;
-    protected NumberPicker multiplication_b;
-    protected NumberPicker multiplication_t;
-    private boolean rotateDialogs = true;
 
     public SchieberActivity() {
-//    setActivityId(Dispatcher.schieberTafelId);
     }
 
     public void onCreate(Bundle paramBundle) {
@@ -97,9 +79,14 @@ public class SchieberActivity extends JassboardActivity {
 
     protected void onResume() {
         super.onResume();
-//    this.jasstafelActivityNavigation.onResume();
     }
 
+    /**
+     * Is launched when ScoreDialog finishes
+     * @param reqCode
+     * @param resCode
+     * @param data the intent
+     */
     @Override
     protected void onActivityResult(int reqCode, int resCode, Intent data){
         //super.onActivityResult(reqCode, resCode, data);
