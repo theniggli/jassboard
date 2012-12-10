@@ -8,14 +8,12 @@ import android.widget.*;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import ch.zhaw.R;
 
-
 /**
  * Dialog to add the score after each round
  *
  * @author <a href=mailto:stjepton@students.zhaw.ch>toni</a>
  * @since 12/1/12 8:50 AM
  */
-
 
 public class ScoreDialog extends Activity
 {

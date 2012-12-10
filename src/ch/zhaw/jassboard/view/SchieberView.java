@@ -50,7 +50,6 @@ public class SchieberView extends View {
     RectF zone_t_50;
     RectF zone_t_custom;
     RectF zone_t_total;
-    int resultA = 0;
     private Context paramContext;
 
     public SchieberView(Context paramContext) {
@@ -287,11 +286,11 @@ public class SchieberView extends View {
     private void drawBoard() {
         this._canvas.drawLines(this.lines, 0, 4 * this.lines_num, this._paint);
         this._paint.setStyle(Style.FILL);
-        int i = 0;
-        if (i >= this.rectangles_num) {
-            invalidate();
-            return;
-        }
+//        int i = 0;
+//        if (i >= this.rectangles_num) {
+//            invalidate();
+//            return;
+//        }
         //TODO: this code is unreachable and does not work, what is it's function? ;)
 //        if (this.rectangles_rotation.get(i) == 0.0F) {
 //            this._canvas.drawRoundRect(this.rectangles.get(i), 2.0F, 2.0F, this._paint);
@@ -322,18 +321,19 @@ public class SchieberView extends View {
         this._canvas.rotate(180.0F, this._width / 2, this._height / 2 - this.scoreTextSize);
         // draw current score of team a
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(resultA), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
+//        this._canvas.drawText(Integer.toString(50), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
         this._canvas.restore();
         // draw current score of team b
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(50), this._width / 2, this._height / 2 + this.scoreTextSize, this._paint);
+//        this._canvas.drawText(Integer.toString(50), this._width / 2, this._height / 2 + this.scoreTextSize, this._paint);
         this._paint.setTextSize(this.scoreTextSize);
         this._canvas.save();
         this._canvas.rotate(180.0F, this._width / 4, 2 * this._height / 10);
         // TODO: Dynamically get Points!!!
-        this._canvas.drawText(Integer.toString(resultA), this._width / 4, 2 * this._height / 10, this._paint);
+        this._canvas.drawText(Integer.toString(50), this._width / 4, 2 * this._height / 10, this._paint);
         this._canvas.restore();
         // TODO: Dynamically get Points!!!
+        // draw points of bottom team
         this._canvas.drawText(Integer.toString(50), 3 * this._width / 4, 8 * this._height / 10, this._paint);
         calculateLinePlacements();
         calculateZonePlacements();
