@@ -21,11 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: niggli
- * Date: 11/5/12
- * Time: 10:24 AM
- * To change this template use File | Settings | File Templates.
+ * View Team which was selected in ViewTeamList
+ *
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 
 public class ViewTeam extends OrmLiteBaseActivity<DatabaseHelper> {
