@@ -1,12 +1,14 @@
 package ch.zhaw.jassboard.view;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import ch.zhaw.R;
+import ch.zhaw.jassboard.persist.GlobalContext;
 
 /**
  * Dialog to add the score after each round
@@ -17,6 +19,7 @@ import ch.zhaw.R;
 
 public class ScoreDialog extends Activity
 {
+    int multi = 0;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         //set xml-layout
@@ -43,6 +46,30 @@ public class ScoreDialog extends Activity
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 //                ---displays the ID of the RadioButton that is checked---
 //                DisplayToast(Integer.toString(checkedId));
+                switch (checkedId){
+                    case 2131165209:
+                        multi = 1;
+                        break;
+                    case 2131165210:
+                        multi = 2;
+                        break;
+                    case 2131165211:
+                        multi = 3;
+                        break;
+                    case 2131165212:
+                        multi = 4;
+                        break;
+                    case 2131165213:
+                        multi = 5;
+                        break;
+                    case 2131165214:
+                        multi = 6;
+                        break;
+                    default:
+                        multi = 0;
+                        break;
+
+                }
             }
         });
         Button btnSave = (Button) findViewById(R.id.btnSave);
@@ -52,10 +79,18 @@ public class ScoreDialog extends Activity
                 DisplayToast("You have clicked the Save button");
                 //277457
                 EditText inText   = (EditText) findViewById(R.id.txtName);
-                Intent resInt = getIntent();
-                int resultatA = Integer.valueOf(inText.getText().toString());
-                resInt.putExtra("Result1",resultatA);
-                setResult(Activity.RESULT_OK, resInt);
+               /* GlobalContext gc = (GlobalContext) getApplication();
+                gc.setResult(Integer.valueOf(inText.getText().toString()));
+                gc.setMultiplier(multi);
+                */
+                Intent resInt = new Intent();
+                resInt.putExtra("multi",multi);
+                resInt.putExtra("result",Integer.valueOf(inText.getText().toString()));
+                resInt.putExtra("team",getIntent().getStringExtra("team"));
+                setResult(0,resInt);
+
+
+
                 finish();
             }
         });

@@ -323,7 +323,8 @@ public class SchieberActivity extends JassboardActivity {
 
     @Override
     protected void onActivityResult(int reqCode, int resCode, Intent data){
-        super.onActivityResult(reqCode, resCode, data);
+        //super.onActivityResult(reqCode, resCode, data);
+        _board.draw();
     }
 
     public void showCustomDialog(int paramInt) {

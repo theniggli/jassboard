@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 import ch.zhaw.jassboard.activity.SchieberActivity;
+import ch.zhaw.jassboard.persist.GlobalContext;
 
 import java.util.ArrayList;
 
@@ -244,7 +245,6 @@ public class SchieberView extends View {
 
     }
 
-
     private void calculateZonePlacements() {
         this.zone_t_100 = new RectF(this._width / 2, 2 * this._height / 6, this._width, 3 * this._height / 6);
         this.zone_t_50 = new RectF(this._width / 3, 1 * this._height / 6, 2 * this._width / 3, 2 * this._height / 6);
@@ -256,13 +256,6 @@ public class SchieberView extends View {
         this.zone_b_20 = new RectF(this._width / 2, 5 * this._height / 6, this._width, this._height);
         this.zone_b_custom = new RectF(2 * this._width / 3, 4 * this._height / 6, this._width, 5 * this._height / 6);
         this.zone_b_total = new RectF(0.0F, 4 * this._height / 6, this._width / 3, 5 * this._height / 6);
-    }
-
-    //277457
-    public void onActivityResult(int reqCode, int resCode, Intent data){
-        Toast.makeText(getContext(),data.getIntExtra("Result1",0) ,Toast.LENGTH_LONG).show();
-        resultA = data.getIntExtra("Result1",10);
-        draw();
     }
 
     public void draw() {
@@ -341,8 +334,11 @@ public class SchieberView extends View {
                 //paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
                 //277457
                 //((Activity)getContext()).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 0);
-                ((Activity)paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 1);
-                int abc = 1;
+                /*GlobalContext gc = (GlobalContext) ((Activity)getContext()).getApplication();
+                gc.setTeam("t");*/
+                Intent reqInt = new Intent(paramContext, ScoreDialog.class);
+                reqInt.putExtra("team","t");
+                ((Activity) paramContext).startActivityForResult(reqInt, 1);
 
             }
             // Team on the bottom
@@ -351,8 +347,9 @@ public class SchieberView extends View {
                 //paramContext.startActivity(new Intent(paramContext, ScoreDialog.class));
                 //277457
                 //((Activity)getContext()).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 0);
-                ((Activity)paramContext).startActivityForResult(new Intent(paramContext, ScoreDialog.class), 1);
-                int abc = 1;
+                Intent reqInt = new Intent(paramContext, ScoreDialog.class);
+                reqInt.putExtra("team","b");
+                ((Activity) paramContext).startActivityForResult(reqInt, 1);
             }
 
 //            if (this.zone_b_100.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
