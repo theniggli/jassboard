@@ -16,6 +16,12 @@ public class PlayerView extends LinearLayout {
     private int playerID;
     private String playerName;
 
+
+    /**
+     * Constructor: sets up the needed views
+     * @param context
+     * @param player
+     */
     public PlayerView(Context context, Player player) {
         super(context);
         this.setOrientation(VERTICAL);

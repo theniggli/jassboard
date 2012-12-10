@@ -2,8 +2,10 @@ package ch.zhaw.jassboard.persist;
 
 import java.io.Serializable;
 
-/*
-TODO: doc
+/**
+ * SchieberScore class to view and update the different needed scores
+ *
+ * @author <a href=mailto:nigglrog@students.zhaw.ch>roger</a>
  */
 public class SchieberScore implements Serializable {
     public int count_100 = 0;
