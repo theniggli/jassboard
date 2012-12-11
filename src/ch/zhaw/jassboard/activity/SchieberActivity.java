@@ -100,159 +100,161 @@ public class SchieberActivity extends JassboardActivity {
     @Override
     protected void onActivityResult(int reqCode, int resCode, Intent data) {
         //super.onActivityResult(reqCode, resCode, data);
-        int multi = data.getIntExtra("multi", 0);
+        if (data != null) {
+            int multi = data.getIntExtra("multi", 0);
 //        if(data.getStringExtra("team").equals("t")){
-        if (reqCode == 1) {
-            score_t.setPoints(data.getIntExtra("resultEntered", 0), multi);
-            _board.setTeam_t(score_t);
-            score_b.setPoints(data.getIntExtra("resultCalculated", 0), multi);
-            _board.setTeam_b(score_b);
-        } else {
-            score_t.setPoints(data.getIntExtra("resultCalculated", 0), multi);
-            _board.setTeam_t(score_t);
-            score_b.setPoints(data.getIntExtra("resultEntered", 0), multi);
-            _board.setTeam_b(score_b);
-        }
-        _board.draw();
-
-        int roundDone = data.getIntExtra("roundDone",0);
-        //fill out statistics if round is done
-        if (roundDone == 1) {
-            //round done
             if (reqCode == 1) {
-                if (data.getIntExtra("resultEntered", 0) * multi > data.getIntExtra("resultCalculated", 0) * multi) {
-                    //team 1 won round
-                    player1.setRoundsWonSchieber(player1.getRoundsWon() + 1);
-                    player2.setRoundsWonSchieber(player2.getRoundsWon() + 1);
-                } else {
-                    player3.setRoundsWonSchieber(player3.getRoundsWon() + 1);
-                    player4.setRoundsWonSchieber(player4.getRoundsWon() + 1);
-                }
-                player1.setRoundsPlayedSchieber(player1.getRoundsPlayedSchieber() + 1);
-                player2.setRoundsPlayedSchieber(player2.getRoundsPlayedSchieber() + 1);
-                player3.setRoundsPlayedSchieber(player3.getRoundsPlayedSchieber() + 1);
-                player4.setRoundsPlayedSchieber(player4.getRoundsPlayedSchieber() + 1);
-                player1.setPointsMadeSchieber(player1.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
-                player2.setPointsMadeSchieber(player2.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
-                player3.setPointsMadeSchieber(player3.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
-                player4.setPointsMadeSchieber(player4.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
-                player1.setPointsMaxSchieber(player1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
-                player2.setPointsMaxSchieber(player2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
-                player3.setPointsMaxSchieber(player3.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
-                player4.setPointsMaxSchieber(player4.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
-                RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
-                playerDAO.update(player1);
-                playerDAO.update(player2);
-                playerDAO.update(player3);
-                playerDAO.update(player4);
-                if ((team1 != null) && (team2 != null)) {
-                    if (data.getIntExtra("resultEntered", 0) * multi > data.getIntExtra("resultCalculated", 0) * multi) {
-                        team1.setRoundsWonSchieber(team1.getRoundsWon() + 1);
-                    } else {
-                        team2.setRoundsWonSchieber(team2.getRoundsWon() + 1);
-                    }
-                    team1.setPointsMadeSchieber(team1.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
-                    team2.setPointsMadeSchieber(team2.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
-                    team1.setRoundsPlayedSchieber(team1.getRoundsPlayedSchieber() + 1);
-                    team2.setRoundsPlayedSchieber(team2.getRoundsPlayedSchieber() + 1);
-                    team1.setPointsMaxSchieber(team1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
-                    team2.setPointsMaxSchieber(team2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
-                    RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
-                    teamDAO.update(team1);
-                    teamDAO.update(team2);
-                }
-
+                score_t.setPoints(data.getIntExtra("resultEntered", 0), multi);
+                _board.setTeam_t(score_t);
+                score_b.setPoints(data.getIntExtra("resultCalculated", 0), multi);
+                _board.setTeam_b(score_b);
             } else {
-                if (data.getIntExtra("resultEntered", 0) * multi > data.getIntExtra("resultCalculated", 0) * multi) {
-                    //team 2 won round
-                    player3.setRoundsWonSchieber(player3.getRoundsWon() + 1);
-                    player4.setRoundsWonSchieber(player4.getRoundsWon() + 1);
+                score_t.setPoints(data.getIntExtra("resultCalculated", 0), multi);
+                _board.setTeam_t(score_t);
+                score_b.setPoints(data.getIntExtra("resultEntered", 0), multi);
+                _board.setTeam_b(score_b);
+            }
+            _board.draw();
+
+            int roundDone = data.getIntExtra("roundDone", 0);
+            //fill out statistics if round is done
+            if (roundDone == 1) {
+                //round done
+                if (reqCode == 1) {
+                    if (data.getIntExtra("resultEntered", 0) * multi > data.getIntExtra("resultCalculated", 0) * multi) {
+                        //team 1 won round
+                        player1.setRoundsWonSchieber(player1.getRoundsWon() + 1);
+                        player2.setRoundsWonSchieber(player2.getRoundsWon() + 1);
+                    } else {
+                        player3.setRoundsWonSchieber(player3.getRoundsWon() + 1);
+                        player4.setRoundsWonSchieber(player4.getRoundsWon() + 1);
+                    }
+                    player1.setRoundsPlayedSchieber(player1.getRoundsPlayedSchieber() + 1);
+                    player2.setRoundsPlayedSchieber(player2.getRoundsPlayedSchieber() + 1);
+                    player3.setRoundsPlayedSchieber(player3.getRoundsPlayedSchieber() + 1);
+                    player4.setRoundsPlayedSchieber(player4.getRoundsPlayedSchieber() + 1);
+                    player1.setPointsMadeSchieber(player1.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
+                    player2.setPointsMadeSchieber(player2.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
+                    player3.setPointsMadeSchieber(player3.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
+                    player4.setPointsMadeSchieber(player4.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
+                    player1.setPointsMaxSchieber(player1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                    player2.setPointsMaxSchieber(player2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                    player3.setPointsMaxSchieber(player3.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                    player4.setPointsMaxSchieber(player4.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                    RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
+                    playerDAO.update(player1);
+                    playerDAO.update(player2);
+                    playerDAO.update(player3);
+                    playerDAO.update(player4);
+                    if ((team1 != null) && (team2 != null)) {
+                        if (data.getIntExtra("resultEntered", 0) * multi > data.getIntExtra("resultCalculated", 0) * multi) {
+                            team1.setRoundsWonSchieber(team1.getRoundsWon() + 1);
+                        } else {
+                            team2.setRoundsWonSchieber(team2.getRoundsWon() + 1);
+                        }
+                        team1.setPointsMadeSchieber(team1.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
+                        team2.setPointsMadeSchieber(team2.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
+                        team1.setRoundsPlayedSchieber(team1.getRoundsPlayedSchieber() + 1);
+                        team2.setRoundsPlayedSchieber(team2.getRoundsPlayedSchieber() + 1);
+                        team1.setPointsMaxSchieber(team1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                        team2.setPointsMaxSchieber(team2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                        RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
+                        teamDAO.update(team1);
+                        teamDAO.update(team2);
+                    }
+
                 } else {
-                    player1.setRoundsWonSchieber(player1.getRoundsWon() + 1);
-                    player2.setRoundsWonSchieber(player2.getRoundsWon() + 1);
+                    if (data.getIntExtra("resultEntered", 0) * multi > data.getIntExtra("resultCalculated", 0) * multi) {
+                        //team 2 won round
+                        player3.setRoundsWonSchieber(player3.getRoundsWon() + 1);
+                        player4.setRoundsWonSchieber(player4.getRoundsWon() + 1);
+                    } else {
+                        player1.setRoundsWonSchieber(player1.getRoundsWon() + 1);
+                        player2.setRoundsWonSchieber(player2.getRoundsWon() + 1);
+                    }
+                    player1.setRoundsPlayedSchieber(player1.getRoundsPlayedSchieber() + 1);
+                    player2.setRoundsPlayedSchieber(player2.getRoundsPlayedSchieber() + 1);
+                    player3.setRoundsPlayedSchieber(player3.getRoundsPlayedSchieber() + 1);
+                    player4.setRoundsPlayedSchieber(player4.getRoundsPlayedSchieber() + 1);
+                    player1.setPointsMadeSchieber(player1.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
+                    player2.setPointsMadeSchieber(player2.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
+                    player3.setPointsMadeSchieber(player3.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
+                    player4.setPointsMadeSchieber(player4.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
+                    player1.setPointsMaxSchieber(player1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                    player2.setPointsMaxSchieber(player2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                    player3.setPointsMaxSchieber(player3.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                    player4.setPointsMaxSchieber(player4.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                    RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
+                    playerDAO.update(player1);
+                    playerDAO.update(player2);
+                    playerDAO.update(player3);
+                    playerDAO.update(player4);
+                    if ((team1 != null) && (team2 != null)) {
+                        if (data.getIntExtra("resultEntered", 0) * multi > data.getIntExtra("resultCalculated", 0) * multi) {
+                            team2.setRoundsWonSchieber(team2.getRoundsWon() + 1);
+                        } else {
+                            team1.setRoundsWonSchieber(team1.getRoundsWon() + 1);
+                        }
+                        team1.setPointsMadeSchieber(team1.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
+                        team2.setPointsMadeSchieber(team2.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
+                        team1.setRoundsPlayedSchieber(team1.getRoundsPlayedSchieber() + 1);
+                        team2.setRoundsPlayedSchieber(team2.getRoundsPlayedSchieber() + 1);
+                        team1.setPointsMaxSchieber(team1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                        team2.setPointsMaxSchieber(team2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                        RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
+                        teamDAO.update(team1);
+                        teamDAO.update(team2);
+                    }
                 }
-                player1.setRoundsPlayedSchieber(player1.getRoundsPlayedSchieber() + 1);
-                player2.setRoundsPlayedSchieber(player2.getRoundsPlayedSchieber() + 1);
-                player3.setRoundsPlayedSchieber(player3.getRoundsPlayedSchieber() + 1);
-                player4.setRoundsPlayedSchieber(player4.getRoundsPlayedSchieber() + 1);
-                player1.setPointsMadeSchieber(player1.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
-                player2.setPointsMadeSchieber(player2.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
-                player3.setPointsMadeSchieber(player3.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
-                player4.setPointsMadeSchieber(player4.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
-                player1.setPointsMaxSchieber(player1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
-                player2.setPointsMaxSchieber(player2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
-                player3.setPointsMaxSchieber(player3.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
-                player4.setPointsMaxSchieber(player4.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+            }
+
+            //if maxpoints reached fill games won/played statistics
+            if (score_t.getScore() >= 2500) {
+                //top team has won :-)
+                if ((team1 != null) && (team2 != null)) {
+                    team1.setGamesPlayedSchieber(team1.getGamesPlayedSchieber() + 1);
+                    team2.setGamesPlayedSchieber(team2.getGamesPlayedSchieber() + 1);
+                    team1.setGamesWonSchieber(team1.getGamesWonSchieber() + 1);
+                    RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
+                    teamDAO.update(team1);
+                    teamDAO.update(team2);
+                }
+                player1.setGamesPlayedSchieber(player1.getGamesPlayedSchieber() + 1);
+                player2.setGamesPlayedSchieber(player2.getGamesPlayedSchieber() + 1);
+                player3.setGamesPlayedSchieber(player3.getGamesPlayedSchieber() + 1);
+                player4.setGamesPlayedSchieber(player4.getGamesPlayedSchieber() + 1);
+                player1.setGamesWonSchieber(player1.getGamesWonSchieber() + 1);
+                player2.setGamesWonSchieber(player2.getGamesWonSchieber() + 1);
                 RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
                 playerDAO.update(player1);
                 playerDAO.update(player2);
                 playerDAO.update(player3);
                 playerDAO.update(player4);
+                Toast.makeText(getApplicationContext(), "Team 1 hat das Spiel gewonnen.", Toast.LENGTH_SHORT).show();
+                finish();
+            } else if (score_b.getScore() >= 2500) {
                 if ((team1 != null) && (team2 != null)) {
-                    if (data.getIntExtra("resultEntered", 0) * multi > data.getIntExtra("resultCalculated", 0) * multi) {
-                        team2.setRoundsWonSchieber(team2.getRoundsWon() + 1);
-                    } else {
-                        team1.setRoundsWonSchieber(team1.getRoundsWon() + 1);
-                    }
-                    team1.setPointsMadeSchieber(team1.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
-                    team2.setPointsMadeSchieber(team2.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
-                    team1.setRoundsPlayedSchieber(team1.getRoundsPlayedSchieber() + 1);
-                    team2.setRoundsPlayedSchieber(team2.getRoundsPlayedSchieber() + 1);
-                    team1.setPointsMaxSchieber(team1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
-                    team2.setPointsMaxSchieber(team2.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
+                    team1.setGamesPlayedSchieber(team1.getGamesPlayedSchieber() + 1);
+                    team2.setGamesPlayedSchieber(team2.getGamesPlayedSchieber() + 1);
+                    team2.setGamesWonSchieber(team2.getGamesWonSchieber() + 1);
                     RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
                     teamDAO.update(team1);
                     teamDAO.update(team2);
                 }
+                player1.setGamesPlayedSchieber(player1.getGamesPlayedSchieber() + 1);
+                player2.setGamesPlayedSchieber(player2.getGamesPlayedSchieber() + 1);
+                player3.setGamesPlayedSchieber(player3.getGamesPlayedSchieber() + 1);
+                player4.setGamesPlayedSchieber(player4.getGamesPlayedSchieber() + 1);
+                player3.setGamesWonSchieber(player3.getGamesWonSchieber() + 1);
+                player4.setGamesWonSchieber(player4.getGamesWonSchieber() + 1);
+                RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
+                playerDAO.update(player1);
+                playerDAO.update(player2);
+                playerDAO.update(player3);
+                playerDAO.update(player4);
+                Toast.makeText(getApplicationContext(), "Team 2 hat das Spiel gewonnen.", Toast.LENGTH_SHORT).show();
+                finish();
             }
-        }
-
-        //if maxpoints reached fill games won/played statistics
-        if (score_t.getScore() >= 2500) {
-            //top team has won :-)
-            if ((team1 != null) && (team2 != null)) {
-                team1.setGamesPlayedSchieber(team1.getGamesPlayedSchieber() + 1);
-                team2.setGamesPlayedSchieber(team2.getGamesPlayedSchieber() + 1);
-                team1.setGamesWonSchieber(team1.getGamesWonSchieber() + 1);
-                RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
-                teamDAO.update(team1);
-                teamDAO.update(team2);
-            }
-            player1.setGamesPlayedSchieber(player1.getGamesPlayedSchieber() + 1);
-            player2.setGamesPlayedSchieber(player2.getGamesPlayedSchieber() + 1);
-            player3.setGamesPlayedSchieber(player3.getGamesPlayedSchieber() + 1);
-            player4.setGamesPlayedSchieber(player4.getGamesPlayedSchieber() + 1);
-            player1.setGamesWonSchieber(player1.getGamesWonSchieber() + 1);
-            player2.setGamesWonSchieber(player2.getGamesWonSchieber() + 1);
-            RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
-            playerDAO.update(player1);
-            playerDAO.update(player2);
-            playerDAO.update(player3);
-            playerDAO.update(player4);
-            Toast.makeText(getApplicationContext(), "Team 1 hat das Spiel gewonnen.", Toast.LENGTH_SHORT).show();
-            finish();
-        } else if (score_b.getScore() >= 2500) {
-            if ((team1 != null) && (team2 != null)) {
-                team1.setGamesPlayedSchieber(team1.getGamesPlayedSchieber() + 1);
-                team2.setGamesPlayedSchieber(team2.getGamesPlayedSchieber() + 1);
-                team2.setGamesWonSchieber(team2.getGamesWonSchieber() + 1);
-                RuntimeExceptionDao<Team, Integer> teamDAO = getHelper().getTeamDao();
-                teamDAO.update(team1);
-                teamDAO.update(team2);
-            }
-            player1.setGamesPlayedSchieber(player1.getGamesPlayedSchieber() + 1);
-            player2.setGamesPlayedSchieber(player2.getGamesPlayedSchieber() + 1);
-            player3.setGamesPlayedSchieber(player3.getGamesPlayedSchieber() + 1);
-            player4.setGamesPlayedSchieber(player4.getGamesPlayedSchieber() + 1);
-            player3.setGamesWonSchieber(player3.getGamesWonSchieber() + 1);
-            player4.setGamesWonSchieber(player4.getGamesWonSchieber() + 1);
-            RuntimeExceptionDao<Player, Integer> playerDAO = getHelper().getPlayerDao();
-            playerDAO.update(player1);
-            playerDAO.update(player2);
-            playerDAO.update(player3);
-            playerDAO.update(player4);
-            Toast.makeText(getApplicationContext(), "Team 2 hat das Spiel gewonnen.", Toast.LENGTH_SHORT).show();
-            finish();
         }
     }
 }
