@@ -80,7 +80,7 @@
                  android:drawSelectorOnTop="true"/>
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="@string/player2"/>
+                  android:text="@string/team2"/>
         <Spinner android:id="@+id/team2"
                  android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
