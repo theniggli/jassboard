@@ -135,16 +135,16 @@ public class SchieberView extends View {
         for (int j = 1; j <= team_t.count_20; j++) {
             if (j % 5 == 0) {
                 //schief
-                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40 + 5 * width / 40;
+                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40 + 5 * width / 40 - width / 80;
                 points[(1 + 4 * this.points_num)] = height / 40;
-                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
+                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40 - width / 80;
                 points[(3 + 4 * this.points_num)] = height / 20 + height / 40;
                 this.points_num++;
             } else {
                 //"normal"
-                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
+                points[(0 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40 - width / 80;
                 points[(1 + 4 * this.points_num)] = height / 40;
-                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40;
+                points[(2 + 4 * this.points_num)] = width - 2 * (width / 12) - j * width / 40 - width / 80;
                 points[(3 + 4 * this.points_num)] = height / 20 + height / 40;
                 this.points_num++;
             }
@@ -229,16 +229,16 @@ public class SchieberView extends View {
         for (int j = 1; j <= team_b.count_20; j++) {
             if (j % 5 == 0) {
                 //schief
-                points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
+                points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40 + width / 80;
                 points[(1 + 4 * this.points_num)] = height - height / 20 - height / 40;
-                points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40 - (5 * width / 40);
+                points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40 - (5 * width / 40) + width / 80;
                 points[(3 + 4 * this.points_num)] = height - height / 40;
                 this.points_num++;
             } else {
                 //"normal"
-                points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
+                points[(0 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40 + width / 80;
                 points[(1 + 4 * this.points_num)] = height - height / 40;
-                points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40;
+                points[(2 + 4 * this.points_num)] = 2 * (width / 12) + j * width / 40 + width / 80;
                 points[(3 + 4 * this.points_num)] = height - height / 20 - height / 40;
                 this.points_num++;
             }
@@ -307,6 +307,6 @@ public class SchieberView extends View {
             draw();
             return true;
         }
-       return true;
+        return true;
     }
 }
