@@ -195,8 +195,8 @@ public class SchieberActivity extends JassboardActivity {
                         } else {
                             team1.setRoundsWonSchieber(team1.getRoundsWon() + 1);
                         }
-                        team1.setPointsMadeSchieber(team1.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
-                        team2.setPointsMadeSchieber(team2.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
+                        team1.setPointsMadeSchieber(team1.getPointsMadeSchieber() + data.getIntExtra("resultCalculated", 0) * multi);
+                        team2.setPointsMadeSchieber(team2.getPointsMadeSchieber() + data.getIntExtra("resultEntered", 0) * multi);
                         team1.setRoundsPlayedSchieber(team1.getRoundsPlayedSchieber() + 1);
                         team2.setRoundsPlayedSchieber(team2.getRoundsPlayedSchieber() + 1);
                         team1.setPointsMaxSchieber(team1.getPointsMaxSchieber() + data.getIntExtra("resultEntered", 0) * multi + data.getIntExtra("resultCalculated", 0) * multi);
