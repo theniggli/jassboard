@@ -31,10 +31,10 @@ public class ScoreDialog extends Activity {
         checkBox.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (((CheckBox) v).isChecked()) {
-                    DisplayToast("Gegner wird berechnet.");
+                    DisplayToast(getString(R.string.calcenemy));
                     calcOpp = true;
                 } else {
-                    DisplayToast("Gegner wird nicht berechnet.");
+                    DisplayToast(getString(R.string.notcalcenemy));
                     calcOpp = false;
                 }
             }
@@ -79,25 +79,28 @@ public class ScoreDialog extends Activity {
                 EditText inText = (EditText) findViewById(R.id.txtName);
                 calcOpp = true;
                 int resultat = Integer.valueOf(inText.getText().toString());
-                Intent resInt = new Intent();
-                resInt.putExtra("multi", multi);
-                if (resultat > 157 && calcOpp) {
-                    resultat = 0;
-                    calcOpp = false;
-                } else {
-                    resInt.putExtra("resultEntered", resultat);
+                if ((resultat >= 0) && (resultat < 158)) {
+                    Intent resInt = new Intent();
+                    resInt.putExtra("multi", multi);
+                    if (resultat > 157 && calcOpp) {
+                        resultat = 0;
+                        calcOpp = false;
+                    } else {
+                        resInt.putExtra("resultEntered", resultat);
+                    }
+                    // check if the points of the opposing team should be calculated
+                    if (calcOpp) {
+                        resInt.putExtra("resultCalculated", 157 - resultat);
+                        resInt.putExtra("roundDone",1);
+                    } else {
+                        resInt.putExtra("resultCalculated", 0);
+                        resInt.putExtra("roundDone",0);
+                    }
+                    setResult(RESULT_OK, resInt);
+                    finish();
+                } else{
+                    DisplayToast(getString(R.string.resultbetween));
                 }
-                // check if the points of the opposing team should be calculated
-                if (calcOpp) {
-                    resInt.putExtra("resultCalculated", 157 - resultat);
-                } else {
-                    resInt.putExtra("resultCalculated", 0);
-                }
-                // TODO: if input not valid not finish bring toast
-               // resInt.putExtra("team", getIntent().getStringExtra("team"));
-
-                setResult(RESULT_OK, resInt);
-                finish();
             }
         });
     }

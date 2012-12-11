@@ -57,7 +57,7 @@ public class PlayerView extends LinearLayout {
         addView(roundsWonPercent, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
         TextView pointsMadePercent = new TextView(context);
-        pointsMadePercent.setText(context.getString(ch.zhaw.R.string.pointsmade) + ": " + player.getPointsMadePercent() + " ( " + player.getPointsMax() + " " + context.getString(ch.zhaw.R.string.off) + " " + player.getPointsMax() + " )");
+        pointsMadePercent.setText(context.getString(ch.zhaw.R.string.pointsmade) + ": " + player.getPointsMadePercent() + " ( " + player.getPointsMade() + " " + context.getString(ch.zhaw.R.string.off) + " " + player.getPointsMax() + " )");
         pointsMadePercent.setTextSize(14);
         pointsMadePercent.setTextColor(Color.GRAY);
         pointsMadePercent.setTypeface(Typeface.SANS_SERIF);

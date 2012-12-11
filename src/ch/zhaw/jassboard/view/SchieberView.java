@@ -130,14 +130,8 @@ public class SchieberView extends View {
         float height = this._height;
         this.points_num = 0;
 
-//        startX
-//        startY
-//        stopX
-//        stopY
-
         //team top
         //20
-//          for (int j = 1; j == this._activity.team_b.get_20(); j++) {
         for (int j = 1; j <= team_t.count_20; j++) {
             if (j % 5 == 0) {
                 //schief
@@ -254,38 +248,27 @@ public class SchieberView extends View {
 
 
     private void calculateZonePlacements() {
-//        this.zone_t_custom = new RectF(0.0F, 1 * this._height / 6, 1 * this._width / 3, 2 * this._height / 6);
         this.zone_t_total = new RectF(0.0F, 0.0F, this._width, this._height / 2);
-//        this.zone_b_custom = new RectF(2 * this._width / 3, 4 * this._height / 6, this._width, 5 * this._height / 6);
         this.zone_b_total = new RectF(0.0F, this._height / 2, this._width, this._height);
-        //float left, float top, float right, float bottom)
     }
 
     /*
     Draw the points
      */
     public void draw() {
-        // this._activity.team_t.realignScore(getMax20(), getMax50());
-        // this._activity.team_b.realignScore(getMax20(), getMax50());
         this._bitmap.eraseColor(-16777216);
         this._paint.setAntiAlias(true);
         this._paint.setTextSize(this.scoreTextSize);
         this._canvas.save();
         this._canvas.rotate(180.0F, this._width / 2, this._height / 2 - this.scoreTextSize);
         // draw current score of team a
-        // TODO: Dynamically get Points!!!
-//        this._canvas.drawText(Integer.toString(11), this._width / 2, this._height / 2 - this.scoreTextSize, this._paint);
         this._canvas.restore();
         // draw current score of team b
-        // TODO: Dynamically get Points!!!
-//        this._canvas.drawText(Integer.toString(50), this._width / 2, this._height / 2 + this.scoreTextSize, this._paint);
         this._paint.setTextSize(this.scoreTextSize);
         this._canvas.save();
         this._canvas.rotate(180.0F, this._width / 4, 2 * this._height / 10);
-        // TODO: Dynamically get Points!!!
         this._canvas.drawText(Integer.toString(team_t.rest), this._width / 4, 2 * this._height / 10, this._paint);
         this._canvas.restore();
-        // TODO: Dynamically get Points!!!
         this._canvas.drawText(Integer.toString(team_b.rest), 3 * this._width / 4, 8 * this._height / 10, this._paint);
         calculateLinePlacements();
         calculateZonePlacements();

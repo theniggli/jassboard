@@ -63,7 +63,7 @@ public class ViewPlayerList extends OrmLiteBaseActivity<DatabaseHelper> {
                         List<PlayerTeam> playerteamArrayList = teamplayerDao.queryForEq("playerID", playerID);
                         teamplayerDao.delete(playerteamArrayList);
                         //readable Toast message
-                        Toast.makeText(getApplicationContext(), R.string.player + ": " + playerID + " " + R.string.deleted + ".", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.player) + ": " + playerID + " " + getString(R.string.deleted) + ".", Toast.LENGTH_SHORT).show();
                         //reload Activity
                         reloadData();
                     }

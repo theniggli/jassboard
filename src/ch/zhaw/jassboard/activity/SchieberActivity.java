@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
-import ch.zhaw.R;
 import ch.zhaw.jassboard.persist.Player;
 import ch.zhaw.jassboard.persist.SchieberScore;
 import ch.zhaw.jassboard.persist.Team;
@@ -116,10 +115,9 @@ public class SchieberActivity extends JassboardActivity {
         }
         _board.draw();
 
-        //fill out statistics
-        //could be bether made but may works
-        // TODO: not use resultCalculated use something like rounddone
-        if (data.getIntExtra("resultCalculated", 0) != 0) {
+        int roundDone = data.getIntExtra("roundDone",0);
+        //fill out statistics if round is done
+        if (roundDone == 1) {
             //round done
             if (reqCode == 1) {
                 if (data.getIntExtra("resultEntered", 0) * multi > data.getIntExtra("resultCalculated", 0) * multi) {
@@ -209,7 +207,7 @@ public class SchieberActivity extends JassboardActivity {
             }
         }
 
-        //if maxpoints reached
+        //if maxpoints reached fill games won/played statistics
         if (score_t.getScore() >= 2500) {
             //top team has won :-)
             if ((team1 != null) && (team2 != null)) {

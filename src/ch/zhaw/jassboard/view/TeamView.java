@@ -55,7 +55,7 @@ public class TeamView extends LinearLayout {
         addView(roundsWonPercent, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
         TextView pointsMadePercent = new TextView(context);
-        pointsMadePercent.setText(context.getString(ch.zhaw.R.string.pointsmade) + ": " + team.getPointsMadePercent() + " ( " + team.getPointsMax() + " " + context.getString(ch.zhaw.R.string.off) + " " + team.getPointsMax() + " )");
+        pointsMadePercent.setText(context.getString(ch.zhaw.R.string.pointsmade) + ": " + team.getPointsMadePercent() + " ( " + team.getPointsMade() + " " + context.getString(ch.zhaw.R.string.off) + " " + team.getPointsMax() + " )");
         pointsMadePercent.setTextSize(14);
         pointsMadePercent.setTextColor(Color.GRAY);
         pointsMadePercent.setTypeface(Typeface.SANS_SERIF);
