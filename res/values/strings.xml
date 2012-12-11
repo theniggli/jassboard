@@ -52,7 +52,6 @@
     <string name="resultbetween">Resultat muss zwischen 0 unt 157 liegen.</string>
     <string name="calcenemy">Gegner wird berechnet</string>
     <string name="notcalcenemy">Gegner wird nicht berechnet.</string>
-    <string name=""></string>
     <string-array name="game_modes">
         <item>Schieber</item>
         <item>Coiffeur</item>
