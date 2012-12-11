@@ -120,6 +120,7 @@ public class SchieberView extends View {
         //draw pointlines
         this._paint.setColor(Color.YELLOW);
         this._canvas.drawLines(this.points, 0, 4 * this.points_num, this._paint);
+        this._paint.setColor(Color.GRAY);
     }
 
     /*
